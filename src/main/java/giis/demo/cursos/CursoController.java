@@ -6,7 +6,7 @@ public class CursoController {
 	
 	private CursoModel modelo;
 	private CursoView vista;
-	
+	private int x=0;
 	private String lastSelectedKey="";
 
 	public CursoController(CursoModel modelo, CursoView vista) {
@@ -14,6 +14,7 @@ public class CursoController {
 		this.modelo = modelo;
 		this.vista = vista;
 		//pruebas controlador
+		
 		
 	System.out.println(modelo.getClass());
 		
