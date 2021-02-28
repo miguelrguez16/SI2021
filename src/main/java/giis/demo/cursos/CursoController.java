@@ -35,7 +35,7 @@ public class CursoController {
 		
 	}
 	
-	public void holabuenas() {
+	public void hola() {
 		
 	}
 	
