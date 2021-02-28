@@ -13,6 +13,9 @@ public class CursoController {
 		super();
 		this.modelo = modelo;
 		this.vista = vista;
+		//pruebas controlador
+		
+	
 		
 		this.initview();
 	}
