@@ -13,12 +13,6 @@ public class CursoEntity {
 	public String getId() {
 		return id;
 	}
-
-	
-	
-	
-	//hsjfbng´dsjkfbn´
-	
 	
 	public void setId(String id) {
 		this.id = id;
