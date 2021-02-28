@@ -35,7 +35,7 @@ public class CursoController {
 		
 	}
 	
-	public void holabuenastardes() {
+	public void holabuenas() {
 		
 	}
 	
