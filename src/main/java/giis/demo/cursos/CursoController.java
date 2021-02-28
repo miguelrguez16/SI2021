@@ -15,7 +15,7 @@ public class CursoController {
 		this.vista = vista;
 		//pruebas controlador
 		
-	
+	System.out.println(modelo.getClass());
 		
 		this.initview();
 	}
