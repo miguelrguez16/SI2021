@@ -29,22 +29,24 @@ public class SolicitudView extends JFrame {
 	 */
 	private static final long serialVersionUID = -7758216415701614225L;
 	private JFrame frmSolicitud;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private static JTextField tfNombre;
+	private static JTextField tfApellidos;
+	private static JTextField tfDireccion;
+	private static JTextField tfPoblacion;
+	private static JTextField tfTelefono;
 	private JLabel lblNewLabel_5;
-	private JTextField textField_5;
+	private static JTextField tfTitulacion;
 	private JLabel lblNewLabel_6;
-	private JTextField textField_6;
+	private static JTextField tfCentro;
 	private JLabel lblNewLabel_7;
-	private JTextField textField_7;
+	private static JTextField tfYear;
 	private JLabel lblNewLabel_8;
-	private JTextField textField_8;
+	private static JTextField tfCuenta;
 	private JLabel lblNewLabel_9;
-	private JTextField textField_9;
-
+	private static JTextField tfDNI;
+	private JButton bEnviar;
+	private JButton bPrueba;
+	
 	/**
 	 * Create the application.
 	 */
@@ -64,104 +66,197 @@ public class SolicitudView extends JFrame {
 		lblNewLabel.setBounds(10, 75, 46, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(66, 72, 86, 20);
-		frmSolicitud.getContentPane().add(textField);
-		textField.setColumns(10);
+		tfNombre = new JTextField();
+		tfNombre.setBounds(66, 72, 86, 20);
+		frmSolicitud.getContentPane().add(tfNombre);
+		tfNombre.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Apellidos");
-		lblNewLabel_1.setBounds(179, 75, 46, 14);
+		lblNewLabel_1.setBounds(240, 75, 88, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(233, 72, 178, 20);
-		frmSolicitud.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		tfApellidos = new JTextField();
+		tfApellidos.setBounds(338, 72, 178, 20);
+		frmSolicitud.getContentPane().add(tfApellidos);
+		tfApellidos.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Dirección");
 		lblNewLabel_2.setBounds(10, 100, 46, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_2);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(66, 97, 345, 20);
-		frmSolicitud.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		tfDireccion = new JTextField();
+		tfDireccion.setBounds(66, 97, 450, 20);
+		frmSolicitud.getContentPane().add(tfDireccion);
+		tfDireccion.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Población");
 		lblNewLabel_3.setBounds(10, 125, 46, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_3);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(66, 122, 132, 20);
-		frmSolicitud.getContentPane().add(textField_3);
-		textField_3.setColumns(10);
+		tfPoblacion = new JTextField();
+		tfPoblacion.setBounds(66, 122, 132, 20);
+		frmSolicitud.getContentPane().add(tfPoblacion);
+		tfPoblacion.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Teléfono");
-		lblNewLabel_4.setBounds(233, 125, 46, 14);
+		lblNewLabel_4.setBounds(276, 125, 108, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_4);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(289, 122, 122, 20);
-		frmSolicitud.getContentPane().add(textField_4);
-		textField_4.setColumns(10);
+		tfTelefono = new JTextField();
+		tfTelefono.setBounds(394, 122, 122, 20);
+		frmSolicitud.getContentPane().add(tfTelefono);
+		tfTelefono.setColumns(10);
 		
 		lblNewLabel_5 = new JLabel("Titulación");
 		lblNewLabel_5.setBounds(10, 167, 46, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_5);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(66, 164, 345, 20);
-		frmSolicitud.getContentPane().add(textField_5);
-		textField_5.setColumns(10);
+		tfTitulacion = new JTextField();
+		tfTitulacion.setBounds(66, 164, 450, 20);
+		frmSolicitud.getContentPane().add(tfTitulacion);
+		tfTitulacion.setColumns(10);
 		
 		lblNewLabel_6 = new JLabel("Centro");
 		lblNewLabel_6.setBounds(10, 192, 46, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_6);
 		
-		textField_6 = new JTextField();
-		textField_6.setBounds(66, 189, 132, 20);
-		frmSolicitud.getContentPane().add(textField_6);
-		textField_6.setColumns(10);
+		tfCentro = new JTextField();
+		tfCentro.setBounds(66, 189, 201, 20);
+		frmSolicitud.getContentPane().add(tfCentro);
+		tfCentro.setColumns(10);
 		
 		lblNewLabel_7 = new JLabel("Año Titulación");
-		lblNewLabel_7.setBounds(233, 195, 75, 14);
+		lblNewLabel_7.setBounds(289, 192, 122, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_7);
 		
-		textField_7 = new JTextField();
-		textField_7.setBounds(318, 189, 93, 20);
-		frmSolicitud.getContentPane().add(textField_7);
-		textField_7.setColumns(10);
+		tfYear = new JTextField();
+		tfYear.setBounds(423, 189, 93, 20);
+		frmSolicitud.getContentPane().add(tfYear);
+		tfYear.setColumns(10);
 		
 		lblNewLabel_8 = new JLabel("IBAN");
 		lblNewLabel_8.setBounds(10, 242, 46, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_8);
 		
-		textField_8 = new JTextField();
-		textField_8.setBounds(66, 239, 345, 20);
-		frmSolicitud.getContentPane().add(textField_8);
-		textField_8.setColumns(10);
+		tfCuenta = new JTextField();
+		tfCuenta.setBounds(66, 239, 450, 20);
+		frmSolicitud.getContentPane().add(tfCuenta);
+		tfCuenta.setColumns(10);
+		
 		
 		lblNewLabel_9 = new JLabel("DNI");
 		lblNewLabel_9.setBounds(10, 46, 46, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_9);
 		
-		textField_9 = new JTextField();
-		textField_9.setBounds(66, 43, 122, 20);
-		frmSolicitud.getContentPane().add(textField_9);
-		textField_9.setColumns(10);
+		tfDNI = new JTextField();
+		tfDNI.setBounds(66, 43, 122, 20);
+		frmSolicitud.getContentPane().add(tfDNI);
+		tfDNI.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Enviar solicitud");
-		btnNewButton.setBounds(412, 299, 103, 23);
-		frmSolicitud.getContentPane().add(btnNewButton);
+		bEnviar = new JButton("Enviar solicitud");
+		bEnviar.setBounds(526, 357, 137, 23);
+		frmSolicitud.getContentPane().add(bEnviar);
+		
+		bPrueba = new JButton("Prueba");
+		bPrueba.setBounds(427, 357, 89, 23);
+		frmSolicitud.getContentPane().add(bPrueba);
 	}
 
 	//Getters y Setters anadidos para acceso desde el controlador (representacion compacta)
 	public JFrame getFrame() { return this.frmSolicitud; }
-	public String getFechaHoy()  { return this.txtFechaHoy.getText(); }
-	public void setFechaHoy(String fechaIso)  { this.txtFechaHoy.setText(fechaIso); }
-	public JButton getBtnTablaCurso() { return this.btnTabCurso; }
-	public JTable getTablaCurso() { return this.tabCurso; }
-	public JComboBox<Object> getListaCarreras() { return this.lstCurso; }
-	public JTable getDetalleCarrera() { return this.tabDetalle; }
+	public static String getDNI()  { return tfDNI.getText(); }
+	public static String getNombre()  { return tfNombre.getText(); }
+	public static String getApellidos()  { return tfApellidos.getText(); }
+	public static String getDireccion()  { return tfDireccion.getText(); }
+	public static String getPoblacion()  { return tfPoblacion.getText(); }
+	public static String getTelefono()  { return tfTelefono.getText(); }
+	public static String getTitulacion()  { return tfTitulacion.getText(); }
+	public static String getCentro()  { return tfCentro.getText(); }
+	public static String getYear()  { return tfYear.getText(); }
+	public static String getCuenta()  { return tfCuenta.getText(); }
+	public JButton getBtnEnviar() { return this.bEnviar; }
+	public JButton getBtnPrueba() { return this.bPrueba; }
+
+	public JTextField getTfNombre() {
+		return tfNombre;
+	}
+
+	public static void setTfNombre(JTextField tfNombre) {
+		SolicitudView.tfNombre = tfNombre;
+	}
+
+	public JTextField getTfApellidos() {
+		return tfApellidos;
+	}
+
+	public static void setTfApellidos(JTextField tfApellidos) {
+		SolicitudView.tfApellidos = tfApellidos;
+	}
+
+	public JTextField getTfDireccion() {
+		return tfDireccion;
+	}
+
+	public static void setTfDireccion(JTextField tfDireccion) {
+		SolicitudView.tfDireccion = tfDireccion;
+	}
+
+	public JTextField getTfPoblacion() {
+		return tfPoblacion;
+	}
+
+	public static void setTfPoblacion(JTextField tfPoblacion) {
+		SolicitudView.tfPoblacion = tfPoblacion;
+	}
+
+	public JTextField getTfTelefono() {
+		return tfTelefono;
+	}
+
+	public static void setTfTelefono(JTextField tfTelefono) {
+		SolicitudView.tfTelefono = tfTelefono;
+	}
+
+	public JTextField getTfTitulacion() {
+		return tfTitulacion;
+	}
+
+	public static void setTfTitulacion(JTextField tfTitulacion) {
+		SolicitudView.tfTitulacion = tfTitulacion;
+	}
+
+	public JTextField getTfCentro() {
+		return tfCentro;
+	}
+
+	public static void setTfCentro(JTextField tfCentro) {
+		SolicitudView.tfCentro = tfCentro;
+	}
+
+	public JTextField getTfYear() {
+		return tfYear;
+	}
+
+	public static void setTfYear(JTextField tfYear) {
+		SolicitudView.tfYear = tfYear;
+	}
+
+	public JTextField getTfCuenta() {
+		return tfCuenta;
+	}
+
+	public static void setTfCuenta(JTextField tfCuenta) {
+		SolicitudView.tfCuenta = tfCuenta;
+	}
+
+	public JTextField getTfDNI() {
+		return tfDNI;
+	}
+
+	public static void setTfDNI(JTextField tfDNI) {
+		SolicitudView.tfDNI = tfDNI;
+	}
+	
+
 }
 

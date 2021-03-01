@@ -13,11 +13,11 @@ drop table Curso;
 CREATE TABLE "Colegiado" (
 	"idcolegiado"	INTEGER NOT NULL UNIQUE,
 	"nombre"	TEXT NOT NULL,
-	"apellidos"	INTEGER NOT NULL,
+	"apellidos"	TEXT NOT NULL,
 	"direccion"	TEXT NOT NULL,
 	"poblacion"	TEXT NOT NULL,
 	"telefono"	TEXT NOT NULL,
-	"datos bancarios"	TEXT NOT NULL,
+	"datosbancarios"	TEXT NOT NULL,
 	"fechaSolicitudColegiado"	TEXT NOT NULL,
 	"titulacion"	TEXT NOT NULL DEFAULT 'informatica',
 	"centro"	TEXT NOT NULL DEFAULT 'uniovi',

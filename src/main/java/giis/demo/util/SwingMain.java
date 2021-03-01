@@ -10,6 +10,10 @@ import java.awt.event.ActionEvent;
 import giis.demo.cursos.CursoController;
 import giis.demo.cursos.CursoModel;
 import giis.demo.cursos.CursoView;
+import giis.demo.solicitud.JustificanteSolicitud;
+import giis.demo.solicitud.SolicitudController;
+import giis.demo.solicitud.SolicitudModel;
+import giis.demo.solicitud.SolicitudView;
 import giis.demo.tkrun.*;
 
 /**
@@ -52,7 +56,7 @@ public class SwingMain {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Main");
-		frame.setBounds(0, 0, 287, 185);
+		frame.setBounds(0, 0, 287, 231);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton btnEjecutarTkrun = new JButton("Ejecutar Carreras");
@@ -94,6 +98,17 @@ public class SwingMain {
 		
 		JButton btnNewButton_2 = new JButton("Inscripciones Cursos");
 		frame.getContentPane().add(btnNewButton_2);
+		
+		JButton bSolicitar = new JButton("Realizar Solicitud");
+		 
+		bSolicitar.addActionListener(new ActionListener(){
+			public void actionPerformed (ActionEvent e) {
+				SolicitudController controllerSolicitud=new SolicitudController(new SolicitudModel(), new SolicitudView(), new JustificanteSolicitud());
+				controllerSolicitud.initView();
+				controllerSolicitud.intiController();
+			}
+		});
+		frame.getContentPane().add(bSolicitar);
 		
 		/*JButton btnCargarCursos = new JButton("Ejecutar Cursos");
 		btnCargarCursos.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
