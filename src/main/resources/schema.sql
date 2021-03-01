@@ -13,13 +13,15 @@ drop table Curso;
 CREATE TABLE "Colegiado" (
 	"idcolegiado"	INTEGER NOT NULL UNIQUE,
 	"nombre"	TEXT NOT NULL,
-	"apellidos"	INTEGER,
+	"apellidos"	INTEGER NOT NULL,
 	"direccion"	TEXT NOT NULL,
 	"poblacion"	TEXT NOT NULL,
-	"Telefono"	TEXT NOT NULL,
+	"telefono"	TEXT NOT NULL,
 	"datos bancarios"	TEXT NOT NULL,
-	"datos academicos"	TEXT NOT NULL,
 	"fechaSolicitudColegiado"	TEXT NOT NULL,
+	"titulacion"	TEXT NOT NULL DEFAULT 'informatica',
+	"centro"	TEXT NOT NULL DEFAULT 'uniovi',
+	"añotitulo"	INTEGER NOT NULL DEFAULT 2000,
 	PRIMARY KEY("idcolegiado" AUTOINCREMENT)
 );
 CREATE TABLE "Curso" (
