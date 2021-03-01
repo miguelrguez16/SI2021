@@ -7,7 +7,7 @@ create table Carreras (id int primary key not null, inicio date not null, fin da
 
 drop table Colegiado;
 drop table Inscripcion;
-drop table Curso;
+drop table Cursos;
 
 
 CREATE TABLE "Colegiado" (
@@ -24,7 +24,7 @@ CREATE TABLE "Colegiado" (
 	"añotitulo"	INTEGER NOT NULL DEFAULT 2000,
 	PRIMARY KEY("idcolegiado" AUTOINCREMENT)
 );
-CREATE TABLE "Curso" (
+CREATE TABLE "Cursos" (
 	"idcurso"	INTEGER NOT NULL UNIQUE,
 	"nombre"	TEXT NOT NULL,
 	"precio"	REAL,
@@ -32,7 +32,8 @@ CREATE TABLE "Curso" (
 	"fechaInicio"	TEXT,
 	"fechaFin"	TEXT,
 	"fechaInicioInscripcion"	TEXT,
-	"fechaFinInscripción"	TEXT,
+	"fechaFinInscripción"	date,
+	"estado"	TEXT NOT NULL DEFAULT 'planificado',
 	PRIMARY KEY("idcurso" AUTOINCREMENT)
 );
 CREATE TABLE "Inscripcion" (
