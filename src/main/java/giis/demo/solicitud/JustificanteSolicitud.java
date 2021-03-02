@@ -50,6 +50,7 @@ public class JustificanteSolicitud extends JFrame {
 	 */
 	private void initialize() {
 		frmSolicitud = new JFrame();
+		frmSolicitud.setMinimumSize(new Dimension(471, 234));
 		frmSolicitud.setTitle("Justificante de solicitud");
 		frmSolicitud.getContentPane().setLayout(null);
 		
@@ -78,11 +79,11 @@ public class JustificanteSolicitud extends JFrame {
 		frmSolicitud.getContentPane().add(jlFechaSolicitud);
 		
 		bGuardar = new JButton("Guardar Copia");
-		bGuardar.setBounds(252, 168, 140, 23);
+		bGuardar.setBounds(157, 146, 140, 23);
 		frmSolicitud.getContentPane().add(bGuardar);
 		
 		bCerrar = new JButton("Cerrar");
-		bCerrar.setBounds(402, 168, 78, 23);
+		bCerrar.setBounds(307, 146, 78, 23);
 		frmSolicitud.getContentPane().add(bCerrar);
 	}
 
