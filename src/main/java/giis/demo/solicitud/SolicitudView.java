@@ -59,7 +59,7 @@ public class SolicitudView extends JFrame {
 	 */
 	private void initialize() {
 		frmSolicitud = new JFrame();
-		frmSolicitud.setMinimumSize(new Dimension(644, 407));
+		frmSolicitud.setMinimumSize(new Dimension(630, 385));
 		frmSolicitud.setTitle("Solicitud");
 		frmSolicitud.getContentPane().setLayout(null);
 		
@@ -68,52 +68,52 @@ public class SolicitudView extends JFrame {
 		frmSolicitud.getContentPane().add(lblNewLabel);
 		
 		tfNombre = new JTextField();
-		tfNombre.setBounds(66, 72, 164, 20);
+		tfNombre.setBounds(87, 72, 151, 20);
 		frmSolicitud.getContentPane().add(tfNombre);
 		tfNombre.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Apellidos");
-		lblNewLabel_1.setBounds(240, 75, 65, 14);
+		lblNewLabel_1.setBounds(248, 75, 65, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_1);
 		
 		tfApellidos = new JTextField();
-		tfApellidos.setBounds(300, 72, 216, 20);
+		tfApellidos.setBounds(313, 72, 216, 20);
 		frmSolicitud.getContentPane().add(tfApellidos);
 		tfApellidos.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Dirección");
-		lblNewLabel_2.setBounds(10, 100, 46, 14);
+		lblNewLabel_2.setBounds(10, 100, 67, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_2);
 		
 		tfDireccion = new JTextField();
-		tfDireccion.setBounds(66, 97, 450, 20);
+		tfDireccion.setBounds(87, 97, 442, 20);
 		frmSolicitud.getContentPane().add(tfDireccion);
 		tfDireccion.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Población");
-		lblNewLabel_3.setBounds(10, 125, 46, 14);
+		lblNewLabel_3.setBounds(10, 125, 63, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_3);
 		
 		tfPoblacion = new JTextField();
-		tfPoblacion.setBounds(66, 122, 189, 20);
+		tfPoblacion.setBounds(87, 122, 185, 20);
 		frmSolicitud.getContentPane().add(tfPoblacion);
 		tfPoblacion.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Teléfono");
-		lblNewLabel_4.setBounds(276, 125, 65, 14);
+		lblNewLabel_4.setBounds(282, 125, 65, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_4);
 		
 		tfTelefono = new JTextField();
-		tfTelefono.setBounds(338, 122, 178, 20);
+		tfTelefono.setBounds(347, 122, 182, 20);
 		frmSolicitud.getContentPane().add(tfTelefono);
 		tfTelefono.setColumns(10);
 		
 		lblNewLabel_5 = new JLabel("Titulación");
-		lblNewLabel_5.setBounds(10, 167, 46, 14);
+		lblNewLabel_5.setBounds(10, 167, 67, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_5);
 		
 		tfTitulacion = new JTextField();
-		tfTitulacion.setBounds(66, 164, 450, 20);
+		tfTitulacion.setBounds(87, 164, 442, 20);
 		frmSolicitud.getContentPane().add(tfTitulacion);
 		tfTitulacion.setColumns(10);
 		
@@ -122,16 +122,16 @@ public class SolicitudView extends JFrame {
 		frmSolicitud.getContentPane().add(lblNewLabel_6);
 		
 		tfCentro = new JTextField();
-		tfCentro.setBounds(66, 189, 201, 20);
+		tfCentro.setBounds(87, 189, 180, 20);
 		frmSolicitud.getContentPane().add(tfCentro);
 		tfCentro.setColumns(10);
 		
 		lblNewLabel_7 = new JLabel("Año Titulación");
-		lblNewLabel_7.setBounds(289, 192, 88, 14);
+		lblNewLabel_7.setBounds(283, 192, 88, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_7);
 		
 		tfYear = new JTextField();
-		tfYear.setBounds(372, 189, 144, 20);
+		tfYear.setBounds(381, 189, 148, 20);
 		frmSolicitud.getContentPane().add(tfYear);
 		tfYear.setColumns(10);
 		
@@ -140,7 +140,7 @@ public class SolicitudView extends JFrame {
 		frmSolicitud.getContentPane().add(lblNewLabel_8);
 		
 		tfCuenta = new JTextField();
-		tfCuenta.setBounds(66, 239, 450, 20);
+		tfCuenta.setBounds(87, 239, 442, 20);
 		frmSolicitud.getContentPane().add(tfCuenta);
 		tfCuenta.setColumns(10);
 		
@@ -150,7 +150,7 @@ public class SolicitudView extends JFrame {
 		frmSolicitud.getContentPane().add(lblNewLabel_9);
 		
 		tfDNI = new JTextField();
-		tfDNI.setBounds(66, 43, 122, 20);
+		tfDNI.setBounds(87, 41, 122, 20);
 		frmSolicitud.getContentPane().add(tfDNI);
 		tfDNI.setColumns(10);
 		

@@ -66,15 +66,15 @@ public class JustificanteSolicitud extends JFrame {
 		lblNewLabel_2.setBounds(10, 102, 140, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_2);
 		
-		jlIDSolicitante = new JLabel("New label");
+		jlIDSolicitante = new JLabel("");
 		jlIDSolicitante.setBounds(209, 52, 167, 14);
 		frmSolicitud.getContentPane().add(jlIDSolicitante);
 		
-		jlIDSolicitud = new JLabel("New label");
+		jlIDSolicitud = new JLabel("");
 		jlIDSolicitud.setBounds(209, 77, 167, 14);
 		frmSolicitud.getContentPane().add(jlIDSolicitud);
 		
-		jlFechaSolicitud = new JLabel("New label");
+		jlFechaSolicitud = new JLabel("");
 		jlFechaSolicitud.setBounds(209, 102, 167, 14);
 		frmSolicitud.getContentPane().add(jlFechaSolicitud);
 		

@@ -31,6 +31,8 @@ public class SolicitudController {
 						"\nAño Titulo: "+SolicitudView.getYear()+"\nIBAN: "+SolicitudView.getCuenta()+"\nFecha Solicitud: "+modelo.getFecha());
 				vista.getFrame().setVisible(false);
 				justificante.getFechaSol().setText(modelo.getFecha());
+				justificante.getSolicitante().setText(String.valueOf(modelo.getIDSolicitante()));
+				justificante.getSolicitud().setText(String.valueOf(modelo.getIDSolicitud()));
 				justificante.getFrame().setVisible(true);
 				
 			}
