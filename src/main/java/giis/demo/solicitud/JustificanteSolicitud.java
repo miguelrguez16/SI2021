@@ -91,6 +91,15 @@ public class JustificanteSolicitud extends JFrame {
 	public JFrame getFrame() { return this.frmSolicitud; }
 	public JButton getBtnGuardar() { return this.bGuardar; }
 	public JButton getBtnCerrar() { return this.bCerrar; }
+	public JLabel getSolicitante() {
+		return jlIDSolicitante;
+	}
+	public JLabel getSolicitud() {
+		return jlIDSolicitud;
+	}
+	public JLabel getFechaSol() {
+		return jlFechaSolicitud;
+	}
 	public String getJlIDSolicitante() { return this.jlIDSolicitante.getText(); }
 	public String getJlIDSolicitud() { return jlIDSolicitud.getText(); }
 	public void setJlIDSolicitante(JLabel jlIDSolicitante) { this.jlIDSolicitante = jlIDSolicitante; }

@@ -30,6 +30,7 @@ public class SolicitudController {
 						"\nDireccion: "+SolicitudView.getDireccion()+"\nPoblacion: "+SolicitudView.getTelefono()+"\nTitulacion: "+SolicitudView.getTitulacion()+"\nCentro: "+SolicitudView.getCentro()+
 						"\nAño Titulo: "+SolicitudView.getYear()+"\nIBAN: "+SolicitudView.getCuenta()+"\nFecha Solicitud: "+modelo.getFecha());
 				vista.getFrame().setVisible(false);
+				justificante.getFechaSol().setText(modelo.getFecha());
 				justificante.getFrame().setVisible(true);
 				
 			}
@@ -53,7 +54,13 @@ public class SolicitudController {
 				vista.getTfCuenta().setText("ES21123456781234");
 			}
 			
-		});		
+		});	
+		
+		justificante.getBtnCerrar().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				justificante.getFrame().setVisible(false);
+			}
+		});
 	}
 	
 	public void initView() {

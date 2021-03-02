@@ -24,7 +24,7 @@ public String getFecha() {
 		
 		String query = "INSERT INTO Colegiado (nombre, apellidos, direccion, poblacion, telefono, datosbancarios, fechaSolicitudColegiado, titulacion, centro, añotitulo) "
 				+ "VALUES ('"+SolicitudView.getNombre()+"','"+SolicitudView.getApellidos()+"','"+SolicitudView.getDireccion()+"','"+SolicitudView.getPoblacion()+"','"+
-				SolicitudView.getTelefono()+"','"+SolicitudView.getCuenta()+"',"+this.getFecha()+",'"+SolicitudView.getTitulacion()+"','"+SolicitudView.getCentro()+"',"+SolicitudView.getYear()+")";
+				SolicitudView.getTelefono()+"','"+SolicitudView.getCuenta()+"','"+this.getFecha()+"','"+SolicitudView.getTitulacion()+"','"+SolicitudView.getCentro()+"',"+SolicitudView.getYear()+")";
 		
 	db.executeUpdate(query);
 		
