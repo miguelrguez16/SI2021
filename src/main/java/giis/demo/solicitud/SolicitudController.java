@@ -28,7 +28,7 @@ public class SolicitudController {
 				modelo.writeSolicitud();
 				System.out.print("Se han introducido los siguientes datos:\nDNI: "+SolicitudView.getDNI()+"\nNombre: "+SolicitudView.getNombre()+"\nApellidos: "+SolicitudView.getApellidos()+
 						"\nDireccion: "+SolicitudView.getDireccion()+"\nPoblacion: "+SolicitudView.getTelefono()+"\nTitulacion: "+SolicitudView.getTitulacion()+"\nCentro: "+SolicitudView.getCentro()+
-						"\nAño Titulo: "+SolicitudView.getYear()+"\nIBAN: "+SolicitudView.getCuenta());
+						"\nAño Titulo: "+SolicitudView.getYear()+"\nIBAN: "+SolicitudView.getCuenta()+"\nFecha Solicitud: "+modelo.getFecha());
 				vista.getFrame().setVisible(false);
 				justificante.getFrame().setVisible(true);
 				
