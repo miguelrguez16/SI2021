@@ -85,6 +85,10 @@ public class JustificanteSolicitud extends JFrame {
 		bCerrar = new JButton("Cerrar");
 		bCerrar.setBounds(307, 146, 78, 23);
 		frmSolicitud.getContentPane().add(bCerrar);
+		
+		JLabel lblNewLabel_3 = new JLabel("Justificante de Solicitud");
+		lblNewLabel_3.setBounds(160, 11, 156, 14);
+		frmSolicitud.getContentPane().add(lblNewLabel_3);
 	}
 
 	//Getters y Setters anadidos para acceso desde el controlador (representacion compacta)
@@ -106,8 +110,5 @@ public class JustificanteSolicitud extends JFrame {
 	public void setJlIDSolicitud(JLabel jlIDSolicitud) { this.jlIDSolicitud = jlIDSolicitud; }
 	public String getJlFechaSolicitud() { return jlFechaSolicitud.getText(); }
 	public void setJlFechaSolicitud(JLabel jlFechaSolicitud) { this.jlFechaSolicitud = jlFechaSolicitud; }
-	
-	
-	
 }
 
