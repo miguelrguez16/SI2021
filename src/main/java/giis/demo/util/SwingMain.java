@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import giis.demo.cursos.CursoController;
+import giis.demo.cursos.CursoModel;
+import giis.demo.cursos.CursoView;
 import giis.demo.tkrun.*;
 
 
@@ -94,7 +97,7 @@ public class SwingMain {
 		frame.getContentPane().add(btnNewButton_2);
 		
 		
-		JButton btnNewButton_1 = new JButton("Modificar Cursos ");/*
+		JButton btnNewButton_1 = new JButton("Ejecutar Modificar Cursos ");
 				btnNewButton_1.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				CursoController controllerCursos=new CursoController(new CursoModel(), new CursoView());
@@ -103,7 +106,7 @@ public class SwingMain {
 				
 				//Habria que cambiar CursoController =controllerCur = .....
 			}
-		});*/
+		});
 		frame.getContentPane().add(btnNewButton_1);
 	}
 

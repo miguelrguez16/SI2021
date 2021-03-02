@@ -1,14 +1,14 @@
 package giis.demo.cursos;
 
 public class CursoDisplayDTO {
-	private String id, nombre, fecha;
+	private String idCurso, nombre, fechaInicio;
 
-	public String getId() {
-		return id;
+	public String getIdCurso() {
+		return idCurso;
 	}
 
-	public void setId(String id) {
-		this.id= id;
+	public void setIdCurso(String idCurso) {
+		this.idCurso = idCurso;
 	}
 
 	public String getNombre() {
@@ -19,12 +19,14 @@ public class CursoDisplayDTO {
 		this.nombre = nombre;
 	}
 
-	public String getFecha() {
-		return fecha;
+	public String getFechaInicio() {
+		return fechaInicio;
 	}
 
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
+	public void setFechaInicio(String fechaInicio) {
+		this.fechaInicio = fechaInicio;
 	}
+
+	
 
 }

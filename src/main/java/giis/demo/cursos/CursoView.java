@@ -29,6 +29,8 @@ public class CursoView extends JFrame {
 	private JLabel lblLbltable;
 	private JLabel lblNewLabel;
 	private JButton btnGuardarCambios;
+	private JTextField plazasCurso;
+	private JButton btnRellenarDatos;
 
 	/**
 	 * Create the application.
@@ -44,7 +46,7 @@ public class CursoView extends JFrame {
 		frame = new JFrame();
 		frame.setTitle("Cursos Pendientes");
 		frame.setName("Cursos Pendientes");
-		frame.setBounds(0, 0, 463, 550);
+		frame.setBounds(0, 0, 440, 601);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -58,7 +60,7 @@ public class CursoView extends JFrame {
 		tabCurso.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tabCurso.setDefaultEditor(Object.class, null); //readonly
 		JScrollPane tablePanel = new JScrollPane(tabCurso);
-		tablePanel.setBounds(7, 41, 430, 291);
+		tablePanel.setBounds(7, 41, 407, 291);
 		frame.getContentPane().add(tablePanel);
 		
 		lblNewLabel = new JLabel("Curso Seleccionado");
@@ -67,57 +69,76 @@ public class CursoView extends JFrame {
 		
 		NombreCursoSeleccionado = new JTextField();
 		NombreCursoSeleccionado.setEditable(false);
-		NombreCursoSeleccionado.setBounds(138, 336, 145, 20);
+		NombreCursoSeleccionado.setBounds(113, 336, 75, 20);
 		frame.getContentPane().add(NombreCursoSeleccionado);
 		NombreCursoSeleccionado.setColumns(10);
 		
 		IdCursoSeleccionado = new JTextField();
 		IdCursoSeleccionado.setEditable(false);
-		IdCursoSeleccionado.setBounds(292, 336, 145, 20);
+		IdCursoSeleccionado.setBounds(198, 336, 34, 20);
 		frame.getContentPane().add(IdCursoSeleccionado);
 		IdCursoSeleccionado.setColumns(10);
 		
 		btnGuardarCambios = new JButton("Guardar Cambios");
-		btnGuardarCambios.setBounds(289, 447, 115, 31);
+		btnGuardarCambios.setBounds(259, 520, 115, 31);
 		frame.getContentPane().add(btnGuardarCambios);
 		
 		campoInicioInscripcion = new JTextField();
 		
-		campoInicioInscripcion.setBounds(104, 411, 103, 20);
+		campoInicioInscripcion.setBounds(77, 411, 103, 20);
 		frame.getContentPane().add(campoInicioInscripcion);
 		campoInicioInscripcion.setColumns(10);
 		
 		campoFinIscripcion = new JTextField();
-		campoFinIscripcion.setBounds(104, 444, 103, 20);
+		campoFinIscripcion.setBounds(259, 411, 103, 20);
 		frame.getContentPane().add(campoFinIscripcion);
 		campoFinIscripcion.setColumns(10);
 		
 		JLabel lblFechaParaInscripciones = new JLabel("Fecha para Inscripciones");
-		lblFechaParaInscripciones.setBounds(97, 386, 170, 14);
+		lblFechaParaInscripciones.setBounds(27, 382, 170, 14);
 		frame.getContentPane().add(lblFechaParaInscripciones);
 		
 		JLabel lblNewLabel_1 = new JLabel("Inicio:");
-		lblNewLabel_1.setBounds(45, 414, 34, 14);
+		lblNewLabel_1.setBounds(27, 414, 34, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Fin:");
-		lblNewLabel_2.setBounds(45, 447, 26, 14);
+		lblNewLabel_2.setBounds(209, 414, 26, 14);
 		frame.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Nº de plazas:");
+		lblNewLabel_3.setBounds(10, 459, 75, 14);
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		plazasCurso = new JTextField();
+		plazasCurso.setBounds(95, 456, 86, 20);
+		frame.getContentPane().add(plazasCurso);
+		plazasCurso.setColumns(10);
+		
+		btnRellenarDatos = new JButton("New button");
+		btnRellenarDatos.setBounds(44, 510, 89, 23);
+		frame.getContentPane().add(btnRellenarDatos);
 	}
 
 	//Getters y Setters anadidos para acceso desde el controlador (representacion compacta)
 	public JFrame getFrame() { return this.frame; }
 	public JTextField getCursoNombre() {return this.NombreCursoSeleccionado;}
 	public JTextField getIDNombre() {return this.IdCursoSeleccionado;}
-	public JTextField getInicioInscripcion() {return this.campoInicioInscripcion;}
-	public JTextField getFinInscripcion() {return this.campoFinIscripcion;}
+	
 	public JTable getTablaCursos() { return this.tabCurso; }
 	public JButton getBtnActualizarCurso() {return this.btnGuardarCambios;}
 	public void setNombreNoAplicable() {this.NombreCursoSeleccionado.setText("N/A");}
 	public void setIdNoAplicable() { this.IdCursoSeleccionado.setText("N/A"); } 
 	public void setNombre(String nombre) {this.NombreCursoSeleccionado.setText(nombre);}
 	public void setID(String id) {this.IdCursoSeleccionado.setText(id);}
-
-
+	
+	public JTextField getPlazasCurso() {return this.plazasCurso;}
+	
+	public JButton getRellenarDatos() { return this.btnRellenarDatos;}
+	
+	
+	
+	public JTextField getInicioInscripcion() {return this.campoInicioInscripcion;}
+	public JTextField getFinInscripcion() {return this.campoFinIscripcion;}
 }
 
