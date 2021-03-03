@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import giis.demo.util.ApplicationException;
