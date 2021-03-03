@@ -38,11 +38,12 @@ public String getFecha() {
 
 
 
+
 public int getIDSolicitante() {
 	try {
 		Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
 		java.sql.Statement s = conn.createStatement();
-		String sql = "SELECT MAX(idColegiado) FROM Colegiado";  
+		String sql = "SELECT MAX(idColegiado) FROM Colegiado";
 		ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
 		while (rs.next()) {
 			idSolicitante=rs.getInt(1);
@@ -50,7 +51,6 @@ public int getIDSolicitante() {
 		
 		
 	} catch (SQLException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	
@@ -70,7 +70,6 @@ public int getIDSolicitud() {
 		
 		
 	} catch (SQLException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	
