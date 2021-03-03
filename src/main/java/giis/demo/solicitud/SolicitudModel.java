@@ -25,12 +25,42 @@ public class SolicitudModel {
 Calendar c1 = Calendar.getInstance();
 //Calendar c2 = new GregorianCalendar();
 
-String dia = Integer.toString(c1.get(Calendar.DATE));
-String mes = Integer.toString(c1.get(Calendar.MONTH)+1);
-String año = Integer.toString(c1.get(Calendar.YEAR));
+//String dia = Integer.toString(c1.get(Calendar.DATE));
+//String mes = Integer.toString(c1.get(Calendar.MONTH)+1);
+String anio = Integer.toString(c1.get(Calendar.YEAR));
 
 
-String fechahoy=dia+"/"+mes+"/"+año;
+
+public String getDia() {
+	
+	String dia;
+	int dianum = c1.get(Calendar.DATE);
+	if (dianum<10) {
+		dia = "0"+Integer.toString(dianum);
+	}
+	
+	else dia = Integer.toString(dianum);
+	
+	return dia;
+}
+
+public String getMes() {
+	
+	String mes;
+	int mesnum = c1.get(Calendar.MONTH)+1;
+	if (mesnum<10) {
+		mes = "0"+Integer.toString(mesnum);
+	}
+	
+	else mes = Integer.toString(mesnum);
+	
+	return mes;
+}
+
+
+
+
+String fechahoy=anio+"-"+this.getMes()+"-"+this.getDia();
 
 public String getFecha() {
 	return fechahoy;
@@ -79,13 +109,13 @@ public int getIDSolicitud() {
 
 	public void writeSolicitud() {
 		
-		String query = "INSERT INTO Colegiado (nombre, apellidos, direccion, poblacion, telefono, datosBancarios, fechaSolicitudColegiado, titulacion, centro, anioTitulo) "
+		String query = "INSERT INTO Colegiado (nombre, apellidos, direccion, poblacion, telefono, datosBancarios, fechaSolicitudColegiado, titulacion, centro, anioTitulo, dni) "
 				+ "VALUES ('"+SolicitudView.getNombre()+"','"+SolicitudView.getApellidos()+"','"+SolicitudView.getDireccion()+"','"+SolicitudView.getPoblacion()+"','"+
-				SolicitudView.getTelefono()+"','"+SolicitudView.getCuenta()+"','"+this.getFecha()+"','"+SolicitudView.getTitulacion()+"','"+SolicitudView.getCentro()+"',"+SolicitudView.getYear()+")";
+				SolicitudView.getTelefono()+"','"+SolicitudView.getCuenta()+"','"+this.getFecha()+"','"+SolicitudView.getTitulacion()+"','"+SolicitudView.getCentro()+"',"+SolicitudView.getYear()+",'"+SolicitudView.getDNI()+"')";
 		
 		db.executeUpdate(query);
 
-		String query2 = "INSERT INTO SolicitudColegio (estado, idColegiado) VALUES ('pendiente',"+this.getIDSolicitante()+")";
+		String query2 = "INSERT INTO SolicitudColegio (estado, idColegiado, fecha) VALUES ('pendiente',"+this.getIDSolicitante()+",'"+this.getFecha()+"')";
 		db.executeUpdate(query2);
 		
 		
