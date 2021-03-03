@@ -16,7 +16,7 @@ public class CursoModel {
 		String sql=
 				"SELECT idCurso, nombre,fechaInicio "
 				+"FROM CURSO "
-				+"WHERE estado ='pendiente'";
+				+"WHERE estado ='planificado'";
 		return db.executeQueryPojo(CursoDisplayDTO.class, sql);
 	}
 
