@@ -16,6 +16,7 @@ import giis.demo.solicitud.SolicitudModel;
 import giis.demo.solicitud.SolicitudView;
 import giis.demo.tkrun.*;
 
+
 /**
  * Punto de entrada principal que incluye botones para la ejecucion de las pantallas 
  * de las aplicaciones de ejemplo
@@ -56,7 +57,11 @@ public class SwingMain {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Main");
+<<<<<<< HEAD
 		frame.setBounds(0, 0, 287, 231);
+=======
+		frame.setBounds(0, 0, 287, 217);
+>>>>>>> refs/heads/master
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton btnEjecutarTkrun = new JButton("Ejecutar Carreras");
@@ -64,6 +69,8 @@ public class SwingMain {
 			public void actionPerformed(ActionEvent e) {
 				CarrerasController controller=new CarrerasController(new CarrerasModel(), new CarrerasView());
 				controller.initController();
+				System.out.println("Se pulso carga de carreras");
+
 				//Habria que cambiar CursoController =controllerCur = .....
 			}
 		});
@@ -93,12 +100,11 @@ public class SwingMain {
 		JButton btnNewButton = new JButton("Inscripcion Colegiados");
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Modificar Cursos ");
-		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Inscripciones Cursos");
 		frame.getContentPane().add(btnNewButton_2);
 		
+<<<<<<< HEAD
 		JButton bSolicitar = new JButton("Realizar Solicitud");
 		 
 		bSolicitar.addActionListener(new ActionListener(){
@@ -112,15 +118,23 @@ public class SwingMain {
 		
 		/*JButton btnCargarCursos = new JButton("Ejecutar Cursos");
 		btnCargarCursos.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+=======
+		
+		JButton btnNewButton_1 = new JButton("Ejecutar Modificar Cursos ");
+				btnNewButton_1.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+>>>>>>> refs/heads/master
 			public void actionPerformed(ActionEvent e) {
-				CursoController controller1=new CursoController(new CursoModel(), new CursoView());
-				controller1.initController();
+				CursoController controllerCursos=new CursoController(new CursoModel(), new CursoView());
+				controllerCursos.initController();
+				System.out.println("Se pulso carga de carreras");
+				
 				//Habria que cambiar CursoController =controllerCur = .....
 			}
 		});
-		frame.getContentPane().add(btnCargarCursos);*/
+		frame.getContentPane().add(btnNewButton_1);
 	}
 
 	public JFrame getFrame() { return this.frame; }
 	
+
 }
