@@ -27,6 +27,7 @@ public class CursoController {
 	}
 
 	public void initview() {
+		System.out.println("Hola");
 		vista.getFrame().setVisible(true);
 		setListaCursosController();
 	}
