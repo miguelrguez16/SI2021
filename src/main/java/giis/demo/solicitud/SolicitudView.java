@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JToolBar;
 
 public class SolicitudView extends JFrame {
 
@@ -27,13 +28,25 @@ public class SolicitudView extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = -7758216415701614225L;
-	private JFrame frame;
-	private JTextField txtFechaHoy;
-	private JButton btnTabCurso;
-	private JTable tabCurso;
-	private JComboBox<Object> lstCurso;
-	private JTable tabDetalle;
-
+	private JFrame frmSolicitud;
+	private static JTextField tfNombre;
+	private static JTextField tfApellidos;
+	private static JTextField tfDireccion;
+	private static JTextField tfPoblacion;
+	private static JTextField tfTelefono;
+	private JLabel lblNewLabel_5;
+	private static JTextField tfTitulacion;
+	private JLabel lblNewLabel_6;
+	private static JTextField tfCentro;
+	private JLabel lblNewLabel_7;
+	private static JTextField tfYear;
+	private JLabel lblNewLabel_8;
+	private static JTextField tfCuenta;
+	private JLabel lblNewLabel_9;
+	private static JTextField tfDNI;
+	private JButton bEnviar;
+	private JButton bPrueba;
+	
 	/**
 	 * Create the application.
 	 */
@@ -45,76 +58,206 @@ public class SolicitudView extends JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setTitle("Curso");
-		frame.setName("Curso");
-		frame.setBounds(0, 0, 492, 422);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][grow][][][][][][][][]"));
+		frmSolicitud = new JFrame();
+		frmSolicitud.setMinimumSize(new Dimension(630, 385));
+		frmSolicitud.setTitle("Solicitud");
+		frmSolicitud.getContentPane().setLayout(null);
 		
-		final JLabel lblSimulacion;
-		final JLabel lblFechaHoy;
-
-		lblSimulacion = new JLabel("Selección curso para las fechas");
-		frame.getContentPane().add(lblSimulacion, "cell 0 1");
+		JLabel lblNewLabel = new JLabel("Nombre");
+		lblNewLabel.setBounds(10, 75, 46, 14);
+		frmSolicitud.getContentPane().add(lblNewLabel);
 		
-		lblFechaHoy = new JLabel("Nombre curso");
-		frame.getContentPane().add(lblFechaHoy, "flowx,cell 0 3");
+		tfNombre = new JTextField();
+		tfNombre.setBounds(87, 72, 151, 20);
+		frmSolicitud.getContentPane().add(tfNombre);
+		tfNombre.setColumns(10);
 		
-		txtFechaHoy = new JTextField();
-		txtFechaHoy.setName("txtFechaHoy");
-		frame.getContentPane().add(txtFechaHoy, "cell 0 3,growx");
-		txtFechaHoy.setColumns(10);
+		JLabel lblNewLabel_1 = new JLabel("Apellidos");
+		lblNewLabel_1.setBounds(248, 75, 65, 14);
+		frmSolicitud.getContentPane().add(lblNewLabel_1);
 		
-		btnTabCurso = new JButton("Ver cursos en esta tabla");
-		btnTabCurso.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		lblFechaHoy.setLabelFor(btnTabCurso);
-		frame.getContentPane().add(btnTabCurso, "cell 0 3");
+		tfApellidos = new JTextField();
+		tfApellidos.setBounds(313, 72, 216, 20);
+		frmSolicitud.getContentPane().add(tfApellidos);
+		tfApellidos.setColumns(10);
 		
-		JLabel lblLbltable = new JLabel("Proximas cursos (pendientes):");
-		frame.getContentPane().add(lblLbltable, "cell 0 4");
+		JLabel lblNewLabel_2 = new JLabel("Dirección");
+		lblNewLabel_2.setBounds(10, 100, 67, 14);
+		frmSolicitud.getContentPane().add(lblNewLabel_2);
 		
-		//Incluyo la tabla en un JScrollPane y anado este en vez de la tabla para poder ver los headers de la tabla
-		tabCurso = new JTable();
-		tabCurso.setName("tabCarreras");
-		tabCurso.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tabCurso.setDefaultEditor(Object.class, null); //readonly
-		JScrollPane tablePanel = new JScrollPane(tabCurso);
-		frame.getContentPane().add(tablePanel, "cell 0 5,grow");
+		tfDireccion = new JTextField();
+		tfDireccion.setBounds(87, 97, 442, 20);
+		frmSolicitud.getContentPane().add(tfDireccion);
+		tfDireccion.setColumns(10);
 		
-				
-		lstCurso = new JComboBox<>();
-		frame.getContentPane().add(lstCurso, "cell 0 7,growx");
+		JLabel lblNewLabel_3 = new JLabel("Población");
+		lblNewLabel_3.setBounds(10, 125, 63, 14);
+		frmSolicitud.getContentPane().add(lblNewLabel_3);
 		
-		JLabel lblAlSeleccionarLa = new JLabel("Al seleccionar la tabla (no el combo) muestra detalles");
-		frame.getContentPane().add(lblAlSeleccionarLa, "cell 0 8");
+		tfPoblacion = new JTextField();
+		tfPoblacion.setBounds(87, 122, 185, 20);
+		frmSolicitud.getContentPane().add(tfPoblacion);
+		tfPoblacion.setColumns(10);
 		
-		JLabel lblPorcentajeDescuento = new JLabel("Cursos: ");
-		frame.getContentPane().add(lblPorcentajeDescuento, "flowx,cell 0 9");
+		JLabel lblNewLabel_4 = new JLabel("Teléfono");
+		lblNewLabel_4.setBounds(282, 125, 65, 14);
+		frmSolicitud.getContentPane().add(lblNewLabel_4);
+		
+		tfTelefono = new JTextField();
+		tfTelefono.setBounds(347, 122, 182, 20);
+		frmSolicitud.getContentPane().add(tfTelefono);
+		tfTelefono.setColumns(10);
+		
+		lblNewLabel_5 = new JLabel("Titulación");
+		lblNewLabel_5.setBounds(10, 167, 67, 14);
+		frmSolicitud.getContentPane().add(lblNewLabel_5);
+		
+		tfTitulacion = new JTextField();
+		tfTitulacion.setBounds(87, 164, 442, 20);
+		frmSolicitud.getContentPane().add(tfTitulacion);
+		tfTitulacion.setColumns(10);
+		
+		lblNewLabel_6 = new JLabel("Centro");
+		lblNewLabel_6.setBounds(10, 192, 46, 14);
+		frmSolicitud.getContentPane().add(lblNewLabel_6);
+		
+		tfCentro = new JTextField();
+		tfCentro.setBounds(87, 189, 180, 20);
+		frmSolicitud.getContentPane().add(tfCentro);
+		tfCentro.setColumns(10);
+		
+		lblNewLabel_7 = new JLabel("Año Titulación");
+		lblNewLabel_7.setBounds(283, 192, 88, 14);
+		frmSolicitud.getContentPane().add(lblNewLabel_7);
+		
+		tfYear = new JTextField();
+		tfYear.setBounds(381, 189, 148, 20);
+		frmSolicitud.getContentPane().add(tfYear);
+		tfYear.setColumns(10);
+		
+		lblNewLabel_8 = new JLabel("IBAN");
+		lblNewLabel_8.setBounds(10, 242, 46, 14);
+		frmSolicitud.getContentPane().add(lblNewLabel_8);
+		
+		tfCuenta = new JTextField();
+		tfCuenta.setBounds(87, 239, 442, 20);
+		frmSolicitud.getContentPane().add(tfCuenta);
+		tfCuenta.setColumns(10);
 		
 		
-		tabDetalle = new JTable();
-		tabDetalle.setName("tabDetalle");
-		tabDetalle.setRowSelectionAllowed(false);
-		tabDetalle.setDefaultEditor(Object.class, null); //readonly
-		tabDetalle.setBackground(SystemColor.control);
-		JScrollPane tableDetallePanel = new JScrollPane(tabDetalle);
-		tableDetallePanel.setMinimumSize(new Dimension(200,95));
-		tableDetallePanel.setPreferredSize(new Dimension(300,95));
-		frame.getContentPane().add(tableDetallePanel, "cell 0 10"); 
+		lblNewLabel_9 = new JLabel("DNI");
+		lblNewLabel_9.setBounds(10, 46, 46, 14);
+		frmSolicitud.getContentPane().add(lblNewLabel_9);
+		
+		tfDNI = new JTextField();
+		tfDNI.setBounds(87, 41, 122, 20);
+		frmSolicitud.getContentPane().add(tfDNI);
+		tfDNI.setColumns(10);
+		
+		bEnviar = new JButton("Enviar solicitud");
+		bEnviar.setBounds(459, 304, 137, 23);
+		frmSolicitud.getContentPane().add(bEnviar);
+		
+		bPrueba = new JButton("Prueba");
+		bPrueba.setBounds(360, 304, 89, 23);
+		frmSolicitud.getContentPane().add(bPrueba);
 	}
 
 	//Getters y Setters anadidos para acceso desde el controlador (representacion compacta)
-	public JFrame getFrame() { return this.frame; }
-	public String getFechaHoy()  { return this.txtFechaHoy.getText(); }
-	public void setFechaHoy(String fechaIso)  { this.txtFechaHoy.setText(fechaIso); }
-	public JButton getBtnTablaCurso() { return this.btnTabCurso; }
-	public JTable getTablaCurso() { return this.tabCurso; }
-	public JComboBox<Object> getListaCarreras() { return this.lstCurso; }
-	public JTable getDetalleCarrera() { return this.tabDetalle; }
+	public JFrame getFrame() { return this.frmSolicitud; }
+	public static String getDNI()  { return tfDNI.getText(); }
+	public static String getNombre()  { return tfNombre.getText(); }
+	public static String getApellidos()  { return tfApellidos.getText(); }
+	public static String getDireccion()  { return tfDireccion.getText(); }
+	public static String getPoblacion()  { return tfPoblacion.getText(); }
+	public static String getTelefono()  { return tfTelefono.getText(); }
+	public static String getTitulacion()  { return tfTitulacion.getText(); }
+	public static String getCentro()  { return tfCentro.getText(); }
+	public static String getYear()  { return tfYear.getText(); }
+	public static String getCuenta()  { return tfCuenta.getText(); }
+	public JButton getBtnEnviar() { return this.bEnviar; }
+	public JButton getBtnPrueba() { return this.bPrueba; }
+
+	public JTextField getTfNombre() {
+		return tfNombre;
+	}
+
+	public static void setTfNombre(JTextField tfNombre) {
+		SolicitudView.tfNombre = tfNombre;
+	}
+
+	public JTextField getTfApellidos() {
+		return tfApellidos;
+	}
+
+	public static void setTfApellidos(JTextField tfApellidos) {
+		SolicitudView.tfApellidos = tfApellidos;
+	}
+
+	public JTextField getTfDireccion() {
+		return tfDireccion;
+	}
+
+	public static void setTfDireccion(JTextField tfDireccion) {
+		SolicitudView.tfDireccion = tfDireccion;
+	}
+
+	public JTextField getTfPoblacion() {
+		return tfPoblacion;
+	}
+
+	public static void setTfPoblacion(JTextField tfPoblacion) {
+		SolicitudView.tfPoblacion = tfPoblacion;
+	}
+
+	public JTextField getTfTelefono() {
+		return tfTelefono;
+	}
+
+	public static void setTfTelefono(JTextField tfTelefono) {
+		SolicitudView.tfTelefono = tfTelefono;
+	}
+
+	public JTextField getTfTitulacion() {
+		return tfTitulacion;
+	}
+
+	public static void setTfTitulacion(JTextField tfTitulacion) {
+		SolicitudView.tfTitulacion = tfTitulacion;
+	}
+
+	public JTextField getTfCentro() {
+		return tfCentro;
+	}
+
+	public static void setTfCentro(JTextField tfCentro) {
+		SolicitudView.tfCentro = tfCentro;
+	}
+
+	public JTextField getTfYear() {
+		return tfYear;
+	}
+
+	public static void setTfYear(JTextField tfYear) {
+		SolicitudView.tfYear = tfYear;
+	}
+
+	public JTextField getTfCuenta() {
+		return tfCuenta;
+	}
+
+	public static void setTfCuenta(JTextField tfCuenta) {
+		SolicitudView.tfCuenta = tfCuenta;
+	}
+
+	public JTextField getTfDNI() {
+		return tfDNI;
+	}
+
+	public static void setTfDNI(JTextField tfDNI) {
+		SolicitudView.tfDNI = tfDNI;
+	}
 	
+
 }
 
