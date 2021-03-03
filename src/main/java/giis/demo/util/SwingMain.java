@@ -57,11 +57,9 @@ public class SwingMain {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Main");
-<<<<<<< HEAD
+
 		frame.setBounds(0, 0, 287, 231);
-=======
-		frame.setBounds(0, 0, 287, 217);
->>>>>>> refs/heads/master
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton btnEjecutarTkrun = new JButton("Ejecutar Carreras");
@@ -104,7 +102,7 @@ public class SwingMain {
 		JButton btnNewButton_2 = new JButton("Inscripciones Cursos");
 		frame.getContentPane().add(btnNewButton_2);
 		
-<<<<<<< HEAD
+
 		JButton bSolicitar = new JButton("Realizar Solicitud");
 		 
 		bSolicitar.addActionListener(new ActionListener(){
@@ -118,20 +116,20 @@ public class SwingMain {
 		
 		/*JButton btnCargarCursos = new JButton("Ejecutar Cursos");
 		btnCargarCursos.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
-=======
+
 		
 		JButton btnNewButton_1 = new JButton("Ejecutar Modificar Cursos ");
 				btnNewButton_1.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
->>>>>>> refs/heads/master
+
 			public void actionPerformed(ActionEvent e) {
 				CursoController controllerCursos=new CursoController(new CursoModel(), new CursoView());
 				controllerCursos.initController();
 				System.out.println("Se pulso carga de carreras");
 				
 				//Habria que cambiar CursoController =controllerCur = .....
-			}
-		});
-		frame.getContentPane().add(btnNewButton_1);
+			}frame.getContentPane().add(btnNewButton_1);
+		});*/
+		
 	}
 
 	public JFrame getFrame() { return this.frame; }
