@@ -20,6 +20,9 @@ public class CursoModel {
 		return db.executeQueryPojo(CursoDisplayDTO.class, sql);
 	}
 
+	/*
+	 * 
+	 */
 	public CursoEntity getCursoSelec(int idCurso) {
 		String sql="SELECT idCurso,nombre,fechaInicio from curso where idCurso=?";
 		List<CursoEntity> cursoSelect=db.executeQueryPojo(CursoEntity.class, sql, idCurso);
@@ -33,6 +36,10 @@ public class CursoModel {
 			throw new ApplicationException(message);
 	}
 
+	/*
+	 * Guardar los cambios pedidos en la base de datos
+	 * cambia el estado del curso a abierto
+	 */
 	public void setCursoCambios(Date fechaInicio, Date fechaFin, int plazas, int id) {
 		String sql="UPDATE Curso SET fechaInicioInscripcion =?, fechaFinInscripción =?, plazasTotales=?, estado='abierto' WHERE idCurso=?";
 		db.executeUpdate(sql, Util.dateToIsoString(fechaInicio), Util.dateToIsoString(fechaFin), plazas,id);
