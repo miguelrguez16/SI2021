@@ -6,9 +6,9 @@ CREATE TABLE IF NOT EXISTS "Carreras" (
 	"fin"	date NOT NULL,
 	"fecha"	date NOT NULL,
 	"descr"	varchar(32),
-	PRIMARY KEY("id"),
+	CHECK("inicio" <= "fin"),
 	CHECK("fin" < "fecha"),
-	CHECK("inicio" <= "fin")
+	PRIMARY KEY("id")
 );
 DROP TABLE IF EXISTS "Curso";
 CREATE TABLE IF NOT EXISTS "Curso" (
@@ -45,21 +45,14 @@ CREATE TABLE IF NOT EXISTS "Perito" (
 	"idColegiado"	INTEGER NOT NULL,
 	PRIMARY KEY("idPerito")
 );
-DROP TABLE IF EXISTS "InformesPerito";
-CREATE TABLE IF NOT EXISTS "InformesPerito" (
-	"idInformePerito"	INTEGER NOT NULL,
-	"idPerito"	INTEGER NOT NULL DEFAULT 0,
-	"estado"	INTEGER NOT NULL DEFAULT 'pendiente',
-	PRIMARY KEY("idInformePerito" AUTOINCREMENT)
-);
 DROP TABLE IF EXISTS "SolicitudColegio";
 CREATE TABLE IF NOT EXISTS "SolicitudColegio" (
 	"idSolicitud"	INTEGER UNIQUE,
 	"estado"	TEXT NOT NULL DEFAULT 'pendiente' CHECK("estado" = 'pendiente' OR "estado" = 'aprobado'),
 	"idColegiado"	INTEGER,
 	"fecha"	TEXT,
-	PRIMARY KEY("idSolicitud" AUTOINCREMENT),
-	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado")
+	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado"),
+	PRIMARY KEY("idSolicitud" AUTOINCREMENT)
 );
 DROP TABLE IF EXISTS "Inscripcion";
 CREATE TABLE IF NOT EXISTS "Inscripcion" (
@@ -67,8 +60,16 @@ CREATE TABLE IF NOT EXISTS "Inscripcion" (
 	"idColegiado"	INTEGER,
 	"idCurso"	NUMERIC,
 	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'aprobado')),
+	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado"),
 	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso"),
-	PRIMARY KEY("idInscripcion" AUTOINCREMENT),
-	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado")
+	PRIMARY KEY("idInscripcion" AUTOINCREMENT)
+);
+DROP TABLE IF EXISTS "InformesPerito";
+CREATE TABLE IF NOT EXISTS "InformesPerito" (
+	"idInformePerito"	INTEGER NOT NULL,
+	"idPerito"	INTEGER NOT NULL DEFAULT 0,
+	"estado"	INTEGER NOT NULL DEFAULT 'pendiente',
+	"fecha"	TEXT,
+	PRIMARY KEY("idInformePerito" AUTOINCREMENT)
 );
 COMMIT;
