@@ -37,35 +37,16 @@ public class CursoController {
 	}
 
 	public void initview() {
-//<<<<<<< HEAD
 		vista.getFrame().setVisible(true);
 		setListaCursosController();
 
-//=======
-		System.out.println("Hola");
-		vista.getFrame().setVisible(true);
-		setListaCursosControllerP();
-//>>>>>>> refs/heads/master
 	}
 
 	// Iniciar los controladore de la vista
 	public void initController() {
-//<<<<<<< HEAD
 
 		vista.getBtnActualizarCurso().addActionListener(e -> SwingUtil.exceptionWrapper(() -> guardarCambios()));
-		vista.getTablaCursos().addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// no usa mouseClicked porque al establecer seleccion simple en la tabla de
-				// carreras
-				// el usuario podria arrastrar el raton por varias filas e interesa solo la
-				// ultima
-				SwingUtil.exceptionWrapper(() -> updateCursosPendientes());
-			}
-		});
 
-//=======
-		vista.getBtnActualizarCurso().addActionListener(e -> SwingUtil.exceptionWrapper(() -> guardarCambios()));
 		vista.getTablaCursos().addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -74,7 +55,6 @@ public class CursoController {
 		});
 
 		vista.getRellenarDatos().addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				vista.getInicioInscripcion().setText("2020-02-02");
@@ -84,10 +64,6 @@ public class CursoController {
 		});
 	}
 
-	
-
-	
-
 	/*
 	 * Guardar datos de la insctipcion y plazas en la base de datos
 	 */
@@ -96,55 +72,53 @@ public class CursoController {
 		int id = -10;
 		int plazas = -10;
 		Date fechaInicio, fechaFin;
-		
+
 		fechaInicio = Util.isoStringToDate(vista.getInicioInscripcion().getText());
 		fechaFin = Util.isoStringToDate(vista.getFinInscripcion().getText());
-		
-		//comprobamos que las fechas son correctas
+
+		// comprobamos que las fechas son correctas
 		validateFechasInscripcion(fechaInicio, fechaFin);
-		
-		
-		//Comprobamos que los numero son correctpd
+
+		// Comprobamos que los numero son correctpd
 		try {
 			id = Integer.parseInt(vista.getIDNombre().getText());
 			plazas = Integer.parseInt(vista.getPlazasCurso().getText(), 10);
 		} catch (NumberFormatException e) {
-			throw new ApplicationException("Error en el formato del numero: '" + vista.getPlazasCurso().getText() + "' no válido");
+			throw new ApplicationException(
+					"Error en el formato del numero: '" + vista.getPlazasCurso().getText() + "' no válido");
 		} finally {
 			if (plazas != -10 && id != -10) {
 				// llamar al modelo guardar datos
 				modelo.setCursoCambios(fechaInicio, fechaFin, plazas, id);
-				//restablezco la vista
+				// restablezco la vista
 				setListaCursosController();
 				vista.getIDNombre().setText("");
 				vista.getCursoNombre().setText("");
 
 			} else {
-				//si pasa algo con los números EXCEPCION
+				// si pasa algo con los números EXCEPCION
 				throw new ApplicationException("Error en la introducion de los datos");
 			}
 		}
-//>>>>>>> refs/heads/master
-	}
-//<<<<<<< HEAD
 
+	}
 
 	private void setListaCursosController() {
 		List<CursoDisplayDTO> cursos = modelo.getListaCursosModelo();
-		TableModel tmodel = SwingUtil.getTableModelFromPojos(cursos,new String[] { "idCurso", "nombre", "fechaInicio" });
+		TableModel tmodel = SwingUtil.getTableModelFromPojos(cursos,
+				new String[] { "idCurso", "nombre", "fechaInicio" });
 		vista.getTablaCursos().setModel(tmodel);
 		SwingUtil.autoAdjustColumns(vista.getTablaCursos());
 	}
-	
+
 	private void setListaCursosControllerP() {
 		List<CursoDisplayDTO> cursos = modelo.getListaCursosModeloP();
-		TableModel tmodel = SwingUtil.getTableModelFromPojos(cursos,new String[] { "idCurso", "nombre", "fechaInicio" });
+		TableModel tmodel = SwingUtil.getTableModelFromPojos(cursos,
+				new String[] { "idCurso", "nombre", "fechaInicio" });
 		vista.getTablaCursos().setModel(tmodel);
 		SwingUtil.autoAdjustColumns(vista.getTablaCursos());
 	}
-//=======
-		
-	
+
 	/*
 	 * Comprobante de que las fechas son correctas
 	 */
@@ -159,9 +133,8 @@ public class CursoController {
 	private void validateNotNull(Object obj, String message) {
 		if (obj == null)
 			throw new ApplicationException(message);
-//>>>>>>> refs/heads/master
+
 	}
-//<<<<<<< HEAD
 
 	public void updateCursosPendientes() {
 
@@ -173,11 +146,10 @@ public class CursoController {
 		vista.getCursoNombre().setText(cursoSelec.getNombre());
 
 	}
+
 	private void validateCondition(boolean condition, String message) {
 		if (!condition)
 			throw new ApplicationException(message);
 	}
-
-
 
 }

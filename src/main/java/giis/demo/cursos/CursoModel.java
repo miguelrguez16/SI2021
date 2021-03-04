@@ -22,7 +22,7 @@ public class CursoModel {
 		String sql=
 				"SELECT idCurso, nombre,fechaInicio "
 				+"FROM CURSO "
-				+"WHERE estado ='pendiente'";
+				+"WHERE estado ='abierto'";
 		return db.executeQueryPojo(CursoDisplayDTO.class, sql);
 	}
 

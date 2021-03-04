@@ -99,13 +99,27 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnCargarDatosIniciales);
-
-		JButton btnNewButton = new JButton("Inscripcion Colegiados");
+		
+		JButton btnNewButton = new JButton("Realizar Solicitud Fonseca");
+		btnNewButton.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				SolicitudController controller3= new SolicitudController(new SolicitudModel()
+						, new SolicitudView(), new JustificanteSolicitud());
+				controller3.intiController();
+				Database db=new Database();
+				db.createDatabase(false);
+				db.loadDatabase();			
+			
+			}
+		});
+		
+		
+		
 		frame.getContentPane().add(btnNewButton);
 
-		JButton btnNewButton_2 = new JButton("Inscripciones Cursos");
+		JButton btnNewButton_2 = new JButton("Inscripciones Maria Cursos");
 		frame.getContentPane().add(btnNewButton_2);
-//<<<<<<< HEAD
+
 		
 		btnNewButton_2.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
@@ -118,28 +132,9 @@ public class SwingMain {
 			
 			}
 		});
-	}
-}
-		
-		
-		/*JButton btnCargarCursos = new JButton("Ejecutar Cursos");
-		btnCargarCursos.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
-=======
+	
 
-		JButton bSolicitar = new JButton("Realizar Solicitud");
-
-		bSolicitar.addActionListener(new ActionListener() {
->>>>>>> refs/heads/master
-			public void actionPerformed(ActionEvent e) {
-				SolicitudController controllerSolicitud = new SolicitudController(new SolicitudModel(),
-						new SolicitudView(), new JustificanteSolicitud());
-				controllerSolicitud.initView();
-				controllerSolicitud.intiController();
-			}
-		});
-		frame.getContentPane().add(bSolicitar);
-
-		JButton btnEjecutarCambiosCursos = new JButton("Modificar Cursos");
+		JButton btnEjecutarCambiosCursos = new JButton("Modificar Miguel Cursos");
 		btnEjecutarCambiosCursos.addActionListener(new ActionListener() { // NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				CursoController controller1 = new CursoController(new CursoModel(), new CursoView());
@@ -156,5 +151,5 @@ public class SwingMain {
 		return this.frame;
 	}
 
-}*/
+}
 
