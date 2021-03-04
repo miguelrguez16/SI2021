@@ -1,120 +1,69 @@
 package giis.demo.inscripciones;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.SystemColor;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
-import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
-
-import net.miginfocom.swing.MigLayout;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JPanel;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class InscripcionesView extends JFrame {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -7758216415701614225L;
+public class InscripcionesView {
+
+	private static final long serialVersionUID = 1476210718996663912L;
 	private JFrame frame;
-	private JTextField txtFechaHoy;
-	private JButton btnTabCurso;
-	private JTable tabCurso;
-	private JComboBox<Object> lstCurso;
-	private JTable tabDetalle;
-
-	/**
-	 * Create the application.
-	 */
+	private JTable table;
+	private JButton bJustificante;
+	private JLabel lblNewLabel_1;
+	private JTextField textField;
+	
 	public InscripcionesView() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setTitle("Curso");
-		frame.setName("Curso");
-		frame.setBounds(0, 0, 492, 422);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][grow][][][][][][][][]"));
+		frame=new JFrame();
+		frame.setBounds(0,0,500,450);
+		frame.getContentPane().setLayout(null);
 		
-		final JLabel lblSimulacion;
-		final JLabel lblFechaHoy;
-
-		lblSimulacion = new JLabel("Selección curso para las fechas");
-		frame.getContentPane().add(lblSimulacion, "cell 0 1");
+		JLabel lblNewLabel = new JLabel("Lista de cursos");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(10, 11, 464, 26);
+		frame.getContentPane().add(lblNewLabel);
 		
-		lblFechaHoy = new JLabel("Nombre curso");
-		frame.getContentPane().add(lblFechaHoy, "flowx,cell 0 3");
+		JScrollPane tablePanel = new JScrollPane((Component) null);
+		tablePanel.setBounds(10, 105, 464, 250);
+		frame.getContentPane().add(tablePanel);
 		
-		txtFechaHoy = new JTextField();
-		txtFechaHoy.setName("txtFechaHoy");
-		frame.getContentPane().add(txtFechaHoy, "cell 0 3,growx");
-		txtFechaHoy.setColumns(10);
+		table = new JTable();
+		tablePanel.setViewportView(table);
 		
-		btnTabCurso = new JButton("Ver cursos en esta tabla");
-		btnTabCurso.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		lblFechaHoy.setLabelFor(btnTabCurso);
-		frame.getContentPane().add(btnTabCurso, "cell 0 3");
+		bJustificante = new JButton("Generar justificante");
+		bJustificante.setBounds(315, 377, 159, 23);
+		frame.getContentPane().add(bJustificante);
 		
-		JLabel lblLbltable = new JLabel("Proximas cursos (pendientes):");
-		frame.getContentPane().add(lblLbltable, "cell 0 4");
+		lblNewLabel_1 = new JLabel("Nº colegiado : ");
+		lblNewLabel_1.setBounds(20, 48, 87, 14);
+		frame.getContentPane().add(lblNewLabel_1);
 		
-		//Incluyo la tabla en un JScrollPane y anado este en vez de la tabla para poder ver los headers de la tabla
-		tabCurso = new JTable();
-		tabCurso.setName("tabCarreras");
-		tabCurso.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tabCurso.setDefaultEditor(Object.class, null); //readonly
-		JScrollPane tablePanel = new JScrollPane(tabCurso);
-		frame.getContentPane().add(tablePanel, "cell 0 5,grow");
-		
-				
-		lstCurso = new JComboBox<>();
-		frame.getContentPane().add(lstCurso, "cell 0 7,growx");
-		
-		JLabel lblAlSeleccionarLa = new JLabel("Al seleccionar la tabla (no el combo) muestra detalles");
-		frame.getContentPane().add(lblAlSeleccionarLa, "cell 0 8");
-		
-		JLabel lblPorcentajeDescuento = new JLabel("Cursos: ");
-		frame.getContentPane().add(lblPorcentajeDescuento, "flowx,cell 0 9");
-		
-		
-		tabDetalle = new JTable();
-		tabDetalle.setName("tabDetalle");
-		tabDetalle.setRowSelectionAllowed(false);
-		tabDetalle.setDefaultEditor(Object.class, null); //readonly
-		tabDetalle.setBackground(SystemColor.control);
-		JScrollPane tableDetallePanel = new JScrollPane(tabDetalle);
-		tableDetallePanel.setMinimumSize(new Dimension(200,95));
-		tableDetallePanel.setPreferredSize(new Dimension(300,95));
-		frame.getContentPane().add(tableDetallePanel, "cell 0 10"); 
+		textField = new JTextField();
+		textField.setBounds(116, 48, 86, 20);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
 	}
 
-	//Getters y Setters anadidos para acceso desde el controlador (representacion compacta)
-	public JFrame getFrame() { return this.frame; }
-	public String getFechaHoy()  { return this.txtFechaHoy.getText(); }
-	public void setFechaHoy(String fechaIso)  { this.txtFechaHoy.setText(fechaIso); }
-	public JButton getBtnTablaCurso() { return this.btnTabCurso; }
-	public JTable getTablaCurso() { return this.tabCurso; }
-	public JComboBox<Object> getListaCarreras() { return this.lstCurso; }
-	public JTable getDetalleCarrera() { return this.tabDetalle; }
-	
+	public JFrame getFrame() { return this.frame;}
+	public JTable getTablaCursos() {return this.table;}
+	public JButton getbJustificante() { return this.bJustificante;}
+	public JTextField getTextField() { return textField;}
+	public void setTextField(JTextField textField) {this.textField = textField;}
 }
-

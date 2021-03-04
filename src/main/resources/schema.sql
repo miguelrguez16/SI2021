@@ -1,31 +1,51 @@
---Primero se deben borrar todas las tablas (de detalle a maestro) y lugo anyadirlas (de maestro a detalle)
---(en este caso en cada una de las aplicaciones (tkrun y descuento) se usa solo una tabla, por lo que no hace falta)
-
---Para giis.demo.tkrun:
-drop table Carreras;
-create table Carreras (id int primary key not null, inicio date not null, fin date not null, fecha date not null, descr varchar(32), check(inicio<=fin), check(fin<fecha));
-
-drop table Colegiado;
-drop table Inscripcion;
-drop table Curso;
-
-
-CREATE TABLE "Colegiado" (
-	"idcolegiado"	INTEGER NOT NULL UNIQUE,
+BEGIN TRANSACTION;
+DROP TABLE IF EXISTS "Carreras";
+CREATE TABLE IF NOT EXISTS "Carreras" (
+	"id"	int NOT NULL,
+	"inicio"	date NOT NULL,
+	"fin"	date NOT NULL,
+	"fecha"	date NOT NULL,
+	"descr"	varchar(32),
+	CHECK("inicio" <= "fin"),
+	CHECK("fin" < "fecha"),
+	PRIMARY KEY("id")
+);
+DROP TABLE IF EXISTS "Colegiado";
+CREATE TABLE IF NOT EXISTS "Colegiado" (
+	"idColegiado"	INTEGER NOT NULL UNIQUE,
 	"nombre"	TEXT NOT NULL,
-	"apellidos"	INTEGER NOT NULL,
+	"apellidos"	TEXT NOT NULL,
 	"direccion"	TEXT NOT NULL,
 	"poblacion"	TEXT NOT NULL,
 	"telefono"	TEXT NOT NULL,
-	"datos bancarios"	TEXT NOT NULL,
+	"datosBancarios"	TEXT NOT NULL,
 	"fechaSolicitudColegiado"	TEXT NOT NULL,
 	"titulacion"	TEXT NOT NULL DEFAULT 'informatica',
 	"centro"	TEXT NOT NULL DEFAULT 'uniovi',
-	"añotitulo"	INTEGER NOT NULL DEFAULT 2000,
-	PRIMARY KEY("idcolegiado" AUTOINCREMENT)
+	"anioTitulo"	INTEGER NOT NULL DEFAULT 2000,
+	PRIMARY KEY("idColegiado" AUTOINCREMENT)
 );
-CREATE TABLE "Curso" (
-	"idcurso"	INTEGER NOT NULL UNIQUE,
+DROP TABLE IF EXISTS "SolicitudColegio";
+CREATE TABLE IF NOT EXISTS "SolicitudColegio" (
+	"idSolicitud"	INTEGER NOT NULL UNIQUE,
+	"estado"	TEXT NOT NULL DEFAULT 'pendiente' CHECK("estado" = 'pendiente' OR "estado" = 'aprobado'),
+	"idColegiado"	INTEGER NOT NULL,
+	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado"),
+	PRIMARY KEY("idSolicitud" AUTOINCREMENT)
+);
+DROP TABLE IF EXISTS "Inscripcion";
+CREATE TABLE IF NOT EXISTS "Inscripcion" (
+	"idInscripcion"	INTEGER NOT NULL UNIQUE,
+	"idColegiado"	INTEGER NOT NULL,
+	"idCurso"	NUMERIC NOT NULL,
+	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'aprobado')),
+	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado"),
+	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso"),
+	PRIMARY KEY("idInscripcion" AUTOINCREMENT)
+);
+DROP TABLE IF EXISTS "Curso";
+CREATE TABLE IF NOT EXISTS "Curso" (
+	"idCurso"	INTEGER NOT NULL UNIQUE,
 	"nombre"	TEXT NOT NULL,
 	"precio"	REAL,
 	"plazasTotales"	INTEGER DEFAULT 0,
@@ -33,15 +53,7 @@ CREATE TABLE "Curso" (
 	"fechaFin"	TEXT,
 	"fechaInicioInscripcion"	TEXT,
 	"fechaFinInscripción"	TEXT,
-	PRIMARY KEY("idcurso" AUTOINCREMENT)
+	"estado"	TEXT DEFAULT 'pendiente' CHECK(("estado" = 'pendiente' OR "estado" = 'finalizado' OR "estado" = 'abierto')),
+	PRIMARY KEY("idCurso" AUTOINCREMENT)
 );
-CREATE TABLE "Inscripcion" (
-	"idInscripcion"	INTEGER NOT NULL UNIQUE,
-	"idcolegiado"	INTEGER NOT NULL,
-	"idcurso"	NUMERIC NOT NULL,
-	"estado"	INTEGER NOT NULL,
-	FOREIGN KEY("idcurso") REFERENCES "Inscripción"("idInscripcion"),
-	FOREIGN KEY("idcolegiado") REFERENCES "Colegiado"("idcolegiado"),
-	PRIMARY KEY("idInscripcion" AUTOINCREMENT)
-);
-
+COMMIT;

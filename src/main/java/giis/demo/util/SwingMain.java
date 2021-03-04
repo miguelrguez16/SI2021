@@ -10,6 +10,10 @@ import java.awt.event.ActionEvent;
 import giis.demo.cursos.CursoController;
 import giis.demo.cursos.CursoModel;
 import giis.demo.cursos.CursoView;
+import giis.demo.inscripciones.InscripcionesController;
+import giis.demo.inscripciones.InscripcionesModel;
+import giis.demo.inscripciones.InscripcionesView;
+import giis.demo.inscripciones.JustificanteView;
 import giis.demo.tkrun.*;
 
 /**
@@ -94,6 +98,18 @@ public class SwingMain {
 		
 		JButton btnNewButton_2 = new JButton("Inscripciones Cursos");
 		frame.getContentPane().add(btnNewButton_2);
+		
+		btnNewButton_2.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				InscripcionesController controller2= new InscripcionesController(new InscripcionesModel()
+						, new InscripcionesView(), new JustificanteView());
+				controller2.initController();
+				Database db=new Database();
+				db.createDatabase(false);
+				db.loadDatabase();			
+			
+			}
+		});
 		
 		/*JButton btnCargarCursos = new JButton("Ejecutar Cursos");
 		btnCargarCursos.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado

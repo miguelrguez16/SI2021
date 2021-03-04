@@ -1,38 +1,35 @@
 package giis.demo.cursos;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.SystemColor;
-
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
-import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
+import java.awt.FlowLayout;
 
-import net.miginfocom.swing.MigLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 
 public class CursoView extends JFrame {
+
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7758216415701614225L;
+	private static final long serialVersionUID = 59272130249980170L;
+	/**
+	 * 
+	 */
 	private JFrame frame;
-	private JTextField txtFechaHoy;
-	private JButton btnTabCurso;
 	private JTable tabCurso;
-	private JComboBox<Object> lstCurso;
-	private JTable tabDetalle;
+	private JTextField NombreCursoSeleccionado;
+	private JTextField IdCursoSeleccionado;
+	private JTextField campoInicioInscripcion;
+	private JTextField campoFinIscripcion;
+	private JLabel lblLbltable;
+	private JLabel lblNewLabel;
+	private JButton btnGuardarCambios;
 
 	/**
 	 * Create the application.
@@ -46,36 +43,14 @@ public class CursoView extends JFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setTitle("Curso");
-		frame.setName("Curso");
-		frame.setBounds(0, 0, 492, 422);
+		frame.setTitle("Cursos Pendientes");
+		frame.setName("Cursos Pendientes");
+		frame.setBounds(0, 0, 463, 550);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[grow]", "[][][grow][][][][][][][][]"));
+		frame.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		final JLabel lblSimulacion;
-		final JLabel lblFechaHoy;
-
-		lblSimulacion = new JLabel("Selección curso para las fechas");
-		frame.getContentPane().add(lblSimulacion, "cell 0 1");
-		
-		lblFechaHoy = new JLabel("Nombre curso");
-		frame.getContentPane().add(lblFechaHoy, "flowx,cell 0 3");
-		
-		txtFechaHoy = new JTextField();
-		txtFechaHoy.setName("txtFechaHoy");
-		frame.getContentPane().add(txtFechaHoy, "cell 0 3,growx");
-		txtFechaHoy.setColumns(10);
-		
-		btnTabCurso = new JButton("Ver cursos en esta tabla");
-		btnTabCurso.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		lblFechaHoy.setLabelFor(btnTabCurso);
-		frame.getContentPane().add(btnTabCurso, "cell 0 3");
-		
-		JLabel lblLbltable = new JLabel("Proximas cursos (pendientes):");
-		frame.getContentPane().add(lblLbltable, "cell 0 4");
+		lblLbltable = new JLabel("Lista de cursos pendientes");
+		frame.getContentPane().add(lblLbltable);
 		
 		//Incluyo la tabla en un JScrollPane y anado este en vez de la tabla para poder ver los headers de la tabla
 		tabCurso = new JTable();
@@ -83,38 +58,55 @@ public class CursoView extends JFrame {
 		tabCurso.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tabCurso.setDefaultEditor(Object.class, null); //readonly
 		JScrollPane tablePanel = new JScrollPane(tabCurso);
-		frame.getContentPane().add(tablePanel, "cell 0 5,grow");
+		frame.getContentPane().add(tablePanel);
 		
-				
-		lstCurso = new JComboBox<>();
-		frame.getContentPane().add(lstCurso, "cell 0 7,growx");
+		lblNewLabel = new JLabel("Curso Seleccionado");
+		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel lblAlSeleccionarLa = new JLabel("Al seleccionar la tabla (no el combo) muestra detalles");
-		frame.getContentPane().add(lblAlSeleccionarLa, "cell 0 8");
+		NombreCursoSeleccionado = new JTextField();
+		NombreCursoSeleccionado.setEditable(false);
+		frame.getContentPane().add(NombreCursoSeleccionado);
+		NombreCursoSeleccionado.setColumns(10);
 		
-		JLabel lblPorcentajeDescuento = new JLabel("Cursos: ");
-		frame.getContentPane().add(lblPorcentajeDescuento, "flowx,cell 0 9");
+		IdCursoSeleccionado = new JTextField();
+		IdCursoSeleccionado.setEditable(false);
+		frame.getContentPane().add(IdCursoSeleccionado);
+		IdCursoSeleccionado.setColumns(10);
 		
+		JLabel lblFechaParaInscripciones = new JLabel("Fecha para Inscripciones");
+		frame.getContentPane().add(lblFechaParaInscripciones);
 		
-		tabDetalle = new JTable();
-		tabDetalle.setName("tabDetalle");
-		tabDetalle.setRowSelectionAllowed(false);
-		tabDetalle.setDefaultEditor(Object.class, null); //readonly
-		tabDetalle.setBackground(SystemColor.control);
-		JScrollPane tableDetallePanel = new JScrollPane(tabDetalle);
-		tableDetallePanel.setMinimumSize(new Dimension(200,95));
-		tableDetallePanel.setPreferredSize(new Dimension(300,95));
-		frame.getContentPane().add(tableDetallePanel, "cell 0 10"); 
+		campoInicioInscripcion = new JTextField();
+		frame.getContentPane().add(campoInicioInscripcion);
+		campoInicioInscripcion.setColumns(10);
+		
+		campoFinIscripcion = new JTextField();
+		frame.getContentPane().add(campoFinIscripcion);
+		campoFinIscripcion.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("Inicio:");
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Fin:");
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		btnGuardarCambios = new JButton("Guardar Cambios");
+		frame.getContentPane().add(btnGuardarCambios);
 	}
 
 	//Getters y Setters anadidos para acceso desde el controlador (representacion compacta)
 	public JFrame getFrame() { return this.frame; }
-	public String getFechaHoy()  { return this.txtFechaHoy.getText(); }
-	public void setFechaHoy(String fechaIso)  { this.txtFechaHoy.setText(fechaIso); }
-	public JButton getBtnTablaCurso() { return this.btnTabCurso; }
-	public JTable getTablaCurso() { return this.tabCurso; }
-	public JComboBox<Object> getListaCarreras() { return this.lstCurso; }
-	public JTable getDetalleCarrera() { return this.tabDetalle; }
-	
+	public JTextField getCursoNombre() {return this.NombreCursoSeleccionado;}
+	public JTextField getIDNombre() {return this.IdCursoSeleccionado;}
+	public JTextField getInicioInscripcion() {return this.campoInicioInscripcion;}
+	public JTextField getFinInscripcion() {return this.campoFinIscripcion;}
+	public JTable getTablaCursos() { return this.tabCurso; }
+	public JButton getBtnActualizarCurso() {return this.btnGuardarCambios;}
+	public void setNombreNoAplicable() {this.NombreCursoSeleccionado.setText("N/A");}
+	public void setIdNoAplicable() { this.IdCursoSeleccionado.setText("N/A"); } 
+	public void setNombre(String nombre) {this.NombreCursoSeleccionado.setText(nombre);}
+	public void setID(String id) {this.IdCursoSeleccionado.setText(id);}
+
+
 }
 
