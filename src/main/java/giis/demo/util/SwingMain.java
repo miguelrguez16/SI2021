@@ -10,18 +10,24 @@ import java.awt.event.ActionEvent;
 import giis.demo.cursos.CursoController;
 import giis.demo.cursos.CursoModel;
 import giis.demo.cursos.CursoView;
+//<<<<<<< HEAD
 import giis.demo.inscripciones.InscripcionesController;
 import giis.demo.inscripciones.InscripcionesModel;
 import giis.demo.inscripciones.InscripcionesView;
 import giis.demo.inscripciones.JustificanteView;
+//=======
+import giis.demo.solicitud.JustificanteSolicitud;
+import giis.demo.solicitud.SolicitudController;
+import giis.demo.solicitud.SolicitudModel;
+import giis.demo.solicitud.SolicitudView;
+//>>>>>>> refs/heads/master
 import giis.demo.tkrun.*;
 
 /**
- * Punto de entrada principal que incluye botones para la ejecucion de las pantallas 
- * de las aplicaciones de ejemplo
- * y acciones de inicializacion de la base de datos.
- * No sigue MVC pues es solamente temporal para que durante el desarrollo se tenga posibilidad
- * de realizar acciones de inicializacion
+ * Punto de entrada principal que incluye botones para la ejecucion de las
+ * pantallas de las aplicaciones de ejemplo y acciones de inicializacion de la
+ * base de datos. No sigue MVC pues es solamente temporal para que durante el
+ * desarrollo se tenga posibilidad de realizar acciones de inicializacion
  */
 public class SwingMain {
 
@@ -31,13 +37,13 @@ public class SwingMain {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() { //NOSONAR codigo autogenerado
+		EventQueue.invokeLater(new Runnable() { // NOSONAR codigo autogenerado
 			public void run() {
 				try {
 					SwingMain window = new SwingMain();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace(); //NOSONAR codigo autogenerado
+					e.printStackTrace(); // NOSONAR codigo autogenerado
 				}
 			}
 		});
@@ -49,6 +55,7 @@ public class SwingMain {
 	public SwingMain() {
 		initialize();
 	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -56,48 +63,49 @@ public class SwingMain {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Main");
-		frame.setBounds(0, 0, 287, 185);
+
+		frame.setBounds(0, 0, 287, 231);
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		JButton btnEjecutarTkrun = new JButton("Ejecutar Carreras");
-		btnEjecutarTkrun.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+		btnEjecutarTkrun.addActionListener(new ActionListener() { // NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
-				CarrerasController controller=new CarrerasController(new CarrerasModel(), new CarrerasView());
+				CarrerasController controller = new CarrerasController(new CarrerasModel(), new CarrerasView());
 				controller.initController();
-				//Habria que cambiar CursoController =controllerCur = .....
+				System.out.println("Se pulso carga de carreras");
+
+				// Habria que cambiar CursoController =controllerCur = .....
 			}
 		});
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 		frame.getContentPane().add(btnEjecutarTkrun);
-		
-			
+
 		JButton btnInicializarBaseDeDatos = new JButton("Inicializar Base de Datos en Blanco");
-		btnInicializarBaseDeDatos.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+		btnInicializarBaseDeDatos.addActionListener(new ActionListener() { // NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
-				Database db=new Database();
+				Database db = new Database();
 				db.createDatabase(false);
 			}
 		});
 		frame.getContentPane().add(btnInicializarBaseDeDatos);
-			
+
 		JButton btnCargarDatosIniciales = new JButton("Cargar Datos Iniciales para Pruebas");
-		btnCargarDatosIniciales.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+		btnCargarDatosIniciales.addActionListener(new ActionListener() { // NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
-				Database db=new Database();
+				Database db = new Database();
 				db.createDatabase(false);
 				db.loadDatabase();
 			}
 		});
 		frame.getContentPane().add(btnCargarDatosIniciales);
-		
+
 		JButton btnNewButton = new JButton("Inscripcion Colegiados");
 		frame.getContentPane().add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Modificar Cursos ");
-		frame.getContentPane().add(btnNewButton_1);
-		
+
 		JButton btnNewButton_2 = new JButton("Inscripciones Cursos");
 		frame.getContentPane().add(btnNewButton_2);
+//<<<<<<< HEAD
 		
 		btnNewButton_2.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
@@ -110,18 +118,43 @@ public class SwingMain {
 			
 			}
 		});
+	}
+}
+		
 		
 		/*JButton btnCargarCursos = new JButton("Ejecutar Cursos");
 		btnCargarCursos.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+=======
+
+		JButton bSolicitar = new JButton("Realizar Solicitud");
+
+		bSolicitar.addActionListener(new ActionListener() {
+>>>>>>> refs/heads/master
 			public void actionPerformed(ActionEvent e) {
-				CursoController controller1=new CursoController(new CursoModel(), new CursoView());
-				controller1.initController();
-				//Habria que cambiar CursoController =controllerCur = .....
+				SolicitudController controllerSolicitud = new SolicitudController(new SolicitudModel(),
+						new SolicitudView(), new JustificanteSolicitud());
+				controllerSolicitud.initView();
+				controllerSolicitud.intiController();
 			}
 		});
-		frame.getContentPane().add(btnCargarCursos);*/
+		frame.getContentPane().add(bSolicitar);
+
+		JButton btnEjecutarCambiosCursos = new JButton("Modificar Cursos");
+		btnEjecutarCambiosCursos.addActionListener(new ActionListener() { // NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				CursoController controller1 = new CursoController(new CursoModel(), new CursoView());
+				controller1.initController();
+				System.out.println("Se pulso carga de curso");
+
+			}
+		});
+		frame.getContentPane().add(btnEjecutarCambiosCursos);
+
 	}
 
-	public JFrame getFrame() { return this.frame; }
-	
-}
+	public JFrame getFrame() {
+		return this.frame;
+	}
+
+}*/
+
