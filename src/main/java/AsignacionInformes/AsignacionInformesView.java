@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 //<<<<<<< HEAD
 import java.awt.FlowLayout;
+import java.awt.SystemColor;
 import java.awt.Component;
 import javax.swing.SwingConstants;
 
@@ -61,11 +62,12 @@ public class AsignacionInformesView extends JFrame {
 
 		frmAsignacionDeInformes.getContentPane().add(lblListaInformesPendientes);
 		
-		//Incluyo la tabla en un JScrollPane y anado este en vez de la tabla para poder ver los headers de la tabla
+		//Incluyo la tabla en un JScrollPane y anado este
+		//en vez de la tabla para poder ver los headers de la tabla
 		tabInformes = new JTable();
-		tabInformes.setName("tabCarreras");
-		tabInformes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tabInformes.setName("tabInformes");
 		tabInformes.setDefaultEditor(Object.class, null); //readonly
+		tabInformes.setBackground(SystemColor.control);
 		JScrollPane tablePanel = new JScrollPane(tabInformes);
 
 		tablePanel.setBounds(7, 41, 175, 291);
@@ -81,7 +83,7 @@ public class AsignacionInformesView extends JFrame {
 		idInformeSeleccionado = new JTextField();
 		idInformeSeleccionado.setEditable(false);
 
-		idInformeSeleccionado.setBounds(100, 336, 75, 20);
+		idInformeSeleccionado.setBounds(90, 336, 85, 20);
 
 		frmAsignacionDeInformes.getContentPane().add(idInformeSeleccionado);
 		idInformeSeleccionado.setColumns(10);
@@ -89,7 +91,7 @@ public class AsignacionInformesView extends JFrame {
 		idPeritoSeleccionado = new JTextField();
 		idPeritoSeleccionado.setEditable(false);
 
-		idPeritoSeleccionado.setBounds(292, 336, 89, 20);
+		idPeritoSeleccionado.setBounds(296, 336, 85, 20);
 
 		frmAsignacionDeInformes.getContentPane().add(idPeritoSeleccionado);
 		idPeritoSeleccionado.setColumns(10);
@@ -109,8 +111,8 @@ public class AsignacionInformesView extends JFrame {
 		frmAsignacionDeInformes.getContentPane().add(tablePanelInformes);
 		
 		tabPeritos = new JTable();
-		tabPeritos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tabPeritos.setDefaultEditor(Object.class, null); //readonly
+		tabPeritos.setBackground(SystemColor.control);
 		tablePanelInformes.setViewportView(tabPeritos);
 		
 		JLabel lblListaPeritos = new JLabel("Peritos");
@@ -126,12 +128,12 @@ public class AsignacionInformesView extends JFrame {
 
 	//Getters y Setters anadidos para acceso desde el controlador (representacion compacta)
 	public JFrame getFrame() { return this.frmAsignacionDeInformes; }
-	public JTextField getCursoNombre() {return this.idInformeSeleccionado;}
-	public JTextField getIDNombre() {return this.idPeritoSeleccionado;}
+	public JTextField getIDInforme() {return this.idInformeSeleccionado;}
+	public JTextField getIDPerito() {return this.idPeritoSeleccionado;}
 
 
-	public JTable getTabInformes() { return this.tabInformes; }
-	public JTable getTabPeritos() { return this.tabPeritos; }
+	public JTable getTablaInformes() { return this.tabInformes; }
+	public JTable getTablaPeritos() { return this.tabPeritos; }
 
 	
 	public JButton getBtnGuardarCambios() {return this.btnGuardarCambios;}

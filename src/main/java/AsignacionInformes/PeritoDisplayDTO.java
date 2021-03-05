@@ -1,20 +1,24 @@
 package AsignacionInformes;
 
 public class PeritoDisplayDTO {
-	private int idPerito;
-	private String Nombre;
-	public int getIdPerito() {
+	private String idPerito;
+	private String nombre;
+	
+	public String getIdPerito() {
 		return idPerito;
 	}
-	public void setIdPerito(int idPerito) {
+	public void setIdPerito(String idPerito) {
 		this.idPerito = idPerito;
 	}
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
+	
+	
+	
 	
 	
 
