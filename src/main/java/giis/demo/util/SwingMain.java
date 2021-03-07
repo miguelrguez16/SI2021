@@ -10,6 +10,9 @@ import java.awt.event.ActionEvent;
 import giis.demo.cursos.CursoController;
 import giis.demo.cursos.CursoModel;
 import giis.demo.cursos.CursoView;
+import giis.demo.cursosAnio.ListaCursosAnioController;
+import giis.demo.cursosAnio.ListaCursosAnioModel;
+import giis.demo.cursosAnio.ListaCursosAnioView;
 //<<<<<<< HEAD
 import giis.demo.inscripciones.InscripcionesController;
 import giis.demo.inscripciones.InscripcionesModel;
@@ -105,10 +108,7 @@ public class SwingMain {
 			public void actionPerformed(ActionEvent e) {
 				SolicitudController controller3= new SolicitudController(new SolicitudModel()
 						, new SolicitudView(), new JustificanteSolicitud());
-				controller3.intiController();
-				Database db=new Database();
-				db.createDatabase(false);
-				db.loadDatabase();			
+				controller3.intiController();			
 			
 			}
 		});
@@ -125,11 +125,7 @@ public class SwingMain {
 			public void actionPerformed(ActionEvent e) {
 				InscripcionesController controller2= new InscripcionesController(new InscripcionesModel()
 						, new InscripcionesView(), new JustificanteView());
-				controller2.initController();
-				Database db=new Database();
-				db.createDatabase(false);
-				db.loadDatabase();			
-			
+				controller2.initController();			
 			}
 		});
 	
@@ -144,6 +140,16 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnEjecutarCambiosCursos);
+		
+		JButton btnCursosAnio = new JButton("Listado Curso Año Maria");
+		frame.getContentPane().add(btnCursosAnio);
+		btnCursosAnio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaCursosAnioController controllerC= new ListaCursosAnioController(new ListaCursosAnioModel()
+						, new ListaCursosAnioView());
+				controllerC.initController();
+			}
+		});
 
 	}
 

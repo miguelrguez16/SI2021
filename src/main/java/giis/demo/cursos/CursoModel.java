@@ -25,6 +25,7 @@ public class CursoModel {
 				+"WHERE estado ='abierto'";
 		return db.executeQueryPojo(CursoDisplayDTO.class, sql);
 	}
+	
 
 	
 	public CursoEntity getCursoPrecio(int idCurso) {
@@ -71,4 +72,6 @@ public class CursoModel {
 		db.executeUpdate(sql, Util.dateToIsoString(fechaInicio), Util.dateToIsoString(fechaFin), plazas,id);
 //>>>>>>> refs/heads/master
 	}
+	
+	
 }

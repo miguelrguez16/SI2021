@@ -111,13 +111,21 @@ public class CursoController {
 		SwingUtil.autoAdjustColumns(vista.getTablaCursos());
 	}
 
-	private void setListaCursosControllerP() {
+	/*private void setListaCursosControllerP() {
 		List<CursoDisplayDTO> cursos = modelo.getListaCursosModeloP();
 		TableModel tmodel = SwingUtil.getTableModelFromPojos(cursos,
 				new String[] { "idCurso", "nombre", "fechaInicio" });
 		vista.getTablaCursos().setModel(tmodel);
 		SwingUtil.autoAdjustColumns(vista.getTablaCursos());
 	}
+	
+	private void setListCursosControllerAnio() {
+		List<CursoDisplayDTO> cursos = modelo.getListaCursosModeloP();
+		TableModel tmodel = SwingUtil.getTableModelFromPojos(cursos,
+				new String[] { "idCurso", "nombre", "fechaInicio", "estado", "plazasTotales" });
+		vista.getTablaCursos().setModel(tmodel);
+		SwingUtil.autoAdjustColumns(vista.getTablaCursos());
+	}*/
 
 	/*
 	 * Comprobante de que las fechas son correctas
