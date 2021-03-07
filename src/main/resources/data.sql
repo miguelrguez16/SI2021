@@ -17,6 +17,7 @@ INSERT INTO "Colegiado" ("idColegiado","nombre","apellidos","direccion","poblaci
 INSERT INTO "Perito" ("idPerito","idColegiado") VALUES (1,1),
  (2,3);
 INSERT INTO "SolicitudColegio" ("idSolicitud","estado","idColegiado","fecha") VALUES (1,'pendiente',1,'2021-02-02');
+<<<<<<< HEAD
 INSERT INTO "InformesPerito" ("idInformePerito","idPerito","estado","fecha") VALUES (1,1,'finite',NULL),
  (2,0,'pendiente',NULL),
  (3,0,'pendiente',NULL);
@@ -26,4 +27,22 @@ INSERT INTO "Inscripcion" ("idInscripcion","idColegiado","idCurso","estado","fec
  (4,3,4,'preinscrito','2021-02-02'),
  (5,3,6,'preinscrito','2021-02-02'),
  (6,2,6,'preinscrito','2021-02-02');
+=======
+<<<<<<< HEAD
+INSERT INTO "InformesPerito" ("idInformePerito","idPerito","estado","fecha") VALUES (1,1,'finite',NULL),
+ (2,0,'pendiente',NULL),
+ (3,0,'pendiente',NULL);
+INSERT INTO "Inscripcion" ("idInscripcion","idColegiado","idCurso","estado","fecha") VALUES (1,1,4,'preinscrito',NULL),
+ (2,2,5,'preinscrito',NULL),
+ (3,1,3,'preinscrito',NULL),
+ (4,3,4,'preinscrito',NULL),
+ (5,3,6,'preinscrito',NULL),
+ (6,2,6,'preinscrito',NULL);
+=======
+INSERT INTO "Inscripcion" ("idInscripcion","idColegiado","idCurso","estado") VALUES (1,1,4,'preinscrito');
+INSERT INTO "InformesPerito" ("idInformePerito","idPerito","estado","fecha") VALUES (1,1,'finite',NULL),
+ (2,0,'pendiente',NULL),
+ (3,0,'pendiente',NULL);
+>>>>>>> refs/heads/master
+>>>>>>> refs/heads/master
 COMMIT;

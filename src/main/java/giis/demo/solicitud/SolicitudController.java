@@ -18,12 +18,15 @@ public class SolicitudController {
 		this.justificante = justificante;
 		
 	}
-	
+	public void initView() {
+		vista.getFrame().setVisible(true);
+		justificante.getFrame().setVisible(false);
+	}
 	
 	public void intiController () {
-		
+		this.initView();
 		vista.getBtnEnviar().addActionListener(new ActionListener() {
-
+			
 			public void actionPerformed(ActionEvent e) {
 				modelo.writeSolicitud();
 				System.out.print("Se han introducido los siguientes datos:\nDNI: "+SolicitudView.getDNI()+"\nNombre: "+SolicitudView.getNombre()+"\nApellidos: "+SolicitudView.getApellidos()+
@@ -65,10 +68,7 @@ public class SolicitudController {
 		});
 	}
 	
-	public void initView() {
-		vista.getFrame().setVisible(true);
-		justificante.getFrame().setVisible(false);
-	}
+	
 
 	
 }

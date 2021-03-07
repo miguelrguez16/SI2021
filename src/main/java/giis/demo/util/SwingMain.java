@@ -10,10 +10,20 @@ import java.awt.event.ActionEvent;
 import giis.demo.cursos.CursoController;
 import giis.demo.cursos.CursoModel;
 import giis.demo.cursos.CursoView;
+import giis.demo.cursosAnio.ListaCursosAnioController;
+import giis.demo.cursosAnio.ListaCursosAnioModel;
+import giis.demo.cursosAnio.ListaCursosAnioView;
+//<<<<<<< HEAD
+import giis.demo.inscripciones.InscripcionesController;
+import giis.demo.inscripciones.InscripcionesModel;
+import giis.demo.inscripciones.InscripcionesView;
+import giis.demo.inscripciones.JustificanteView;
+//=======
 import giis.demo.solicitud.JustificanteSolicitud;
 import giis.demo.solicitud.SolicitudController;
 import giis.demo.solicitud.SolicitudModel;
 import giis.demo.solicitud.SolicitudView;
+//>>>>>>> refs/heads/master
 import giis.demo.tkrun.*;
 
 /**
@@ -48,6 +58,7 @@ public class SwingMain {
 	public SwingMain() {
 		initialize();
 	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -91,26 +102,35 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnCargarDatosIniciales);
-
-		JButton btnNewButton = new JButton("Inscripcion Colegiados");
-		frame.getContentPane().add(btnNewButton);
-
-		JButton btnNewButton_2 = new JButton("Inscripciones Cursos");
-		frame.getContentPane().add(btnNewButton_2);
-
-		JButton bSolicitar = new JButton("Realizar Solicitud");
-
-		bSolicitar.addActionListener(new ActionListener() {
+		
+		JButton btnNewButton = new JButton("Realizar Solicitud Fonseca");
+		btnNewButton.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
-				SolicitudController controllerSolicitud = new SolicitudController(new SolicitudModel(),
-						new SolicitudView(), new JustificanteSolicitud());
-				controllerSolicitud.initView();
-				controllerSolicitud.intiController();
+				SolicitudController controller3= new SolicitudController(new SolicitudModel()
+						, new SolicitudView(), new JustificanteSolicitud());
+				controller3.intiController();			
+			
 			}
 		});
-		frame.getContentPane().add(bSolicitar);
+		
+		
+		
+		frame.getContentPane().add(btnNewButton);
 
-		JButton btnEjecutarCambiosCursos = new JButton("Modificar Cursos");
+		JButton btnNewButton_2 = new JButton("Inscripciones Maria Cursos");
+		frame.getContentPane().add(btnNewButton_2);
+
+		
+		btnNewButton_2.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				InscripcionesController controller2= new InscripcionesController(new InscripcionesModel()
+						, new InscripcionesView(), new JustificanteView());
+				controller2.initController();			
+			}
+		});
+	
+
+		JButton btnEjecutarCambiosCursos = new JButton("Modificar Miguel Cursos");
 		btnEjecutarCambiosCursos.addActionListener(new ActionListener() { // NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				CursoController controller1 = new CursoController(new CursoModel(), new CursoView());
@@ -120,6 +140,16 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnEjecutarCambiosCursos);
+		
+		JButton btnCursosAnio = new JButton("Listado Curso Año Maria");
+		frame.getContentPane().add(btnCursosAnio);
+		btnCursosAnio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaCursosAnioController controllerC= new ListaCursosAnioController(new ListaCursosAnioModel()
+						, new ListaCursosAnioView());
+				controllerC.initController();
+			}
+		});
 
 	}
 
@@ -128,3 +158,4 @@ public class SwingMain {
 	}
 
 }
+
