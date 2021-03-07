@@ -1,9 +1,8 @@
-package AsignacionInformes;
+package giis.demo.AsignacionInformes;
 
-public class InformesPeritosEntity {
+public class InformeDisplayDTO {
+	
 	private String idInformePerito;
-	private String idPerito;
-	private String fecha;
 	private String estado;
 	
 	public String getIdInformePerito() {
@@ -11,18 +10,6 @@ public class InformesPeritosEntity {
 	}
 	public void setIdInformePerito(String idInformePerito) {
 		this.idInformePerito = idInformePerito;
-	}
-	public String getIdPerito() {
-		return idPerito;
-	}
-	public void setIdPerito(String idPerito) {
-		this.idPerito = idPerito;
-	}
-	public String getFecha() {
-		return fecha;
-	}
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
 	}
 	public String getEstado() {
 		return estado;

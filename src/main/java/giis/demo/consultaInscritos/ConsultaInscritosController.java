@@ -33,7 +33,7 @@ public class ConsultaInscritosController {
 	}
 
 	// Iniciar los controladore de la vista
-	public static void initController() {
+	public void initController() {
 		initview();
 		vista.getBtnBuscar().addActionListener(new ActionListener() {
 

@@ -7,6 +7,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import giis.demo.AsignacionInformes.AsignacionInformesController;
+import giis.demo.AsignacionInformes.AsignacionInformesModel;
+import giis.demo.AsignacionInformes.AsignacionInformesView;
+import giis.demo.consultaInscritos.ConsultaInscritosController;
+import giis.demo.consultaInscritos.ConsultaInscritosModel;
+import giis.demo.consultaInscritos.ConsultaInscritosView;
 import giis.demo.cursos.CursoController;
 import giis.demo.cursos.CursoModel;
 import giis.demo.cursos.CursoView;
@@ -67,7 +73,7 @@ public class SwingMain {
 		frame = new JFrame();
 		frame.setTitle("Main");
 
-		frame.setBounds(0, 0, 287, 231);
+		frame.setBounds(0, 0, 287, 272);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -103,7 +109,7 @@ public class SwingMain {
 		});
 		frame.getContentPane().add(btnCargarDatosIniciales);
 		
-		JButton btnNewButton = new JButton("Realizar Solicitud Fonseca");
+		JButton btnNewButton = new JButton("Realizar Solicitud Fonseca 1");
 		btnNewButton.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				SolicitudController controller3= new SolicitudController(new SolicitudModel()
@@ -117,7 +123,7 @@ public class SwingMain {
 		
 		frame.getContentPane().add(btnNewButton);
 
-		JButton btnNewButton_2 = new JButton("Inscripciones Maria Cursos");
+		JButton btnNewButton_2 = new JButton("Inscripciones Cursos Maria 1");
 		frame.getContentPane().add(btnNewButton_2);
 
 		
@@ -130,7 +136,7 @@ public class SwingMain {
 		});
 	
 
-		JButton btnEjecutarCambiosCursos = new JButton("Modificar Miguel Cursos");
+		JButton btnEjecutarCambiosCursos = new JButton("Modificar Cursos Miguel 1");
 		btnEjecutarCambiosCursos.addActionListener(new ActionListener() { // NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				CursoController controller1 = new CursoController(new CursoModel(), new CursoView());
@@ -141,8 +147,7 @@ public class SwingMain {
 		});
 		frame.getContentPane().add(btnEjecutarCambiosCursos);
 		
-		JButton btnCursosAnio = new JButton("Listado Curso Año Maria");
-		frame.getContentPane().add(btnCursosAnio);
+		JButton btnCursosAnio = new JButton("Listado Curso Año Maria 2");
 		btnCursosAnio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ListaCursosAnioController controllerC= new ListaCursosAnioController(new ListaCursosAnioModel()
@@ -150,6 +155,30 @@ public class SwingMain {
 				controllerC.initController();
 			}
 		});
+		frame.getContentPane().add(btnCursosAnio);
+		
+		
+		JButton btnConsultaInscritos = new JButton("Consultar Inscritos Fonseca 2");
+		btnConsultaInscritos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConsultaInscritosController controllerinscritos= new ConsultaInscritosController(new ConsultaInscritosModel()
+						, new ConsultaInscritosView());
+				controllerinscritos.initController();
+			}
+		});
+		
+		frame.getContentPane().add(btnConsultaInscritos);
+		
+		JButton btnAsignarInformesPeritos = new JButton("Asignar Informes Peritos Miguel 2");
+		btnAsignarInformesPeritos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AsignacionInformesController aico = new AsignacionInformesController(new AsignacionInformesModel(),new AsignacionInformesView());
+				aico.initController();
+			}
+		});
+		
+		frame.getContentPane().add(btnAsignarInformesPeritos);
+		
 
 	}
 

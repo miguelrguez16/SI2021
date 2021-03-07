@@ -1,4 +1,4 @@
-package AsignacionInformes;
+package giis.demo.AsignacionInformes;
 
 import java.util.Calendar;
 import java.util.List;

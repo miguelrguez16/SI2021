@@ -1,4 +1,4 @@
-package AsignacionInformes;
+package giis.demo.AsignacionInformes;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;

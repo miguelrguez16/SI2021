@@ -23,10 +23,7 @@ public class SolicitudModel {
 	
 	
 Calendar c1 = Calendar.getInstance();
-//Calendar c2 = new GregorianCalendar();
 
-//String dia = Integer.toString(c1.get(Calendar.DATE));
-//String mes = Integer.toString(c1.get(Calendar.MONTH)+1);
 String anio = Integer.toString(c1.get(Calendar.YEAR));
 
 
@@ -56,7 +53,6 @@ public String getMes() {
 	
 	return mes;
 }
-
 
 
 

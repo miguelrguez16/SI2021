@@ -1,4 +1,4 @@
-package AsignacionInformes;
+package giis.demo.AsignacionInformes;
 
 public class PeritosEntity {
 	private String  idPerito;

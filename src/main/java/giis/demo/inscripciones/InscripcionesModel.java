@@ -46,6 +46,7 @@ public class InscripcionesModel {
 	String fechahoy=anio+"-"+this.getMes()+"-"+this.getDia();
 
 	public String getFecha() {
+		System.out.println(fechahoy);
 		return fechahoy;
 	}
 	
@@ -128,7 +129,7 @@ public class InscripcionesModel {
 	}
 
 	public void setNuevaInscripcion(int idColegiado, int idCurso) {
-		String sql="INSERT INTO Inscripcion (IdColegiado, IdCurso) VALUES ("+idColegiado+","+idCurso+")";
+		String sql="INSERT INTO Inscripcion (IdColegiado, IdCurso, fecha) VALUES ("+idColegiado+","+idCurso+",'"+this.getFecha()+"')";
 		db.executeUpdate(sql);
 	}
 }
