@@ -1,7 +1,7 @@
 package giis.demo.consultaInscritos;
 
 public class ConsultaInscritoDisplayDTO {
-	private String apellidos, nombre, fechaInscripcion, estado, cantidad;
+	private String apellidos, nombre, fecha, estado, precio;
 
 	public String getApellidos() {
 		return apellidos;
@@ -19,12 +19,12 @@ public class ConsultaInscritoDisplayDTO {
 		this.nombre = nombre;
 	}
 
-	public String getFechaInscripcion() {
-		return fechaInscripcion;
+	public String getFecha() {
+		return fecha;
 	}
 
-	public void setFechaInscripcion(String fechaInscripcion) {
-		this.fechaInscripcion = fechaInscripcion;
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 	}
 
 	public String getEstado() {
@@ -35,12 +35,12 @@ public class ConsultaInscritoDisplayDTO {
 		this.estado = estado;
 	}
 
-	public String getCantidad() {
-		return cantidad;
+	public String getPrecio() {
+		return precio;
 	}
 
-	public void setCantidad(String cantidad) {
-		this.cantidad = cantidad;
+	public void setPrecio(String precio) {
+		this.precio = precio;
 	}
 
 	

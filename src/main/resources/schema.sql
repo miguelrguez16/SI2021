@@ -7,18 +7,8 @@ CREATE TABLE IF NOT EXISTS "Carreras" (
 	"fecha"	date NOT NULL,
 	"descr"	varchar(32),
 	PRIMARY KEY("id"),
-	CHECK("inicio" <= "fin"),
-	CHECK("fin" < "fecha")
-);
-DROP TABLE IF EXISTS "Inscripcion";
-CREATE TABLE IF NOT EXISTS "Inscripcion" (
-	"idInscripcion"	INTEGER NOT NULL UNIQUE,
-	"idColegiado"	INTEGER NOT NULL,
-	"idCurso"	NUMERIC NOT NULL,
-	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'aprobado')),
-	PRIMARY KEY("idInscripcion" AUTOINCREMENT),
-	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado"),
-	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso")
+	CHECK("fin" < "fecha"),
+	CHECK("inicio" <= "fin")
 );
 DROP TABLE IF EXISTS "Curso";
 CREATE TABLE IF NOT EXISTS "Curso" (
@@ -55,13 +45,6 @@ CREATE TABLE IF NOT EXISTS "Perito" (
 	"idColegiado"	INTEGER NOT NULL,
 	PRIMARY KEY("idPerito")
 );
-DROP TABLE IF EXISTS "InformesPerito";
-CREATE TABLE IF NOT EXISTS "InformesPerito" (
-	"idInformePerito"	INTEGER NOT NULL,
-	"idPerito"	INTEGER NOT NULL DEFAULT 0,
-	"estado"	INTEGER NOT NULL DEFAULT 'pendiente',
-	PRIMARY KEY("idInformePerito" AUTOINCREMENT)
-);
 DROP TABLE IF EXISTS "SolicitudColegio";
 CREATE TABLE IF NOT EXISTS "SolicitudColegio" (
 	"idSolicitud"	INTEGER UNIQUE,
@@ -69,6 +52,25 @@ CREATE TABLE IF NOT EXISTS "SolicitudColegio" (
 	"idColegiado"	INTEGER,
 	"fecha"	TEXT,
 	PRIMARY KEY("idSolicitud" AUTOINCREMENT),
+	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado")
+);
+DROP TABLE IF EXISTS "InformesPerito";
+CREATE TABLE IF NOT EXISTS "InformesPerito" (
+	"idInformePerito"	INTEGER NOT NULL,
+	"idPerito"	INTEGER NOT NULL DEFAULT 0,
+	"estado"	TEXT NOT NULL DEFAULT 'pendiente',
+	"fecha"	TEXT,
+	PRIMARY KEY("idInformePerito" AUTOINCREMENT)
+);
+DROP TABLE IF EXISTS "Inscripcion";
+CREATE TABLE IF NOT EXISTS "Inscripcion" (
+	"idInscripcion"	INTEGER NOT NULL UNIQUE,
+	"idColegiado"	INTEGER,
+	"idCurso"	INTEGER,
+	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'inscrito')),
+	"fecha"	TEXT,
+	PRIMARY KEY("idInscripcion" AUTOINCREMENT),
+	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso"),
 	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado")
 );
 COMMIT;

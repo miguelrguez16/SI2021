@@ -11,6 +11,7 @@ import giis.demo.solicitud.JustificanteSolicitud;
 import giis.demo.solicitud.SolicitudController;
 import giis.demo.solicitud.SolicitudModel;
 import giis.demo.solicitud.SolicitudView;
+import giis.demo.util.Database;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -41,6 +42,7 @@ public class mainPrueba extends JFrame {
 	 * Create the frame.
 	 */
 	public mainPrueba() {
+		
 		this.initialize();
 	}
 
@@ -54,7 +56,9 @@ public void initialize() {
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	setContentPane(contentPane);
 	contentPane.setLayout(null);
-
+	/*Database db = new Database();
+	db.createDatabase(false);
+	db.loadDatabase();*/
 	JButton bConsulta = new JButton("Consultar Inscritos");
 	bConsulta.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
