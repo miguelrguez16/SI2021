@@ -48,6 +48,8 @@ public class ConsultaInscritosView extends JFrame {
 		frmConsultaInscritos.setBounds(0, 0, 424, 492);
 		frmConsultaInscritos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmConsultaInscritos.getContentPane().setLayout(null);
+		frmConsultaInscritos.setLocationRelativeTo(null);
+
 		
 		lblLbltable = new JLabel("Seleccionar curso:");
 		lblLbltable.setBounds(10, 66, 123, 14);

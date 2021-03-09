@@ -4,18 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-import giis.demo.colegiados.ColegiadoEntity;
 import giis.demo.cursos.CursoDisplayDTO;
 import giis.demo.cursos.CursoEntity;
-import giis.demo.tkrun.CarreraEntity;
 import giis.demo.util.ApplicationException;
 import giis.demo.util.Database;
-import giis.demo.util.Util;
 
 public class InscripcionesModel {
 	private Database db=new Database();

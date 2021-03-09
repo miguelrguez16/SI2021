@@ -27,6 +27,8 @@ public class ListaCursosAnioView {
 		frame=new JFrame();
 		frame.setBounds(0,0,500,450);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
+		frame.setTitle("Lista de inscritos a cursos");
 		
 		JLabel lblNewLabel = new JLabel("Lista de cursos");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);

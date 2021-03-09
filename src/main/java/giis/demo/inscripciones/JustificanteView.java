@@ -42,6 +42,10 @@ public class JustificanteView {
 		frame=new JFrame();
 		frame.setBounds(0,0,500,450);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
+		frame.setTitle("Justificante curso");
+		frame.setName("Justificante curso");
+
 		
 		JLabel lblNewLabel = new JLabel("Justificante de inscripción");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -59,9 +63,9 @@ public class JustificanteView {
 		lblNewLabel_2.setBounds(20, 123, 140, 27);
 		frame.getContentPane().add(lblNewLabel_2);
 		
-		lblNewLabel_3 = new JLabel("Número colegiado :");
+		lblNewLabel_3 = new JLabel("Nº Colegiado / Precolegiado:");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_3.setBounds(20, 173, 140, 27);
+		lblNewLabel_3.setBounds(20, 173, 218, 27);
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		lblNewLabel_4 = new JLabel("Fecha de solicitud : ");
@@ -91,7 +95,7 @@ public class JustificanteView {
 		
 		LNColegiado = new JLabel("");
 		LNColegiado.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		LNColegiado.setBounds(170, 173, 247, 26);
+		LNColegiado.setBounds(250, 173, 167, 26);
 		frame.getContentPane().add(LNColegiado);
 		
 		LFecha = new JLabel("");

@@ -62,6 +62,8 @@ public class SolicitudView extends JFrame {
 		frmSolicitud.setMinimumSize(new Dimension(630, 385));
 		frmSolicitud.setTitle("Solicitud");
 		frmSolicitud.getContentPane().setLayout(null);
+		frmSolicitud.setLocationRelativeTo(null);
+
 		
 		JLabel lblNewLabel = new JLabel("Nombre");
 		lblNewLabel.setBounds(10, 75, 46, 14);

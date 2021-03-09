@@ -47,13 +47,11 @@ public class AsignacionInformesView extends JFrame {
 		frmAsignacionDeInformes = new JFrame();
 		frmAsignacionDeInformes.setTitle("Asignacion de Informes Peritales");
 		frmAsignacionDeInformes.setName("Asignacion de Informes Peritales");
-
-		frmAsignacionDeInformes.setBounds(0, 0, 405, 502);
-
-		frmAsignacionDeInformes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		frmAsignacionDeInformes.setBounds(0, 0, 406, 502);
 
 		frmAsignacionDeInformes.getContentPane().setLayout(null);
-
+		frmAsignacionDeInformes.setLocationRelativeTo(null);
 		
 		lblListaInformesPendientes = new JLabel("Informes Pendientes");
 		lblListaInformesPendientes.setHorizontalAlignment(SwingConstants.CENTER);

@@ -31,32 +31,37 @@ public class InscripcionesView {
 
 	private void initialize() {
 		frame=new JFrame();
-		frame.setBounds(0,0,500,450);
+		frame.setBounds(0,0,352,450);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
+		frame.setTitle("Inscripciones en cursos");
+		frame.setName("Inscripciones en cursos");
+
 		
 		JLabel lblNewLabel = new JLabel("Lista de cursos");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(10, 11, 464, 26);
+		lblNewLabel.setBounds(10, 11, 320, 26);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JScrollPane tablePanel = new JScrollPane((Component) null);
-		tablePanel.setBounds(10, 105, 464, 250);
+		tablePanel.setBounds(10, 105, 320, 250);
 		frame.getContentPane().add(tablePanel);
 		
 		table = new JTable();
 		tablePanel.setViewportView(table);
 		
 		bJustificante = new JButton("Generar justificante");
-		bJustificante.setBounds(315, 377, 159, 23);
+		bJustificante.setBounds(160, 377, 159, 23);
 		frame.getContentPane().add(bJustificante);
 		
-		lblNewLabel_1 = new JLabel("Nº colegiado : ");
-		lblNewLabel_1.setBounds(20, 48, 87, 14);
+		lblNewLabel_1 = new JLabel("Nº de Colegiado  / Precolegiado: ");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(20, 48, 218, 20);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		textField = new JTextField();
-		textField.setBounds(116, 48, 86, 20);
+		textField.setBounds(244, 48, 86, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 	}

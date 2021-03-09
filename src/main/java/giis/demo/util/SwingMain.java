@@ -19,18 +19,15 @@ import giis.demo.cursos.CursoView;
 import giis.demo.cursosAnio.ListaCursosAnioController;
 import giis.demo.cursosAnio.ListaCursosAnioModel;
 import giis.demo.cursosAnio.ListaCursosAnioView;
-//<<<<<<< HEAD
 import giis.demo.inscripciones.InscripcionesController;
 import giis.demo.inscripciones.InscripcionesModel;
 import giis.demo.inscripciones.InscripcionesView;
 import giis.demo.inscripciones.JustificanteView;
-//=======
 import giis.demo.solicitud.JustificanteSolicitud;
 import giis.demo.solicitud.SolicitudController;
 import giis.demo.solicitud.SolicitudModel;
 import giis.demo.solicitud.SolicitudView;
-//>>>>>>> refs/heads/master
-import giis.demo.tkrun.*;
+
 
 /**
  * Punto de entrada principal que incluye botones para la ejecucion de las
@@ -76,19 +73,8 @@ public class SwingMain {
 		frame.setBounds(0, 0, 287, 272);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		JButton btnEjecutarTkrun = new JButton("Ejecutar Carreras");
-		btnEjecutarTkrun.addActionListener(new ActionListener() { // NOSONAR codigo autogenerado
-			public void actionPerformed(ActionEvent e) {
-				CarrerasController controller = new CarrerasController(new CarrerasModel(), new CarrerasView());
-				controller.initController();
-				System.out.println("Se pulso carga de carreras");
-
-				// Habria que cambiar CursoController =controllerCur = .....
-			}
-		});
+		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-		frame.getContentPane().add(btnEjecutarTkrun);
 
 		JButton btnInicializarBaseDeDatos = new JButton("Inicializar Base de Datos en Blanco");
 		btnInicializarBaseDeDatos.addActionListener(new ActionListener() { // NOSONAR codigo autogenerado

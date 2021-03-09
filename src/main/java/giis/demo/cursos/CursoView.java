@@ -48,11 +48,10 @@ public class CursoView extends JFrame {
 		frame.setTitle("Cursos Pendientes");
 		frame.setName("Cursos Pendientes");
 
-		frame.setBounds(0, 0, 405, 601);
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(0, 0, 314, 601);
 
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 
 		
 		lblLbltable = new JLabel("Lista de cursos pendientes");
@@ -68,7 +67,7 @@ public class CursoView extends JFrame {
 		tabCurso.setDefaultEditor(Object.class, null); //readonly
 		JScrollPane tablePanel = new JScrollPane(tabCurso);
 
-		tablePanel.setBounds(7, 41, 372, 291);
+		tablePanel.setBounds(7, 41, 274, 291);
 
 		frame.getContentPane().add(tablePanel);
 		
@@ -95,18 +94,18 @@ public class CursoView extends JFrame {
 		IdCursoSeleccionado.setColumns(10);
 	
 		btnGuardarCambios = new JButton("Guardar Cambios");
-		btnGuardarCambios.setBounds(184, 520, 141, 31);
+		btnGuardarCambios.setBounds(142, 520, 141, 31);
 		frame.getContentPane().add(btnGuardarCambios);
 
 		
 		campoInicioInscripcion = new JTextField();
 
-		campoInicioInscripcion.setBounds(77, 411, 103, 20);
+		campoInicioInscripcion.setBounds(57, 412, 103, 20);
 		frame.getContentPane().add(campoInicioInscripcion);
 		campoInicioInscripcion.setColumns(10);
 		
 		campoFinIscripcion = new JTextField();
-		campoFinIscripcion.setBounds(77, 456, 103, 20);
+		campoFinIscripcion.setBounds(57, 456, 103, 20);
 		frame.getContentPane().add(campoFinIscripcion);
 		campoFinIscripcion.setColumns(10);
 		
@@ -115,19 +114,19 @@ public class CursoView extends JFrame {
 		frame.getContentPane().add(lblFechaParaInscripciones);
 		
 		JLabel lblNewLabel_1 = new JLabel("Inicio:");
-		lblNewLabel_1.setBounds(27, 414, 34, 14);
+		lblNewLabel_1.setBounds(10, 414, 34, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Fin:");
-		lblNewLabel_2.setBounds(27, 459, 26, 14);
+		lblNewLabel_2.setBounds(10, 459, 26, 14);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Nº de plazas:");
-		lblNewLabel_3.setBounds(252, 387, 75, 14);
+		lblNewLabel_3.setBounds(206, 387, 75, 14);
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		plazasCurso = new JTextField();
-		plazasCurso.setBounds(234, 432, 103, 20);
+		plazasCurso.setBounds(184, 433, 103, 20);
 		frame.getContentPane().add(plazasCurso);
 		plazasCurso.setColumns(10);
 		
