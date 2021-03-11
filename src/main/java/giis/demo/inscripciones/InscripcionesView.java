@@ -52,7 +52,7 @@ public class InscripcionesView {
 		tablePanel.setViewportView(table);
 		
 		bJustificante = new JButton("Generar justificante");
-		bJustificante.setBounds(160, 377, 159, 23);
+		bJustificante.setBounds(171, 366, 159, 23);
 		frame.getContentPane().add(bJustificante);
 		
 		lblNewLabel_1 = new JLabel("Nº de Colegiado  / Precolegiado: ");
@@ -61,7 +61,7 @@ public class InscripcionesView {
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		textField = new JTextField();
-		textField.setBounds(244, 48, 86, 20);
+		textField.setBounds(240, 48, 86, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 	}
