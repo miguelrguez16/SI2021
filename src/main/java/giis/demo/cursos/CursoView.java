@@ -100,12 +100,12 @@ public class CursoView extends JFrame {
 		
 		campoInicioInscripcion = new JTextField();
 
-		campoInicioInscripcion.setBounds(57, 412, 103, 20);
+		campoInicioInscripcion.setBounds(57, 412, 94, 20);
 		frame.getContentPane().add(campoInicioInscripcion);
 		campoInicioInscripcion.setColumns(10);
 		
 		campoFinIscripcion = new JTextField();
-		campoFinIscripcion.setBounds(57, 456, 103, 20);
+		campoFinIscripcion.setBounds(57, 456, 94, 20);
 		frame.getContentPane().add(campoFinIscripcion);
 		campoFinIscripcion.setColumns(10);
 		
@@ -126,12 +126,12 @@ public class CursoView extends JFrame {
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		plazasCurso = new JTextField();
-		plazasCurso.setBounds(184, 433, 103, 20);
+		plazasCurso.setBounds(188, 433, 81, 20);
 		frame.getContentPane().add(plazasCurso);
 		plazasCurso.setColumns(10);
 		
 		btnRellenarDatos = new JButton("pruebas");
-		btnRellenarDatos.setBounds(27, 524, 89, 23);
+		btnRellenarDatos.setBounds(10, 524, 89, 23);
 		frame.getContentPane().add(btnRellenarDatos);
 
 	}
