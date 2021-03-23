@@ -70,7 +70,6 @@ public class CursoModel {
 	public void setCursoCambios(Date fechaInicio, Date fechaFin, int plazas, int id) {
 		String sql="UPDATE Curso SET fechaInicioInscripcion =?, fechaFinInscripción =?, plazasTotales=?, estado='abierto' WHERE idCurso=?";
 		db.executeUpdate(sql, Util.dateToIsoString(fechaInicio), Util.dateToIsoString(fechaFin), plazas,id);
-//>>>>>>> refs/heads/master
 	}
 	
 	
