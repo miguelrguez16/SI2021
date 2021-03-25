@@ -54,7 +54,7 @@ public class JustificanteSolicitud extends JFrame {
 		frmSolicitud.setTitle("Justificante de solicitud");
 		frmSolicitud.getContentPane().setLayout(null);
 		
-		lblNewLabel = new JLabel("ID Solicitante");
+		lblNewLabel = new JLabel("Solicitante");
 		lblNewLabel.setBounds(10, 52, 140, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel);
 		
