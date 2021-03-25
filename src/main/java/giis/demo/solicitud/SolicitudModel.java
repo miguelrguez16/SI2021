@@ -12,6 +12,8 @@ import java.util.List;
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
 
+import giis.demo.consultaInscritos.ConsultaInscritoDisplayDTO;
+import giis.demo.consultaInscritos.ConsultaInscritosView;
 import giis.demo.util.Database;
 import giis.demo.util.UnexpectedException;
 
@@ -66,6 +68,7 @@ public String getFecha() {
 
 
 public int getIDSolicitante() {
+	
 	try {
 		Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
 		java.sql.Statement s = conn.createStatement();
@@ -102,6 +105,33 @@ public int getIDSolicitud() {
 	return idSolicitud;
 
 }
+
+public String ComprobarDNI(String n) {
+	String dni=null;
+	try {
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+		java.sql.Statement s = conn.createStatement();
+		String sql = "SELECT dni FROM Colegiado WHERE dni=\'"+n+"\'";
+		ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+		while (rs.next()) {
+			dni=rs.getString(1);
+		}
+		
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	
+return dni;
+}
+
+
+
+/*public List<ConsultaInscritoDisplayDTO> comprobarDNI() {
+	String sql = "SELECT * FROM COlegiado WHERE dni=\'"+SolicitudView.getDNI()+"\'";
+	return db.executeQueryPojo(ConsultaInscritoDisplayDTO.class, sql);
+	}
+*/
 
 	public void writeSolicitud() {
 		
