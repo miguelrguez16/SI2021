@@ -50,10 +50,10 @@ public class AsignacionInformesModel {
 		fecha.append(tmp+"-");
 		
 		tmp="";
-		tmp=(c1.get(Calendar.MONTH)+1 < 10) ? (String) ("0"+Integer.toString(c1.get(Calendar.MONTH)+1)) :  (String) ("0"+Integer.toString(c1.get(Calendar.MONTH)+1));
+		tmp=(c1.get(Calendar.MONTH)+1 < 10) ? (String) ("0"+Integer.toString(c1.get(Calendar.MONTH)+1)) :  (String) (Integer.toString(c1.get(Calendar.MONTH)+1));
 		fecha.append(tmp+"-");
 	
-		tmp = (c1.get(Calendar.DATE) < 10) ? (String) ("0"+Integer.toString(c1.get(Calendar.DATE))) :  (String) ("0"+Integer.toString(c1.get(Calendar.DATE)));
+		tmp = (c1.get(Calendar.DATE) < 10) ? (String) ("0"+Integer.toString(c1.get(Calendar.DATE))) :  (String) (Integer.toString(c1.get(Calendar.DATE)));
 		fecha.append(tmp);
 		
 		System.out.println(fecha.toString());

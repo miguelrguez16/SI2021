@@ -39,12 +39,6 @@ CREATE TABLE IF NOT EXISTS "Colegiado" (
 	"dni"	TEXT NOT NULL DEFAULT 'ZZ',
 	PRIMARY KEY("idColegiado" AUTOINCREMENT)
 );
-DROP TABLE IF EXISTS "Perito";
-CREATE TABLE IF NOT EXISTS "Perito" (
-	"idPerito"	INTEGER NOT NULL UNIQUE,
-	"idColegiado"	INTEGER NOT NULL,
-	PRIMARY KEY("idPerito")
-);
 DROP TABLE IF EXISTS "SolicitudColegio";
 CREATE TABLE IF NOT EXISTS "SolicitudColegio" (
 	"idSolicitud"	INTEGER UNIQUE,
@@ -69,8 +63,60 @@ CREATE TABLE IF NOT EXISTS "Inscripcion" (
 	"idCurso"	INTEGER,
 	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'inscrito')),
 	"fecha"	TEXT,
-	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado"),
 	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso"),
+	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado"),
 	PRIMARY KEY("idInscripcion" AUTOINCREMENT)
+);
+DROP TABLE IF EXISTS "Colectivo";
+CREATE TABLE IF NOT EXISTS "Colectivo" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"Nombre"	TEXT,
+	"Apellidos"	TEXT,
+	"Direccion"	TEXT,
+	"Poblacion"	TEXT,
+	"Telefono"	TEXT,
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+DROP TABLE IF EXISTS "Precolegiado";
+CREATE TABLE IF NOT EXISTS "Precolegiado" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"nombre"	TEXT,
+	"apellidos"	TEXT,
+	"dni"	INTEGER,
+	"direccion"	TEXT,
+	"datosCuenta"	TEXT,
+	"fechaSolicitudPrecolegiado"	TEXT,
+	"titulacion"	TEXT,
+	"Poblacion"	TEXT,
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+DROP TABLE IF EXISTS "InscripcionColectivo";
+CREATE TABLE IF NOT EXISTS "InscripcionColectivo" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"idCurso"	INTEGER,
+	"idColectivo"	INTEGER,
+	"estado"	TEXT,
+	"fecha"	TEXT,
+	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso"),
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+DROP TABLE IF EXISTS "InscripcionPrecolegiado";
+CREATE TABLE IF NOT EXISTS "InscripcionPrecolegiado" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"idCurso"	INTEGER,
+	"idPrecolegiado"	INTEGER,
+	"estado"	TEXT,
+	"fecha"	TEXT,
+	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso"),
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+DROP TABLE IF EXISTS "Perito";
+CREATE TABLE IF NOT EXISTS "Perito" (
+	"idPerito"	INTEGER NOT NULL UNIQUE,
+	"idColegiado"	INTEGER NOT NULL,
+	"fecha"	TEXT,
+	"turno"	INTEGER,
+	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado"),
+	PRIMARY KEY("idPerito")
 );
 COMMIT;
