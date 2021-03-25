@@ -14,8 +14,6 @@ INSERT INTO "Curso" ("idCurso","nombre","precio","plazasTotales","fechaInicio","
 INSERT INTO "Colegiado" ("idColegiado","nombre","apellidos","direccion","poblacion","telefono","datosBancarios","fechaSolicitudColegiado","titulacion","centro","anioTitulo","dni") VALUES (1,'Alvaro','fonseca','gijon','gijoon','89652345','536468536','2021-02-02','informatica','uniovi',2000,'235689'),
  (2,'Miguel','rguez','llangreu','langreo','2556454','523835684','2021-02-02','informatica','uniovi',2000,'235689'),
  (3,'Maria','berni','xixioin','xionxox','45675823','2342342343','2021-02-02','informatica','uniovi',2000,'3256478');
-INSERT INTO "Perito" ("idPerito","idColegiado") VALUES (1,1),
- (2,3);
 INSERT INTO "SolicitudColegio" ("idSolicitud","estado","idColegiado","fecha") VALUES (1,'pendiente',1,'2021-02-02');
 INSERT INTO "InformesPerito" ("idInformePerito","idPerito","estado","fecha") VALUES (1,1,'finite',NULL),
  (2,0,'pendiente',NULL),
@@ -26,4 +24,6 @@ INSERT INTO "Inscripcion" ("idInscripcion","idColegiado","idCurso","estado","fec
  (4,3,4,'preinscrito','2021-05-04'),
  (5,3,6,'preinscrito','2021-05-04'),
  (6,2,6,'preinscrito','2021-05-04');
+INSERT INTO "Perito" ("idPerito","idColegiado","fecha","turno") VALUES (1,1,NULL,NULL),
+ (2,3,NULL,NULL);
 COMMIT;
