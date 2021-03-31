@@ -23,6 +23,9 @@ import giis.demo.inscripciones.InscripcionesController;
 import giis.demo.inscripciones.InscripcionesModel;
 import giis.demo.inscripciones.InscripcionesView;
 import giis.demo.inscripciones.JustificanteView;
+import giis.demo.nuevosCursos.NuevosCursoController;
+import giis.demo.nuevosCursos.NuevosCursoModel;
+import giis.demo.nuevosCursos.NuevosCursoView;
 import giis.demo.solicitud.JustificanteSolicitud;
 import giis.demo.solicitud.SolicitudController;
 import giis.demo.solicitud.SolicitudModel;
@@ -164,6 +167,17 @@ public class SwingMain {
 		});
 		
 		frame.getContentPane().add(btnAsignarInformesPeritos);
+		
+		JButton btnNuevosCursos = new JButton("Nuevos Cursos Miguel 3");
+		btnNuevosCursos.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				NuevosCursoController ncc = new NuevosCursoController(new NuevosCursoModel(), new NuevosCursoView());
+				ncc.initController();
+			}
+		});
+		frame.getContentPane().add(btnNuevosCursos);
 		
 
 	}
