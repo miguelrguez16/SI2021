@@ -1,6 +1,6 @@
 package giis.demo.solicitud;
 
-public class SolicitudEntity {
+public class SolicitudColEntity {
 	private String id;
 	private String nombre;
 	private double precio;
