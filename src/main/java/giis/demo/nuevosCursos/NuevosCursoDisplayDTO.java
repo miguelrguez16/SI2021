@@ -1,7 +1,7 @@
 package giis.demo.nuevosCursos;
 
 public class NuevosCursoDisplayDTO {
-	private String idCurso, nombre, precio, fechaInicio, fechaFin, precioPrecolegiado, precioColectivo, profesor, instalacion, sesiones;
+	private String idCurso, nombre, precio, fechaInicio, fechaFin;
 
 	public String getIdCurso() {
 		return idCurso;
@@ -43,45 +43,5 @@ public class NuevosCursoDisplayDTO {
 		this.fechaFin = fechaFin;
 	}
 
-	public String getPrecioPrecolegiado() {
-		return precioPrecolegiado;
-	}
-
-	public void setPrecioPrecolegiado(String precioPrecolegiado) {
-		this.precioPrecolegiado = precioPrecolegiado;
-	}
-
-	public String getPrecioColectivo() {
-		return precioColectivo;
-	}
-
-	public void setPrecioColectivo(String precioColectivo) {
-		this.precioColectivo = precioColectivo;
-	}
-
-	public String getProfesor() {
-		return profesor;
-	}
-
-	public void setProfesor(String profesor) {
-		this.profesor = profesor;
-	}
-
-	public String getInstalacion() {
-		return instalacion;
-	}
-
-	public void setInstalacion(String instalacion) {
-		this.instalacion = instalacion;
-	}
-
-	public String getSesiones() {
-		return sesiones;
-	}
-
-	public void setSesiones(String sesiones) {
-		this.sesiones = sesiones;
-	}
-	
 	
 }

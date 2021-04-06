@@ -10,7 +10,7 @@ public class NuevosCursoModel {
 	private Database db = new Database();
 
 	public List<NuevosCursoDisplayDTO> getListaCursosModelo() {
-		String sql = "SELECT idCurso, nombre,precio,fechaInicio,fechaFin,precioPrecolegiado,precioColectivo,profesor,instalacion,sesiones "
+		String sql = "SELECT idCurso, nombre,precio,fechaInicio,fechaFin "
 				+ "FROM CURSO " + "WHERE estado ='planificado'";
 		return db.executeQueryPojo(NuevosCursoDisplayDTO.class, sql);
 	}
@@ -27,12 +27,10 @@ public class NuevosCursoModel {
 	/* 
 	 * Introduce un nuevo curso en la base de datos
 	 */
-	public void setCursoNuevos(String nombre, double precio, Date fechaInicio, Date fechaFin, double precioPrecolegiado,
-			double precioColectivo, String profesor, String instalacion, int sesiones) {
-		String sql = "Insert into Curso (nombre, precio, fechaInicio,fechaFin,precioPrecolegiado,precioColectivo, profesor,instalacion,sesiones) VALUES"
-				+ "(?,?,?,?,?,?,?,?,?)";
-		db.executeUpdate(sql, nombre, precio, Util.dateToIsoString(fechaInicio), Util.dateToIsoString(fechaFin),
-				precioPrecolegiado, precioColectivo, profesor, instalacion, sesiones);
+	public void setCursoNuevos(String nombre, double precio, Date fechaInicio, Date fechaFin) {
+		String sql = "Insert into Curso (nombre, precio, fechaInicio,fechaFin) VALUES"
+				+ "(?,?,?,?)";
+		db.executeUpdate(sql, nombre, precio, Util.dateToIsoString(fechaInicio), Util.dateToIsoString(fechaFin));
 	}
 
 }
