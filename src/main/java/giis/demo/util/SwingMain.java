@@ -26,10 +26,13 @@ import giis.demo.inscripciones.JustificanteView;
 import giis.demo.nuevosCursos.NuevosCursoController;
 import giis.demo.nuevosCursos.NuevosCursoModel;
 import giis.demo.nuevosCursos.NuevosCursoView;
-import giis.demo.solicitud.JustificanteSolicitud;
-import giis.demo.solicitud.SolicitudController;
-import giis.demo.solicitud.SolicitudModel;
-import giis.demo.solicitud.SolicitudView;
+import giis.demo.solicitud.JustificanteSolicitudCol;
+import giis.demo.solicitud.JustificanteSolicitudPre;
+import giis.demo.solicitud.SolicitudColController;
+import giis.demo.solicitud.SolicitudColModel;
+import giis.demo.solicitud.SolicitudColView;
+import giis.demo.solicitud.SolicitudPreView;
+import giis.demo.solicitud.Solicitudes;
 
 
 /**
@@ -98,11 +101,12 @@ public class SwingMain {
 		});
 		frame.getContentPane().add(btnCargarDatosIniciales);
 		
-		JButton btnNewButton = new JButton("Realizar Solicitud Fonseca 1");
+		JButton btnNewButton = new JButton("Realizar Solicitud Fonseca 1 y 3");
 		btnNewButton.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
-				SolicitudController controller3= new SolicitudController(new SolicitudModel()
-						, new SolicitudView(), new JustificanteSolicitud());
+				
+				SolicitudColController controller3= new SolicitudColController(new SolicitudColModel()
+						, new SolicitudColView(), new JustificanteSolicitudCol(), new SolicitudPreView(), new JustificanteSolicitudPre(), new Solicitudes());
 				controller3.intiController();			
 			
 			}

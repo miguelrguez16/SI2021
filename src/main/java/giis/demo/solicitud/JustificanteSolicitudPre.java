@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JToolBar;
 
-public class JustificanteSolicitud extends JFrame {
+public class JustificanteSolicitudPre extends JFrame {
 
 	/**
 	 * 
@@ -35,13 +35,14 @@ public class JustificanteSolicitud extends JFrame {
 	private JLabel jlIDSolicitante;
 	private JLabel jlIDSolicitud;
 	private JLabel jlFechaSolicitud;
+	private JLabel jlFechaFin;
 	private JButton bGuardar;
 	private JButton bCerrar;
 
 	/**
 	 * Create the application.
 	 */
-	public JustificanteSolicitud() {
+	public JustificanteSolicitudPre() {
 		initialize();
 	}
 
@@ -55,27 +56,27 @@ public class JustificanteSolicitud extends JFrame {
 		frmSolicitud.getContentPane().setLayout(null);
 		
 		lblNewLabel = new JLabel("Solicitante");
-		lblNewLabel.setBounds(10, 52, 140, 14);
+		lblNewLabel.setBounds(10, 41, 140, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel);
 		
-		lblNewLabel_1 = new JLabel("Referencia Solicitud");
-		lblNewLabel_1.setBounds(10, 77, 140, 14);
+		lblNewLabel_1 = new JLabel("Número Precolegiado");
+		lblNewLabel_1.setBounds(10, 66, 140, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_1);
 		
 		lblNewLabel_2 = new JLabel("Fecha Solicitud");
-		lblNewLabel_2.setBounds(10, 102, 140, 14);
+		lblNewLabel_2.setBounds(10, 91, 140, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_2);
 		
 		jlIDSolicitante = new JLabel("");
-		jlIDSolicitante.setBounds(209, 52, 167, 14);
+		jlIDSolicitante.setBounds(209, 41, 167, 14);
 		frmSolicitud.getContentPane().add(jlIDSolicitante);
 		
 		jlIDSolicitud = new JLabel("");
-		jlIDSolicitud.setBounds(209, 77, 167, 14);
+		jlIDSolicitud.setBounds(209, 66, 167, 14);
 		frmSolicitud.getContentPane().add(jlIDSolicitud);
 		
 		jlFechaSolicitud = new JLabel("");
-		jlFechaSolicitud.setBounds(209, 102, 167, 14);
+		jlFechaSolicitud.setBounds(209, 91, 167, 14);
 		frmSolicitud.getContentPane().add(jlFechaSolicitud);
 		
 		bGuardar = new JButton("Guardar Copia");
@@ -89,6 +90,14 @@ public class JustificanteSolicitud extends JFrame {
 		JLabel lblNewLabel_3 = new JLabel("Justificante de Solicitud");
 		lblNewLabel_3.setBounds(160, 11, 156, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Fecha Expiración");
+		lblNewLabel_4.setBounds(10, 116, 98, 14);
+		frmSolicitud.getContentPane().add(lblNewLabel_4);
+		
+		jlFechaFin = new JLabel("");
+		jlFechaFin.setBounds(209, 116, 140, 14);
+		frmSolicitud.getContentPane().add(jlFechaFin);
 	}
 
 	//Getters y Setters anadidos para acceso desde el controlador (representacion compacta)
@@ -104,11 +113,16 @@ public class JustificanteSolicitud extends JFrame {
 	public JLabel getFechaSol() {
 		return jlFechaSolicitud;
 	}
+	public JLabel getFechaFin() {
+		return this.jlFechaFin;
+	}
 	public String getJlIDSolicitante() { return this.jlIDSolicitante.getText(); }
 	public String getJlIDSolicitud() { return jlIDSolicitud.getText(); }
 	public void setJlIDSolicitante(JLabel jlIDSolicitante) { this.jlIDSolicitante = jlIDSolicitante; }
 	public void setJlIDSolicitud(JLabel jlIDSolicitud) { this.jlIDSolicitud = jlIDSolicitud; }
 	public String getJlFechaSolicitud() { return jlFechaSolicitud.getText(); }
 	public void setJlFechaSolicitud(JLabel jlFechaSolicitud) { this.jlFechaSolicitud = jlFechaSolicitud; }
+	public String getJlFechaFin() { return jlFechaFin.getText(); }
+	public void setJlFechaFin(JLabel jlFechaFin) { this.jlFechaFin = jlFechaFin; }
 }
 
