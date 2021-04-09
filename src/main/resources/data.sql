@@ -14,8 +14,8 @@ INSERT INTO "Inscripcion" ("idInscripcion","idColegiado","idCurso","estado","fec
  (6,2,6,'preinscrito','2021-05-04'),
  (7,3,5,'preinscrito','2021-04-03'),
  (8,1,5,'preinscrito','2021-04-06');
-INSERT INTO "Perito" ("idPerito","idColegiado","fecha","turno") VALUES (1,1,NULL,NULL),
- (2,3,NULL,NULL);
+INSERT INTO "Perito" ("idPerito","idColegiado","fecha","turno") VALUES (1,1,'2021-02-02',1),
+ (2,3,'2021-02-02',2);
 INSERT INTO "Curso" ("idCurso","nombre","precio","plazasTotales","fechaInicio","fechaFin","fechaInicioInscripcion","fechaFinInscripción","estado","precioPrecolegiado","precioEstudiante","precioEmpresa","precioExterno") VALUES (1,'sql',67.0,0,'2021-05-02','2021-05-04',NULL,NULL,'planificado',NULL,NULL,NULL,NULL),
  (2,'c',34.0,0,'2021-05-02','2021-05-04',NULL,NULL,'planificado',NULL,NULL,NULL,NULL),
  (3,'java',21.0,0,'2021-05-02','2021-05-04',NULL,NULL,'planificado',NULL,NULL,NULL,NULL),
