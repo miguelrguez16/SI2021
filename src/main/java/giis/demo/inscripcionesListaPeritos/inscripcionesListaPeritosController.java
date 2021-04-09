@@ -36,8 +36,8 @@ public class inscripcionesListaPeritosController {
 		}catch(NumberFormatException e) {
 			throw new ApplicationException("Error en el formato del idColegiado: "+vista.getTFidColegiado().getText()+" no válido.");
 		}
-		aux=modelo.getColegiadoNombre(idColegiado);
-		if(!aux.isEmpty()) {
+		aux=modelo.getColegiadoNombre(idColegiado)==null?"-1":modelo.getColegiadoNombre(idColegiado);
+		if(aux!="-1") {
 			vista.getTFnombre().setText(modelo.getColegiadoNombre(idColegiado));
 			vista.getTFapellidos().setText(modelo.getColegiadoApellidos(idColegiado));
 			vista.getTFdireccion().setText(modelo.getColegiadoDireccion(idColegiado));
