@@ -1,4 +1,4 @@
-package giis.demo.inscripciones;
+package giis.demo.inscripcionesListaPeritos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,48 +7,15 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.List;
 
-import giis.demo.cursos.CursoDisplayDTO;
-import giis.demo.cursos.CursoEntity;
-import giis.demo.util.ApplicationException;
+import giis.demo.inscripciones.InscripcionesEntity;
 import giis.demo.util.Database;
 
-public class InscripcionesModel {
+public class inscripcionesListaPeritosModel {
+	
 	private Database db=new Database();
 	String nombre;
 	Calendar c1=Calendar.getInstance();
 	String anio = Integer.toString(c1.get(Calendar.YEAR));
-	int idColegiado=-1;
-	
-	public String getDia() {
-		String dia;
-		int dianum = c1.get(Calendar.DATE);
-		if (dianum<10) {
-			dia = "0"+Integer.toString(dianum);
-		}
-		else dia = Integer.toString(dianum);
-		return dia;
-	}
-
-	public String getMes() {
-		String mes;
-		int mesnum = c1.get(Calendar.MONTH)+1;
-		if (mesnum<10) {
-			mes = "0"+Integer.toString(mesnum);
-		}
-		else mes = Integer.toString(mesnum);
-		return mes;
-	}
-
-	String fechahoy=anio+"-"+this.getMes()+"-"+this.getDia();
-
-	public String getFecha() {
-		return fechahoy;
-	}
-	
-	public List<CursoDisplayDTO> getListaCursosModelo() {
-		String sql="SELECT idCurso, nombre, fechaInicio, precio, precioPrecolegiado, precioEstudiante, precioEmpresa, precioExterno FROM CURSO WHERE estado ='abierto'";
-		return db.executeQueryPojo(CursoDisplayDTO.class, sql);
-	}
 	
 	public String getColegiadoNombre(int idColegiado) {
 	    try {
@@ -80,116 +47,11 @@ public class InscripcionesModel {
 	    return nombre;
 	}
 	
-	public String getPrecolegiadoNombre(int id) {
+	public String getColegiadoDNI(int idColegiado) {
 	    try {
 	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
 	        java.sql.Statement s = conn.createStatement();
-	        String sql = "SELECT nombre FROM Precolegiado WHERE id="+id;
-	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
-	        while (rs.next()) {
-	            nombre=rs.getString(1);
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return nombre;
-	}
-	
-	public String getPrecolegiadoApellidos(int id) {
-	    try {
-	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
-	        java.sql.Statement s = conn.createStatement();
-	        String sql = "SELECT apellidos FROM Precolegiado WHERE id="+id;
-	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
-	        while (rs.next()) {
-	            nombre=rs.getString(1);
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return nombre;
-	}
-	
-	public String getIdColectivo(int dni) {
-		try {
-	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
-	        java.sql.Statement s = conn.createStatement();
-	        String sql = "SELECT IdColectivo FROM Colectivo WHERE dni="+dni;
-	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
-	        while (rs.next()) {
-	            nombre=rs.getString(1);
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return nombre;
-	}
-	
-	public String getColectivoNombre(int idColectivo) {
-	    try {
-	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
-	        java.sql.Statement s = conn.createStatement();
-	        String sql = "SELECT nombre FROM Colectivo WHERE idColectivo="+idColectivo;
-	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
-	        while (rs.next()) {
-	            nombre=rs.getString(1);
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return nombre;
-	}
-	
-	public String getColectivoApellidos(int idColectivo) {
-	    try {
-	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
-	        java.sql.Statement s = conn.createStatement();
-	        String sql = "SELECT apellidos FROM Colectivo WHERE idColectivo="+idColectivo;
-	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
-	        while (rs.next()) {
-	            nombre=rs.getString(1);
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return nombre;
-	}
-	
-	public String getCursoPrecio(int idCurso) {
-	    try {
-	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
-	        java.sql.Statement s = conn.createStatement();
-	        String sql = "SELECT precio FROM Curso WHERE idCurso="+idCurso;
-	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
-	        while (rs.next()) {
-	            nombre=rs.getString(1);
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return nombre;
-	}
-	
-	public String getCursoPrecioPrecolegiado(int idCurso) {
-	    try {
-	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
-	        java.sql.Statement s = conn.createStatement();
-	        String sql = "SELECT precioPrecolegiado FROM Curso WHERE idCurso="+idCurso;
-	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
-	        while (rs.next()) {
-	            nombre=rs.getString(1);
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return nombre;
-	}
-	
-	public String getCursoPrecioExterno(int idCurso) {
-	    try {
-	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
-	        java.sql.Statement s = conn.createStatement();
-	        String sql = "SELECT precioExterno FROM Curso WHERE idCurso="+idCurso;
+	        String sql = "SELECT dni FROM Colegiado WHERE idColegiado="+idColegiado;
 	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
 	        while (rs.next()) {
 	            nombre=rs.getString(1);
@@ -200,11 +62,11 @@ public class InscripcionesModel {
 	    return nombre;
 	}
 
-	public String getCursoPrecioEstudiante(int idCurso) {
+	public String getColegiadoDireccion(int idColegiado) {
 	    try {
 	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
 	        java.sql.Statement s = conn.createStatement();
-	        String sql = "SELECT precioEstudiante FROM Curso WHERE idCurso="+idCurso;
+	        String sql = "SELECT direccion FROM Colegiado WHERE idColegiado="+idColegiado;
 	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
 	        while (rs.next()) {
 	            nombre=rs.getString(1);
@@ -215,11 +77,11 @@ public class InscripcionesModel {
 	    return nombre;
 	}
 	
-	public String getCursoPrecioEmpresa(int idCurso) {
+	public String getColegiadoPoblacion(int idColegiado) {
 	    try {
 	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
 	        java.sql.Statement s = conn.createStatement();
-	        String sql = "SELECT precioEmpresa FROM Curso WHERE idCurso="+idCurso;
+	        String sql = "SELECT poblacion FROM Colegiado WHERE idColegiado="+idColegiado;
 	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
 	        while (rs.next()) {
 	            nombre=rs.getString(1);
@@ -230,50 +92,187 @@ public class InscripcionesModel {
 	    return nombre;
 	}
 	
-	public void setNuevaInscripcion(int idColegiado, int idCurso) {
-		String sql="INSERT INTO Inscripcion (IdColegiado, IdCurso, fecha) VALUES ("+idColegiado+","+idCurso+",'"+this.getFecha()+"')";
+	public String getColegiadoTelefono(int idColegiado) {
+	    try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT telefono FROM Colegiado WHERE idColegiado="+idColegiado;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
+	}
+	
+	public String getColegiadoDatos(int idColegiado) {
+	    try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT datosBancarios FROM Colegiado WHERE idColegiado="+idColegiado;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
+	}
+	
+	public String getColegiadoFechaS(int idColegiado) {
+	    try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT fechaSolicitudColegiado FROM Colegiado WHERE idColegiado="+idColegiado;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
+	}
+	
+	public String getColegiadoTitulacion(int idColegiado) {
+	    try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT titulacion FROM Colegiado WHERE idColegiado="+idColegiado;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
+	}
+	
+	public String getColegiadoCentro(int idColegiado) {
+	    try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT centro FROM Colegiado WHERE idColegiado="+idColegiado;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
+	}
+	
+	public String getColegiadoAnioT(int idColegiado) {
+	    try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT anioTitulo FROM Colegiado WHERE idColegiado="+idColegiado;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
+	}
+	
+	public String getDia() {
+		String dia;
+		int dianum = c1.get(Calendar.DATE);
+		if (dianum<10) {
+			dia = "0"+Integer.toString(dianum);
+		}
+		else dia = Integer.toString(dianum);
+		return dia;
+	}
+
+	public String getMes() {
+		String mes;
+		int mesnum = c1.get(Calendar.MONTH)+1;
+		if (mesnum<10) {
+			mes = "0"+Integer.toString(mesnum);
+		}
+		else mes = Integer.toString(mesnum);
+		return mes;
+	}
+
+	String fechahoy=anio+"-"+this.getMes()+"-"+this.getDia();
+
+	public String getFecha() {
+		return fechahoy;
+	}
+	
+	public void setNuevoPerito(int idColegiado) {
+		String sql="INSERT INTO Perito (idColegiado, fecha, turno) "
+				+ "VALUES ('"+idColegiado+"','"+this.getFecha()+"','"+Integer.parseInt(this.getTurno())+"')";
 		db.executeUpdate(sql);
 	}
 	
-	public void setNuevaInscripcionPrecolegiado(int idPrecolegiado, int idCurso) {
-		String sql="INSERT INTO InscripcionPrecolegiado (IdPrecolegiado, IdCurso, fecha) VALUES ("+idPrecolegiado+","+idCurso+",'"+this.getFecha()+"')";
-		db.executeUpdate(sql);
+	public String getTurno() {
+		try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT count(idPerito)+1 FROM Perito";
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
 	}
 	
-	
-	public void setNuevaInscripcionColectivo(int idColectivo, int idCurso) {
-		String sql="INSERT INTO InscripcionColectivo (IdColectivo, IdCurso, fecha) VALUES ("+idColectivo+","+idCurso+",'"+this.getFecha()+"')";
-		db.executeUpdate(sql);
+	public void actualizarColegiadoDatos(int idColegiado) {
+		String sql="UPDATE Colegiado SET nombre=?, apellidos=?, direccion=?, poblacion=?, telefono=?, datosBancarios=?,"
+				+ " fechaSolicitudColegiado=?, titulacion=?, centro=?, anioTitulo=?, dni=? where idColegiado=?";
+		db.executeUpdate(sql,  inscripcionesListaPeritosView.getNombre(), inscripcionesListaPeritosView.getApellidos(), inscripcionesListaPeritosView.getDireccion(), 
+				inscripcionesListaPeritosView.getPoblacion(), inscripcionesListaPeritosView.getTelefono(), inscripcionesListaPeritosView.getDatos(),
+				inscripcionesListaPeritosView.getFecha(), inscripcionesListaPeritosView.getTitulacion(), inscripcionesListaPeritosView.getCentro(),
+				inscripcionesListaPeritosView.getAnio(), inscripcionesListaPeritosView.getDNI(), idColegiado);
 	}
 	
-	public boolean existeInscripcion(int idColegiado, int idCurso) {
-		String sql="SELECT idInscripcion from Inscripcion where idColegiado="+idColegiado+" and idCurso="+idCurso;
+	public boolean existePerito(int idColegiado) {
+		String sql="SELECT idPerito from Perito where idColegiado="+idColegiado;
 		List<InscripcionesEntity> inscripcionSelect=db.executeQueryPojo(InscripcionesEntity.class, sql);
 		if(inscripcionSelect.isEmpty())
 			return false;
 		else return true;
 	}
 	
-	public boolean existeInscripcionPrecolegiado(int idPrecolegiado, int idCurso) {
-		String sql="SELECT id from InscripcionPrecolegiado where idPrecolegiado="+idPrecolegiado+" and idCurso="+idCurso;
-		List<InscripcionesEntity> inscripcionSelect=db.executeQueryPojo(InscripcionesEntity.class, sql);
-		if(inscripcionSelect.isEmpty())
-			return false;
-		else return true;
+	public String getPeritoId(int idColegiado) {
+	    try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT idPerito FROM Perito WHERE idColegiado="+idColegiado;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
 	}
 	
-	public boolean existeInscripcionColectivo(int idColectivo, int idCurso) {
-		String sql="SELECT id from InscripcionColectivo where idColectivo="+idColectivo+" and idCurso="+idCurso;
-		List<InscripcionesEntity> inscripcionSelect=db.executeQueryPojo(InscripcionesEntity.class, sql);
-		if(inscripcionSelect.isEmpty())
-			return false;
-		else return true;
-	}
-	
-	public void setNuevoColectivo(String tipo) {
-		String sql="INSERT INTO Colectivo (nombre, apellidos, dni, direccion, poblacion, telefono, tipoColectivo) "
-				+ "VALUES ('"+InscripcionesView.getNombre()+"','"+InscripcionesView.getApellidos()+"','"+InscripcionesView.getDni()+"','"+
-				InscripcionesView.getDireccion()+"','"+InscripcionesView.getPoblacion()+"','"+InscripcionesView.getTelefono()+"','"+tipo+"')";
-		db.executeUpdate(sql);
+	public String getPeritoTurno(int idColegiado) {
+	    try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT turno FROM Perito WHERE idColegiado="+idColegiado;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
 	}
 }

@@ -2,6 +2,7 @@ package giis.demo.cursos;
 
 public class CursoDisplayDTO {
 	private String idCurso, nombre, fechaInicio;
+	private String precio, precioPrecolegiado, precioEstudiante, precioEmpresa, precioExterno;
 
 	public String getIdCurso() {
 		return idCurso;
@@ -27,6 +28,44 @@ public class CursoDisplayDTO {
 		this.fechaInicio = fechaInicio;
 	}
 
-	
+	public String getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(String precio) {
+		this.precio = precio;
+	}
+
+	public String getPrecioPrecolegiado() {
+		return precioPrecolegiado;
+	}
+
+	public void setPrecioPrecolegiado(String precioPrecolegiado) {
+		this.precioPrecolegiado = precioPrecolegiado;
+	}
+
+	public String getPrecioEstudiante() {
+		return precioEstudiante;
+	}
+
+	public void setPrecioEstudiante(String precioEstudiante) {
+		this.precioEstudiante = precioEstudiante;
+	}
+
+	public String getPrecioEmpresa() {
+		return precioEmpresa;
+	}
+
+	public void setPrecioEmpresa(String precioEmpresa) {
+		this.precioEmpresa = precioEmpresa;
+	}
+
+	public String getPrecioExterno() {
+		return precioExterno;
+	}
+
+	public void setPrecioExterno(String precioExterno) {
+		this.precioExterno = precioExterno;
+	}
 
 }

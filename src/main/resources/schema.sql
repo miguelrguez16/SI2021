@@ -58,8 +58,9 @@ DROP TABLE IF EXISTS "Perito";
 CREATE TABLE IF NOT EXISTS "Perito" (
 	"idPerito"	INTEGER NOT NULL UNIQUE,
 	"idColegiado"	INTEGER NOT NULL,
-	"fecha"	TEXT,
-	"turno"	INTEGER,
+	"fecha"	TEXT NOT NULL,
+	"turno"	INTEGER NOT NULL,
+	"estado"	TEXT NOT NULL DEFAULT 'pendiente' CHECK(("estado" = 'pendiente' OR "estado" = 'aprobado')),
 	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado"),
 	PRIMARY KEY("idPerito")
 );

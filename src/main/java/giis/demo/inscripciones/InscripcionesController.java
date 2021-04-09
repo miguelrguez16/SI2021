@@ -53,7 +53,7 @@ public class InscripcionesController {
 	
 	private void setListaCursosController() {
         List<CursoDisplayDTO> cursos = modelo.getListaCursosModelo();
-        TableModel tmodel = SwingUtil.getTableModelFromPojos(cursos,new String[] { "idCurso", "nombre", "fechaInicio" });
+        TableModel tmodel = SwingUtil.getTableModelFromPojos(cursos,new String[] { "idCurso", "nombre", "fechaInicio", "precio", "precioPrecolegiado", "precioEstudiante", "precioEmpresa", "precioExterno" });
         vista.getTablaCursos().setModel(tmodel);
         SwingUtil.autoAdjustColumns(vista.getTablaCursos());
     }
@@ -70,7 +70,9 @@ public class InscripcionesController {
 		try {
 			dni=Integer.parseInt(vista.getTFdniColectivo().getText()); //cogemos el dni del colectivo
 		}catch(NumberFormatException e) {
-			throw new ApplicationException("Error en el formato del número: "+vista.getTFdniColectivo().getText()+" no válido");
+			throw new ApplicationException("Error en el formato del número de dni del colectivo: "+vista.getTFdniColectivo().getText()+" no válido");
+		}catch(NullPointerException e1) {
+			throw new ApplicationException("Hay que introducir un idColectivo");
 		}
 		idColectivo= modelo.getIdColectivo(dni)==null?-1:Integer.valueOf(modelo.getIdColectivo(dni));
 		if(idCurso==0) 
@@ -95,7 +97,11 @@ public class InscripcionesController {
 	
 	private void inscripcionColegiado() {
 		int idColegiado=-1;
-		idColegiado=Integer.parseInt(vista.getTFdniColegiado().getText()); 
+		try {
+			idColegiado=Integer.parseInt(vista.getTFdniColegiado().getText()); 
+		}catch(NumberFormatException e) {
+			throw new ApplicationException("Error en el formato del número del idColegiado: "+vista.getTFdniColectivo().getText()+" no válido");
+		}
 		if(idCurso==0) 
 			validateCondition(false, "Falta seleccionar un curso.");
 		int x=modelo.getColegiadoNombre(idColegiado)==null?-1:idColegiado;
@@ -109,7 +115,11 @@ public class InscripcionesController {
 	
 	private void inscripcionPrecolegiado() {
 		int idPrecolegiado=-1;
-		idPrecolegiado=Integer.parseInt(vista.getTFidPre().getText());
+		try{
+			idPrecolegiado=Integer.parseInt(vista.getTFidPre().getText());
+		}catch(NumberFormatException e) {
+			throw new ApplicationException("Error en el formato del número del idPrecolegiado: "+vista.getTFdniColectivo().getText()+" no válido");
+		}
 		if(idCurso==0)
 			validateCondition(false, "Falta seleccionar un curso.");
 		int x=modelo.getPrecolegiadoNombre(idPrecolegiado)==null?-1:idPrecolegiado;
