@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS "InformesPerito";
 CREATE TABLE IF NOT EXISTS "InformesPerito" (
 	"idInformePerito"	INTEGER NOT NULL,
 	"idPerito"	INTEGER NOT NULL DEFAULT 0,
-	"estado"	TEXT NOT NULL DEFAULT 'pendiente',
+	"estado"	TEXT NOT NULL DEFAULT 'pendiente' CHECK("estado" = 'pendiente' OR "estado" = 'asignado'),
 	"fecha"	TEXT,
 	PRIMARY KEY("idInformePerito" AUTOINCREMENT)
 );
