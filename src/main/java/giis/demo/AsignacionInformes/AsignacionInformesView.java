@@ -30,6 +30,7 @@ public class AsignacionInformesView extends JFrame {
 	private JLabel lblNewLabel;
 	private JButton btnGuardarCambios;
 	private JButton btnCancelarCambios;
+	private JButton btnAsignacionAutomatica;
 	private JTable tabPeritos;
 
 
@@ -48,7 +49,7 @@ public class AsignacionInformesView extends JFrame {
 		frmAsignacionDeInformes.setTitle("Asignacion de Informes Peritales");
 		frmAsignacionDeInformes.setName("Asignacion de Informes Peritales");
 		
-		frmAsignacionDeInformes.setBounds(0, 0, 518, 502);
+		frmAsignacionDeInformes.setBounds(0, 0, 562, 502);
 
 		frmAsignacionDeInformes.getContentPane().setLayout(null);
 		frmAsignacionDeInformes.setLocationRelativeTo(null);
@@ -68,13 +69,13 @@ public class AsignacionInformesView extends JFrame {
 		tabInformes.setBackground(SystemColor.control);
 		JScrollPane tablePanel = new JScrollPane(tabInformes);
 
-		tablePanel.setBounds(33, 54, 192, 291);
+		tablePanel.setBounds(20, 54, 192, 291);
 
 		frmAsignacionDeInformes.getContentPane().add(tablePanel);
 		
-		lblNewLabel = new JLabel("Nº informe:");
+		lblNewLabel = new JLabel("N.º informe:");
 
-		lblNewLabel.setBounds(33, 356, 63, 14);
+		lblNewLabel.setBounds(20, 359, 63, 14);
 
 		frmAsignacionDeInformes.getContentPane().add(lblNewLabel);
 		
@@ -89,23 +90,23 @@ public class AsignacionInformesView extends JFrame {
 		idPeritoSeleccionado = new JTextField();
 		idPeritoSeleccionado.setEditable(false);
 
-		idPeritoSeleccionado.setBounds(392, 353, 85, 20);
+		idPeritoSeleccionado.setBounds(451, 353, 85, 20);
 
 		frmAsignacionDeInformes.getContentPane().add(idPeritoSeleccionado);
 		idPeritoSeleccionado.setColumns(10);
 		
 		//Guardar cambios
 		btnGuardarCambios = new JButton("Asignacion Manual");
-		btnGuardarCambios.setBounds(316, 407, 141, 31);
+		btnGuardarCambios.setBounds(379, 407, 157, 23);
 		frmAsignacionDeInformes.getContentPane().add(btnGuardarCambios);
 		
 		//Cancelar cambios
 		btnCancelarCambios = new JButton("cancelar");
-		btnCancelarCambios.setBounds(30, 407, 109, 31);
+		btnCancelarCambios.setBounds(20, 407, 157, 23);
 		frmAsignacionDeInformes.getContentPane().add(btnCancelarCambios);
 		
 		JScrollPane tablePanelInformes = new JScrollPane((Component) null);
-		tablePanelInformes.setBounds(269, 54, 208, 291);
+		tablePanelInformes.setBounds(328, 54, 208, 291);
 		frmAsignacionDeInformes.getContentPane().add(tablePanelInformes);
 		
 		tabPeritos = new JTable();
@@ -115,16 +116,17 @@ public class AsignacionInformesView extends JFrame {
 		
 		JLabel lblListaPeritos = new JLabel("Peritos");
 		lblListaPeritos.setHorizontalAlignment(SwingConstants.CENTER);
-		lblListaPeritos.setBounds(259, 21, 198, 14);
+		lblListaPeritos.setBounds(328, 21, 208, 14);
 		frmAsignacionDeInformes.getContentPane().add(lblListaPeritos);
 		
-		JLabel lblNewLabel_4 = new JLabel("Nº Perito");
-		lblNewLabel_4.setBounds(269, 356, 63, 14);
+		JLabel lblNewLabel_4 = new JLabel("N.ª Perito:");
+		lblNewLabel_4.setBounds(328, 359, 63, 14);
 		frmAsignacionDeInformes.getContentPane().add(lblNewLabel_4);
 		
-		JButton btnNewButton = new JButton("Asignacion Automática");
-		btnNewButton.setBounds(149, 411, 157, 23);
-		frmAsignacionDeInformes.getContentPane().add(btnNewButton);
+
+		btnAsignacionAutomatica = new JButton("Asignacion Automática");
+		btnAsignacionAutomatica.setBounds(200, 407, 157, 23);
+		frmAsignacionDeInformes.getContentPane().add(btnAsignacionAutomatica);
 
 	}
 
@@ -138,8 +140,9 @@ public class AsignacionInformesView extends JFrame {
 	public JTable getTablaPeritos() { return this.tabPeritos; }
 
 	
-	public JButton getBtnGuardarCambios() {return this.btnGuardarCambios;}
-	public JButton getBtnCancelarCambios(){return this.btnCancelarCambios; }
+	public JButton getBtnGuardarCambiosManual() {return this.btnGuardarCambios;}
+	public JButton getBtnCancelarCambios(){return this.btnCancelarCambios;}
+	public JButton getBtnAsignacionautomatica() {return this.btnAsignacionAutomatica;}
 	
 	
 	public void setIdInforme(String idInforme) { this.idInformeSeleccionado.setText(idInforme);}
