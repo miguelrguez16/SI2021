@@ -83,7 +83,7 @@ public class AsignacionInformesModel {
 	}
 
 	public void cambiarTAP(int idPerito, int turno) {
-		System.out.println("perito: "+ idPerito + " --> turno " + turno);
+		//System.out.println("perito: "+ idPerito + " --> turno " + turno);
 		String sql = "UPDATE Perito SET turno=? where idPerito=?";
 		db.executeUpdate(sql, turno, idPerito);
 	}

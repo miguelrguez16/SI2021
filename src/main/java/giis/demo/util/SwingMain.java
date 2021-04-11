@@ -84,7 +84,7 @@ public class SwingMain {
 		frame.setTitle("Main");
 
 
-		frame.setBounds(0, 0, 287, 286);
+		frame.setBounds(0, 0, 314, 364);
 
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -169,7 +169,7 @@ public class SwingMain {
 		
 		frame.getContentPane().add(btnConsultaInscritos);
 		
-		JButton btnAsignarInformesPeritos = new JButton("Asignar Informes Peritos Miguel 2");
+		JButton btnAsignarInformesPeritos = new JButton("Asignar Informes Peritos Miguel 2 y 4");
 		btnAsignarInformesPeritos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AsignacionInformesController aico = new AsignacionInformesController(new AsignacionInformesModel(),new AsignacionInformesView());

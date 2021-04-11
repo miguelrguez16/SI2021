@@ -19,7 +19,7 @@ public class ColaAsignacionInformes {
 	public int getNuevoturno() {
 		int perito = data.getLast();
 		data.removeLast();
-		System.out.println("perito asignado a insertar "+ perito);
+		//System.out.println("perito asignado a insertar "+ perito);
 		data.addFirst(perito);
 		return perito;
 	}

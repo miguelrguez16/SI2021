@@ -1,10 +1,16 @@
 BEGIN TRANSACTION;
 INSERT INTO "Colegiado" ("idColegiado","nombre","apellidos","direccion","poblacion","telefono","datosBancarios","fechaSolicitudColegiado","titulacion","centro","anioTitulo","dni") VALUES (1,'Alvaro','fonseca','gijon','gijoon','89652345','536468536','2021-02-02','informatica','uniovi',2000,'235689'),
- (2,'Miguel','rguez','llangreu','langreo','2556454','523835684','2021-02-02','informatica','uniovi',2000,'5235423'),
- (3,'Maria','berni','el molinon','xixon','12345','12345','2021-02-02','informatica','uniovi',2000,'666'),
- (4,'Nerea','granda','Aviles','Ailes','53543','345345345','2021-02-02','informatica','uniovi',2000,'23232'),
- (5,'Frank','pichon','colloto','colloto','2432342','523824335684','2021-02-02','informatica','uniovi',2000,'42342');
-INSERT INTO "SolicitudColegio" ("idSolicitud","estado","idColegiado","fecha") VALUES (1,'pendiente',1,'2021-02-02');
+ (2,'Miguel','Rodriguez','llangreu','langreo','2556454','523835684','2021-02-02','informatica','uniovi',2000,'5235423'),
+ (3,'Maria','Berni','el molinon','xixon','12345','12345','2021-02-02','informatica','uniovi',2000,'666'),
+ (4,'Nerea','Granda','Aviles','Ailes','53543','345345345','2021-02-02','informatica','uniovi',2000,'23232'),
+ (5,'Frank','Pichon','colloto','colloto','2432342','523824335684','2021-02-02','informatica','uniovi',2000,'42342'),
+ (6,'Alvaro','Rodriguez','Xixon','Xixon','75738','7833567','2021-02-02','informatica','uniovi',2001,'56356724'),
+ (7,'Paula','Granda','Aviles','Ailes','35345','34533','2021-02-02','quimica','uniovi',2002,'57548638'),
+ (8,'Laura','Junqueras','Pola de Siero','Siero','534534','435345','2021-02-02','informatica','uniovi',2000,'678343'),
+ (9,'Adan','Valles','Sotrondio','SMR','3463','3453453','2021-02-02','informatica','uniovi',2000,'534523');
+INSERT INTO "SolicitudColegio" ("idSolicitud","estado","idColegiado","fecha") VALUES (1,'pendiente',1,'2021-02-02'),
+(2,'pendiente',8,'2021-02-02'),
+(3,'pendiente',9,'2021-02-02');
 INSERT INTO "InformesPerito" ("idInformePerito","idPerito","estado","fecha") VALUES (1,1,'asignado',NULL),
  (2,0,'pendiente',NULL),
  (3,0,'pendiente',NULL),

@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS "Colegiado" (
 DROP TABLE IF EXISTS "SolicitudColegio";
 CREATE TABLE IF NOT EXISTS "SolicitudColegio" (
 	"idSolicitud"	INTEGER UNIQUE,
-	"estado"	TEXT NOT NULL DEFAULT 'pendiente' CHECK("estado" = 'pendiente' OR "estado" = 'aprobado'),
+	"estado"	TEXT NOT NULL DEFAULT 'pendiente' CHECK("estado" = 'pendiente' OR "estado" = 'aprobado' OR "estado" = 'En trámite'),
 	"idColegiado"	INTEGER,
 	"fecha"	TEXT,
 	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado"),

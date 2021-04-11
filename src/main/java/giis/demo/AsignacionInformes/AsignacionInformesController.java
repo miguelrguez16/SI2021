@@ -136,7 +136,7 @@ public class AsignacionInformesController {
 			turnoNuevo = total - cola.turnoAsignado(perito);
 			modelo.cambiarTAP(perito, turnoNuevo);
 		}
-		System.out.println(cola.toString());
+		//System.out.println(cola.toString());
 
 	}
 
