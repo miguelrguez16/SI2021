@@ -10,6 +10,9 @@ import java.awt.event.ActionEvent;
 import giis.demo.AsignacionInformes.AsignacionInformesController;
 import giis.demo.AsignacionInformes.AsignacionInformesModel;
 import giis.demo.AsignacionInformes.AsignacionInformesView;
+import giis.demo.EnvioCol.EnvioColController;
+import giis.demo.EnvioCol.EnvioColModel;
+import giis.demo.EnvioCol.EnvioColView;
 import giis.demo.consultaInscritos.ConsultaInscritosController;
 import giis.demo.consultaInscritos.ConsultaInscritosModel;
 import giis.demo.consultaInscritos.ConsultaInscritosView;
@@ -76,7 +79,7 @@ public class SwingMain {
 		frame = new JFrame();
 		frame.setTitle("Main");
 
-		frame.setBounds(0, 0, 287, 272);
+		frame.setBounds(0, 0, 287, 286);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
@@ -182,6 +185,17 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnNuevosCursos);
+		
+		JButton bEnviarCol = new JButton("Enviar Lote Colegiados Fonseca 4");
+		bEnviarCol.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EnvioColController ecc = new EnvioColController(new EnvioColModel(), new EnvioColView());
+				ecc.initController();
+			}
+		});
+		frame.getContentPane().add(bEnviarCol);
 		
 
 	}

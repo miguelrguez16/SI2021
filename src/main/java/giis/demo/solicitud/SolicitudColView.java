@@ -69,11 +69,11 @@ public class SolicitudColView extends JFrame {
 
 		
 		JLabel lblNewLabel = new JLabel("Nombre");
-		lblNewLabel.setBounds(10, 131, 46, 14);
+		lblNewLabel.setBounds(10, 125, 46, 14);
 		frmSolicitud.getContentPane().add(lblNewLabel);
 		
 		tfNombre = new JTextField();
-		tfNombre.setBounds(87, 125, 151, 20);
+		tfNombre.setBounds(87, 122, 151, 20);
 		frmSolicitud.getContentPane().add(tfNombre);
 		tfNombre.setColumns(10);
 		
@@ -136,7 +136,7 @@ public class SolicitudColView extends JFrame {
 		frmSolicitud.getContentPane().add(lblNewLabel_7);
 		
 		tfYear = new JTextField();
-		tfYear.setBounds(381, 250, 148, 20);
+		tfYear.setBounds(381, 253, 148, 20);
 		frmSolicitud.getContentPane().add(tfYear);
 		tfYear.setColumns(10);
 		
