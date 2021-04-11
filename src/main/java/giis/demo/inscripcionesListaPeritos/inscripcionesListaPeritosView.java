@@ -20,6 +20,7 @@ public class inscripcionesListaPeritosView {
 	private JTextField TFidColegiado;
 	private JButton btnVerDatos;
 	private JButton btnInscripcionPerito;
+	private JButton btnReset;
 	private static JTextField TFnombre;
 	private static JTextField TFapellidos;
 	private static JTextField TFdireccion;
@@ -31,6 +32,7 @@ public class inscripcionesListaPeritosView {
 	private static JTextField TFcentro;
 	private static JTextField TFanio;
 	private static JTextField TFdni;
+	private JLabel Lid;
 	
 	public inscripcionesListaPeritosView() {
 		initialize();
@@ -59,9 +61,9 @@ public class inscripcionesListaPeritosView {
 		frame.getContentPane().add(TFidColegiado);
 		TFidColegiado.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Datos personales y de contacto del colegiado");
+		JLabel lblNewLabel_2 = new JLabel("Datos personales y de contacto del idColegiado");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_2.setBounds(10, 109, 514, 20);
+		lblNewLabel_2.setBounds(10, 109, 340, 20);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		btnVerDatos = new JButton("Visualizar datos del colegiado");
@@ -125,6 +127,7 @@ public class inscripcionesListaPeritosView {
 		frame.getContentPane().add(lblNewLabel_3_2_2_4);
 		
 		btnInscripcionPerito = new JButton("Generar inscripción en la lista de peritos");
+		btnInscripcionPerito.setEnabled(false);
 		btnInscripcionPerito.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnInscripcionPerito.setBounds(250, 288, 274, 25);
 		frame.getContentPane().add(btnInscripcionPerito);
@@ -194,12 +197,24 @@ public class inscripcionesListaPeritosView {
 		TFdni.setColumns(10);
 		TFdni.setBounds(374, 260, 150, 20);
 		frame.getContentPane().add(TFdni);
+		
+		btnReset = new JButton("Reset");
+		btnReset.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnReset.setBounds(418, 97, 106, 20);
+		frame.getContentPane().add(btnReset);
+		
+		Lid = new JLabel("");
+		Lid.setFont(new Font("Tahoma", Font.BOLD, 14));
+		Lid.setBounds(338, 109, 50, 20);
+		frame.getContentPane().add(Lid);
 	}
 
 	public JFrame getFrame() { return this.frame;}
 	public JTextField getTFidColegiado() {return TFidColegiado;}
 	public JButton getBtnVerDatos() {return btnVerDatos;}
 	public JButton getBtnInscripcionPerito() { return btnInscripcionPerito;}
+	public JButton getBtnReset() {return btnReset;}
+	public JLabel getLid() {return Lid;}
 	
 	public static String getNombre() { return TFnombre.getText();}
 	public static String getApellidos() { return TFapellidos.getText();}
@@ -213,6 +228,7 @@ public class inscripcionesListaPeritosView {
 	public static String getCentro() { return TFcentro.getText();}
 	public static String getAnio() { return TFanio.getText();}
 
+	
 	public JTextField getTFnombre() {return TFnombre;}
 	public JTextField getTFapellidos() {return TFapellidos;}
 	public JTextField getTFdireccion() {return TFdireccion;}
