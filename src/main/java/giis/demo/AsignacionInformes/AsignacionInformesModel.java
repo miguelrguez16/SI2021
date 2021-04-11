@@ -29,7 +29,8 @@ public class AsignacionInformesModel {
 	 */
 	public List<PeritoDisplayDTO> getPeritos() {
 		String sql = "Select p.idPerito, c.nombre, p.turno " + "from Perito p "
-				+ "inner join Colegiado as c on p.idColegiado = c.idColegiado " + "where p.estado='aprobado' "
+				+ "inner join Colegiado as c on p.idColegiado = c.idColegiado " 
+				+ "where p.estado='aprobado' "
 				+ "order by p.turno";
 		return db.executeQueryPojo(PeritoDisplayDTO.class, sql);
 	}

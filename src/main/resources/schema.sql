@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS "Precolegiado" (
 	"id"	INTEGER NOT NULL UNIQUE,
 	"nombre"	TEXT,
 	"apellidos"	TEXT,
-	"dni"	INTEGER,
+	"dni"	TEXT,
 	"direccion"	TEXT,
 	"datosCuenta"	TEXT,
 	"fechaSolicitudPrecolegiado"	TEXT,
