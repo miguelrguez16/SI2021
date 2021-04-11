@@ -120,5 +120,21 @@ public class AsignacionInformesModel {
 		}
 		return perito;
 	}
+	
+	public String getNombrePerito(int idPerito) {
+		String nombre =null;
+		try {
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+			java.sql.Statement s = conn.createStatement();
+			String sql = "select c.nombre from Colegiado as c inner join Perito as p on p.idColegiado = c.idColegiado where p.idPerito=\'"+idPerito+"\'";
+			ResultSet rs = ((java.sql.Statement) s).executeQuery(sql);
+			while (rs.next()) {
+				nombre = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nombre;
+	}
 
 }
