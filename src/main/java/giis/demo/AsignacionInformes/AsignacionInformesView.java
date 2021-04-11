@@ -79,7 +79,7 @@ public class AsignacionInformesView extends JFrame {
 		tabInformes.setBackground(SystemColor.control);
 		JScrollPane tablePanel = new JScrollPane(tabInformes);
 
-		tablePanel.setBounds(20, 54, 192, 291);
+		tablePanel.setBounds(20, 54, 208, 291);
 
 		frmAsignacionDeInformes.getContentPane().add(tablePanel);
 		
@@ -92,7 +92,7 @@ public class AsignacionInformesView extends JFrame {
 		idInformeSeleccionado = new JTextField();
 		idInformeSeleccionado.setEditable(false);
 
-		idInformeSeleccionado.setBounds(124, 356, 85, 20);
+		idInformeSeleccionado.setBounds(143, 356, 85, 20);
 
 		frmAsignacionDeInformes.getContentPane().add(idInformeSeleccionado);
 		idInformeSeleccionado.setColumns(10);
