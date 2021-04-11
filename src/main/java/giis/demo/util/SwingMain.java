@@ -26,6 +26,10 @@ import giis.demo.inscripciones.InscripcionesController;
 import giis.demo.inscripciones.InscripcionesModel;
 import giis.demo.inscripciones.InscripcionesView;
 import giis.demo.inscripciones.JustificanteView;
+import giis.demo.inscripcionesListaPeritos.inscripcionesListaPeritosController;
+import giis.demo.inscripcionesListaPeritos.inscripcionesListaPeritosModel;
+import giis.demo.inscripcionesListaPeritos.inscripcionesListaPeritosView;
+import giis.demo.inscripcionesListaPeritos.justificanteAltaView;
 import giis.demo.nuevosCursos.NuevosCursoController;
 import giis.demo.nuevosCursos.NuevosCursoModel;
 import giis.demo.nuevosCursos.NuevosCursoView;
@@ -79,7 +83,9 @@ public class SwingMain {
 		frame = new JFrame();
 		frame.setTitle("Main");
 
+
 		frame.setBounds(0, 0, 287, 286);
+
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
@@ -115,15 +121,13 @@ public class SwingMain {
 			}
 		});
 		
-		
-		
 		frame.getContentPane().add(btnNewButton);
 
-		JButton btnNewButton_2 = new JButton("Inscripciones Cursos Maria 1");
-		frame.getContentPane().add(btnNewButton_2);
+		JButton btnInscripcionesCursos = new JButton("Inscripciones Cursos Maria 1 y 3");
+		frame.getContentPane().add(btnInscripcionesCursos);
 
 		
-		btnNewButton_2.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+		btnInscripcionesCursos.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				InscripcionesController controller2= new InscripcionesController(new InscripcionesModel()
 						, new InscripcionesView(), new JustificanteView());
@@ -186,6 +190,7 @@ public class SwingMain {
 		});
 		frame.getContentPane().add(btnNuevosCursos);
 		
+
 		JButton bEnviarCol = new JButton("Enviar Lote Colegiados Fonseca 4");
 		bEnviarCol.addActionListener(new ActionListener() {
 			
@@ -196,6 +201,18 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(bEnviarCol);
+
+		JButton btnInscripcionesListaPeritos = new JButton("Inscripciones Lista Peritos Maria 3");
+		btnInscripcionesListaPeritos.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				inscripcionesListaPeritosController inscripcionesPeritosC= 
+          new inscripcionesListaPeritosController(new inscripcionesListaPeritosModel(), new inscripcionesListaPeritosView(), new justificanteAltaView());
+				inscripcionesPeritosC.initController();
+			}
+		});
+		frame.getContentPane().add(btnInscripcionesListaPeritos);
+
 		
 
 	}

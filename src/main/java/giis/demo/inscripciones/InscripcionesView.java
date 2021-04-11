@@ -51,7 +51,7 @@ public class InscripcionesView {
 
 	private void initialize() {
 		frame=new JFrame();
-		frame.setBounds(0,0,618,603);
+		frame.setBounds(0,0,660,603);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
 		frame.setTitle("Inscripciones en cursos");
@@ -61,11 +61,11 @@ public class InscripcionesView {
 		JLabel lblNewLabel = new JLabel("Lista de cursos con inscripción abierta");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(10, 46, 583, 26);
+		lblNewLabel.setBounds(10, 46, 624, 26);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JScrollPane tablePanel = new JScrollPane((Component) null);
-		tablePanel.setBounds(10, 83, 583, 100);
+		tablePanel.setBounds(10, 83, 624, 100);
 		frame.getContentPane().add(tablePanel);
 		
 		table = new JTable();
@@ -77,6 +77,7 @@ public class InscripcionesView {
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		TFnombre = new JTextField();
+		TFnombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		TFnombre.setBounds(170, 410, 150, 20);
 		frame.getContentPane().add(TFnombre);
 		TFnombre.setColumns(10);
@@ -87,6 +88,7 @@ public class InscripcionesView {
 		frame.getContentPane().add(lblNewLabel_6);
 		
 		TFapellidos = new JTextField();
+		TFapellidos.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		TFapellidos.setBounds(170, 440, 150, 20);
 		frame.getContentPane().add(TFapellidos);
 		TFapellidos.setColumns(10);
@@ -97,6 +99,7 @@ public class InscripcionesView {
 		frame.getContentPane().add(lblNewLabel_7);
 		
 		TFdireccion = new JTextField();
+		TFdireccion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		TFdireccion.setBounds(170, 470, 150, 20);
 		frame.getContentPane().add(TFdireccion);
 		TFdireccion.setColumns(10);
@@ -112,11 +115,13 @@ public class InscripcionesView {
 		frame.getContentPane().add(lblNewLabel_8);
 		
 		TFpoblacion = new JTextField();
+		TFpoblacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		TFpoblacion.setBounds(170, 500, 150, 20);
 		frame.getContentPane().add(TFpoblacion);
 		TFpoblacion.setColumns(10);
 		
 		TFtelefono = new JTextField();
+		TFtelefono.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		TFtelefono.setBounds(170, 530, 150, 20);
 		frame.getContentPane().add(TFtelefono);
 		TFtelefono.setColumns(10);
@@ -125,13 +130,13 @@ public class InscripcionesView {
 		lblNewLabel_9.setForeground(Color.BLACK);
 		lblNewLabel_9.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lblNewLabel_9.setBounds(10, 10, 583, 25);
+		lblNewLabel_9.setBounds(10, 10, 624, 25);
 		frame.getContentPane().add(lblNewLabel_9);
 		
 		JLabel lblNewLabel_10 = new JLabel("Inscribirse a un curso como Colegiado");
 		lblNewLabel_10.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_10.setBounds(10, 194, 583, 20);
+		lblNewLabel_10.setBounds(10, 194, 624, 20);
 		frame.getContentPane().add(lblNewLabel_10);
 		
 		JLabel lblNewLabel_11 = new JLabel("Introduzca el idColegiado :");
@@ -140,28 +145,28 @@ public class InscripcionesView {
 		frame.getContentPane().add(lblNewLabel_11);
 		
 		TFdniColegiado = new JTextField();
-		TFdniColegiado.setBounds(213, 226, 100, 20);
+		TFdniColegiado.setBounds(213, 226, 107, 20);
 		frame.getContentPane().add(TFdniColegiado);
 		TFdniColegiado.setColumns(10);
 		
 		bInscripcionColegiado = new JButton("Inscripción como colegiado");
 		bInscripcionColegiado.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		bInscripcionColegiado.setBounds(393, 226, 200, 20);
+		bInscripcionColegiado.setBounds(393, 226, 241, 20);
 		frame.getContentPane().add(bInscripcionColegiado);
 		
 		JLabel lblNewLabel_12 = new JLabel("Inscribirse a un curso como Colectivo");
 		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_12.setBounds(10, 322, 583, 20);
+		lblNewLabel_12.setBounds(10, 322, 624, 20);
 		frame.getContentPane().add(lblNewLabel_12);
 		
 		bInscripcionColectivo = new JButton("Inscripción como colectivo");
 		bInscripcionColectivo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		bInscripcionColectivo.setBounds(393, 354, 200, 20);
+		bInscripcionColectivo.setBounds(393, 354, 241, 20);
 		frame.getContentPane().add(bInscripcionColectivo);
 		
 		TFdniColectivo = new JTextField();
-		TFdniColectivo.setBounds(213, 354, 100, 20);
+		TFdniColectivo.setBounds(213, 354, 107, 20);
 		frame.getContentPane().add(TFdniColectivo);
 		TFdniColectivo.setColumns(10);
 		
@@ -178,18 +183,21 @@ public class InscripcionesView {
 		lblNewLabel_5 = new JLabel("Datos del nuevo colectivo a inscribir");
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_5.setBounds(10, 386, 583, 20);
+		lblNewLabel_5.setBounds(10, 386, 624, 20);
 		frame.getContentPane().add(lblNewLabel_5);
 		
 		RBempresa = new JRadioButton("Empresa");
+		RBempresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		RBempresa.setBounds(393, 440, 109, 23);
 		frame.getContentPane().add(RBempresa);
 		
 		RBestudiante = new JRadioButton("Estudiante");
+		RBestudiante.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		RBestudiante.setBounds(393, 470, 109, 23);
 		frame.getContentPane().add(RBestudiante);
 		
 		RBexterno = new JRadioButton("Externo");
+		RBexterno.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		RBexterno.setBounds(393, 500, 109, 23);
 		frame.getContentPane().add(RBexterno);
 		
@@ -201,11 +209,11 @@ public class InscripcionesView {
 		JLabel lblNewLabel_13 = new JLabel("Inscribirse a un curso como Precolegiado");
 		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_13.setBounds(10, 258, 582, 20);
+		lblNewLabel_13.setBounds(10, 258, 624, 20);
 		frame.getContentPane().add(lblNewLabel_13);
 		
 		TFidPre = new JTextField();
-		TFidPre.setBounds(213, 290, 100, 20);
+		TFidPre.setBounds(213, 290, 107, 20);
 		frame.getContentPane().add(TFidPre);
 		TFidPre.setColumns(10);
 		
@@ -216,7 +224,7 @@ public class InscripcionesView {
 		
 		bInscripcionPrecolegiado = new JButton("Inscripción como precolegiado");
 		bInscripcionPrecolegiado.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		bInscripcionPrecolegiado.setBounds(367, 288, 226, 20);
+		bInscripcionPrecolegiado.setBounds(393, 288, 241, 20);
 		frame.getContentPane().add(bInscripcionPrecolegiado);
 	}
 

@@ -46,7 +46,7 @@ public class InscripcionesModel {
 	}
 	
 	public List<CursoDisplayDTO> getListaCursosModelo() {
-		String sql="SELECT idCurso, nombre,fechaInicio FROM CURSO WHERE estado ='abierto'";
+		String sql="SELECT idCurso, nombre, fechaInicio, precio, precioPrecolegiado, precioEstudiante, precioEmpresa, precioExterno FROM CURSO WHERE estado ='abierto'";
 		return db.executeQueryPojo(CursoDisplayDTO.class, sql);
 	}
 	

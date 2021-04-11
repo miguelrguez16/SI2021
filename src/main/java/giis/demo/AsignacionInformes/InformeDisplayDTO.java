@@ -17,8 +17,5 @@ public class InformeDisplayDTO {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	
-	
-	
 
 }
