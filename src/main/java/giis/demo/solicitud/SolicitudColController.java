@@ -58,8 +58,10 @@ public class SolicitudColController {
 		DNIpre = null;
 		vistacol.getBtnEnviar().addActionListener(new ActionListener() {
 
+			//Metodos para la ventana de solicitudes de colegiados
 			public void actionPerformed(ActionEvent e) {
-				
+				if (compruebaCampoCol()) {
+					if (compruebaDNIcol()) {
 				DNI = SolicitudColView.getDNI();
 				String aux=modelo.ComprobarDNI(DNI);
 				if (aux==null) {
@@ -80,15 +82,23 @@ public class SolicitudColController {
 					
 					
 					
-				} 
+				}
+				}
+					else JOptionPane.showMessageDialog(null, "El Dni debe tener 9 caracteres");
+			}
+				else JOptionPane.showMessageDialog(null, "No se pueden dejar campos en blanco");
 			}
 
 		});
+		
+		//Metodos para la ventana de solicitudes de Precolegiados
 		
 		vistapre.getBtnEnviarpre().addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				
+				if (compruebaCampo()) {
+					if (compruebaDNIpre()) {
 				DNIpre = SolicitudPreView.getDNIpre();
 				String aux=modelo.ComprobarDNIpre(DNIpre);
 				if (aux==null) {
@@ -122,6 +132,12 @@ public class SolicitudColController {
 					
 					
 				} 
+				
+				}
+					else JOptionPane.showMessageDialog(null, "El Dni debe tener 9 caracteres");
+			}
+			
+				else JOptionPane.showMessageDialog(null, "No se pueden dejar campos en blanco");
 			}
 
 		});
@@ -171,6 +187,58 @@ public class SolicitudColController {
 			}
 		});
 		
+	}
+	
+	public boolean compruebaCampo() {
+		if (vistapre.getTfApellidos().equals(null)||vistapre.getTfApellidos().getText().isEmpty() || 
+				vistapre.getTfNombre().equals(null)||vistapre.getTfNombre().getText().isEmpty() ||
+				vistapre.getTfDNI().equals(null)||vistapre.getTfDNI().getText().isEmpty() ||
+				vistapre.getTfDireccion().equals(null)||vistapre.getTfDireccion().getText().isEmpty() ||
+				vistapre.getTfPoblacion().equals(null)||vistapre.getTfPoblacion().getText().isEmpty() ||
+				vistapre.getTfTelefono().equals(null)||vistapre.getTfTelefono().getText().isEmpty() ||
+				vistapre.getTfTitulacion().equals(null)||vistapre.getTfTitulacion().getText().isEmpty() ||
+				vistapre.getTfCentro().equals(null)||vistapre.getTfCentro().getText().isEmpty() ||
+				vistapre.getTfCuenta().equals(null)||vistapre.getTfCuenta().getText().isEmpty()) {
+			return false;
+		}
+		else return true;
+	}
+	
+	public boolean compruebaCampoCol() {
+		
+		if (vistacol.getTfApellidos().equals(null)||vistacol.getTfApellidos().getText().isEmpty() || 
+				vistacol.getTfNombre().equals(null)||vistacol.getTfNombre().getText().isEmpty() ||
+				vistacol.getTfDNI().equals(null)||vistacol.getTfDNI().getText().isEmpty() ||
+				vistacol.getTfDireccion().equals(null)||vistacol.getTfDireccion().getText().isEmpty() ||
+				vistacol.getTfPoblacion().equals(null)||vistacol.getTfPoblacion().getText().isEmpty() ||
+				vistacol.getTfTelefono().equals(null)||vistacol.getTfTelefono().getText().isEmpty() ||
+				vistacol.getTfTitulacion().equals(null)||vistacol.getTfTitulacion().getText().isEmpty() ||
+				vistacol.getTfCentro().equals(null)||vistacol.getTfCentro().getText().isEmpty() ||
+				vistacol.getTfCuenta().equals(null)||vistacol.getTfCuenta().getText().isEmpty() ||
+				vistacol.getTfYear().equals(null)||vistacol.getTfYear().getText().isEmpty()) {
+			return false;
+		}
+		else return true;
+	}
+	
+	public boolean compruebaDNIcol() {
+		int contador=0;
+		String dni = vistacol.getDNI();
+		for (int i=0;i<dni.length();i++) {
+			contador++;
+		}
+		if (contador==9) {return true;}
+		else return false;
+	}
+	
+	public boolean compruebaDNIpre() {
+		int contador=0;
+		String dni = vistapre.getDNIpre();
+		for (int i=0;i<dni.length();i++) {
+			contador++;
+		}
+		if (contador==9) {return true;}
+		else return false;
 	}
 
 }
