@@ -103,7 +103,7 @@ public class NuevosCursoView extends JFrame {
 		nombreCurso.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Nombre Curso:");
-		lblNewLabel.setBounds(46, 386, 86, 14);
+		lblNewLabel.setBounds(37, 386, 86, 14);
 		frmNuevosCursos.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_5 = new JLabel("Precio:");
@@ -124,7 +124,7 @@ public class NuevosCursoView extends JFrame {
 		frmNuevosCursos.getContentPane().add(btnVaciar);
 		
 		JLabel lblNewLabel_1 = new JLabel("Fecha Inicio:");
-		lblNewLabel_1.setBounds(48, 430, 71, 14);
+		lblNewLabel_1.setBounds(37, 430, 71, 14);
 		frmNuevosCursos.getContentPane().add(lblNewLabel_1);
 
 	}

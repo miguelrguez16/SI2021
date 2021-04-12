@@ -53,7 +53,7 @@ import javax.swing.SwingConstants;
  */
 public class SwingMain {
 
-	private JFrame frame;
+	private JFrame frmCoiipa;
 
 	/**
 	 * Launch the application.
@@ -63,7 +63,7 @@ public class SwingMain {
 			public void run() {
 				try {
 					SwingMain window = new SwingMain();
-					window.frame.setVisible(true);
+					window.frmCoiipa.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace(); // NOSONAR codigo autogenerado
 				}
@@ -83,15 +83,15 @@ public class SwingMain {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setTitle("Main");
+		frmCoiipa = new JFrame();
+		frmCoiipa.setTitle("COIIPA - Ventana Principal");
 
 
-		frame.setBounds(0, 0, 600, 350);
+		frmCoiipa.setBounds(0, 0, 600, 350);
 
 
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null);
+		frmCoiipa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmCoiipa.setLocationRelativeTo(null);
 
 		JButton btnInicializarBaseDeDatos = new JButton("Inicializar Base de Datos en Blanco");
 		btnInicializarBaseDeDatos.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -102,8 +102,8 @@ public class SwingMain {
 				db.createDatabase(false);
 			}
 		});
-		frame.getContentPane().setLayout(null);
-		frame.getContentPane().add(btnInicializarBaseDeDatos);
+		frmCoiipa.getContentPane().setLayout(null);
+		frmCoiipa.getContentPane().add(btnInicializarBaseDeDatos);
 
 		JButton btnCargarDatosIniciales = new JButton("Cargar Datos Iniciales para Pruebas");
 		btnCargarDatosIniciales.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -115,7 +115,7 @@ public class SwingMain {
 				db.loadDatabase();
 			}
 		});
-		frame.getContentPane().add(btnCargarDatosIniciales);
+		frmCoiipa.getContentPane().add(btnCargarDatosIniciales);
 		
 		JButton btnNewButton = new JButton("Solicitud para pre/colegiarse");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -130,12 +130,12 @@ public class SwingMain {
 			}
 		});
 		
-		frame.getContentPane().add(btnNewButton);
+		frmCoiipa.getContentPane().add(btnNewButton);
 
 		JButton btnInscripcionesCursos = new JButton("Inscripción a Cursos");
 		btnInscripcionesCursos.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnInscripcionesCursos.setBounds(310, 150, 264, 20);
-		frame.getContentPane().add(btnInscripcionesCursos);
+		frmCoiipa.getContentPane().add(btnInscripcionesCursos);
 
 		
 		btnInscripcionesCursos.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
@@ -158,7 +158,7 @@ public class SwingMain {
 
 			}
 		});
-		frame.getContentPane().add(btnEjecutarCambiosCursos);
+		frmCoiipa.getContentPane().add(btnEjecutarCambiosCursos);
 		
 		JButton btnCursosAnio = new JButton("Lista de Curso este Año");
 		btnCursosAnio.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -170,7 +170,7 @@ public class SwingMain {
 				controllerC.initController();
 			}
 		});
-		frame.getContentPane().add(btnCursosAnio);
+		frmCoiipa.getContentPane().add(btnCursosAnio);
 		
 		
 		JButton btnConsultaInscritos = new JButton("Consultar Inscritos a Cursos");
@@ -184,7 +184,7 @@ public class SwingMain {
 			}
 		});
 		
-		frame.getContentPane().add(btnConsultaInscritos);
+		frmCoiipa.getContentPane().add(btnConsultaInscritos);
 		
 		JButton btnAsignarInformesPeritos = new JButton("Asignar Informes a Peritos");
 		btnAsignarInformesPeritos.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -196,7 +196,7 @@ public class SwingMain {
 			}
 		});
 		
-		frame.getContentPane().add(btnAsignarInformesPeritos);
+		frmCoiipa.getContentPane().add(btnAsignarInformesPeritos);
 		
 		JButton btnNuevosCursos = new JButton("Planificar Nuevos Cursos");
 		btnNuevosCursos.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -209,7 +209,7 @@ public class SwingMain {
 				ncc.initController();
 			}
 		});
-		frame.getContentPane().add(btnNuevosCursos);
+		frmCoiipa.getContentPane().add(btnNuevosCursos);
 		
 
 		JButton bEnviarCol = new JButton("Enviar Lote de Colegiados ");
@@ -223,7 +223,7 @@ public class SwingMain {
 				ecc.initController();
 			}
 		});
-		frame.getContentPane().add(bEnviarCol);
+		frmCoiipa.getContentPane().add(bEnviarCol);
 
 		JButton btnInscripcionesListaPeritos = new JButton("Inscripción a la Lista de Peritos");
 		btnInscripcionesListaPeritos.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -236,44 +236,44 @@ public class SwingMain {
 				inscripcionesPeritosC.initController();
 			}
 		});
-		frame.getContentPane().add(btnInscripcionesListaPeritos);
+		frmCoiipa.getContentPane().add(btnInscripcionesListaPeritos);
 		
 		JLabel lblNewLabel = new JLabel("COOIPA");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
 		lblNewLabel.setBounds(10, 11, 564, 24);
-		frame.getContentPane().add(lblNewLabel);
+		frmCoiipa.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Cursos");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_1.setBounds(10, 150, 264, 20);
-		frame.getContentPane().add(lblNewLabel_1);
+		frmCoiipa.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Base de datos");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_2.setBounds(10, 60, 264, 20);
-		frame.getContentPane().add(lblNewLabel_2);
+		frmCoiipa.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Informes");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_3.setBounds(310, 210, 250, 20);
-		frame.getContentPane().add(lblNewLabel_3);
+		frmCoiipa.getContentPane().add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_5 = new JLabel("Solicitudes/Inscripciones");
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_5.setBounds(310, 60, 264, 20);
-		frame.getContentPane().add(lblNewLabel_5);
+		frmCoiipa.getContentPane().add(lblNewLabel_5);
 
 		
 
 	}
 
 	public JFrame getFrame() {
-		return this.frame;
+		return this.frmCoiipa;
 	}
 }
 
