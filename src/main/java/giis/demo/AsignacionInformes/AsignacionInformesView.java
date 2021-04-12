@@ -51,13 +51,13 @@ public class AsignacionInformesView extends JFrame {
 		frmAsignacionDeInformes.setTitle("Asignacion de Informes Peritales");
 		frmAsignacionDeInformes.setName("Asignacion de Informes Peritales");
 		
-		frmAsignacionDeInformes.setBounds(0, 0, 562, 502);
+		frmAsignacionDeInformes.setBounds(0, 0, 545, 502);
 
 		frmAsignacionDeInformes.getContentPane().setLayout(null);
 		frmAsignacionDeInformes.setLocationRelativeTo(null);
 		
 		lblListaInformesPendientes = new JLabel("Informes Pendientes");
-		lblListaInformesPendientes.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblListaInformesPendientes.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblListaInformesPendientes.setHorizontalAlignment(SwingConstants.LEFT);
 
 		lblListaInformesPendientes.setBounds(20, 21, 214, 14);
@@ -76,16 +76,16 @@ public class AsignacionInformesView extends JFrame {
 
 		frmAsignacionDeInformes.getContentPane().add(tablePanel);
 		
-		lblNewLabel = new JLabel("N.º informe:");
+		lblNewLabel = new JLabel("Informe seleccionado:");
 
-		lblNewLabel.setBounds(20, 359, 63, 14);
+		lblNewLabel.setBounds(20, 359, 134, 14);
 
 		frmAsignacionDeInformes.getContentPane().add(lblNewLabel);
 		
 		idInformeSeleccionado = new JTextField();
 		idInformeSeleccionado.setEditable(false);
 
-		idInformeSeleccionado.setBounds(124, 356, 85, 20);
+		idInformeSeleccionado.setBounds(164, 356, 45, 20);
 
 		frmAsignacionDeInformes.getContentPane().add(idInformeSeleccionado);
 		idInformeSeleccionado.setColumns(10);
@@ -93,23 +93,23 @@ public class AsignacionInformesView extends JFrame {
 		idPeritoSeleccionado = new JTextField();
 		idPeritoSeleccionado.setEditable(false);
 
-		idPeritoSeleccionado.setBounds(451, 353, 85, 20);
+		idPeritoSeleccionado.setBounds(457, 356, 45, 20);
 
 		frmAsignacionDeInformes.getContentPane().add(idPeritoSeleccionado);
 		idPeritoSeleccionado.setColumns(10);
 		
 		//Guardar cambios
 		btnGuardarCambios = new JButton("Asignacion Manual");
-		btnGuardarCambios.setBounds(379, 429, 157, 23);
+		btnGuardarCambios.setBounds(345, 429, 157, 23);
 		frmAsignacionDeInformes.getContentPane().add(btnGuardarCambios);
 		
 		//Cancelar cambios
 		btnCancelarCambios = new JButton("Cancelar");
-		btnCancelarCambios.setBounds(20, 429, 157, 23);
+		btnCancelarCambios.setBounds(212, 429, 99, 23);
 		frmAsignacionDeInformes.getContentPane().add(btnCancelarCambios);
 		
 		JScrollPane tablePanelInformes = new JScrollPane((Component) null);
-		tablePanelInformes.setBounds(328, 54, 208, 291);
+		tablePanelInformes.setBounds(313, 54, 192, 291);
 		frmAsignacionDeInformes.getContentPane().add(tablePanelInformes);
 		
 		tabPeritos = new JTable();
@@ -118,22 +118,22 @@ public class AsignacionInformesView extends JFrame {
 		tablePanelInformes.setViewportView(tabPeritos);
 		
 		JLabel lblListaPeritos = new JLabel("Peritos");
-		lblListaPeritos.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblListaPeritos.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblListaPeritos.setHorizontalAlignment(SwingConstants.CENTER);
-		lblListaPeritos.setBounds(328, 21, 208, 14);
+		lblListaPeritos.setBounds(313, 21, 191, 14);
 		frmAsignacionDeInformes.getContentPane().add(lblListaPeritos);
 		
-		JLabel lblNewLabel_4 = new JLabel("N.ª Perito:");
-		lblNewLabel_4.setBounds(328, 359, 63, 14);
+		JLabel lblNewLabel_4 = new JLabel("Perito seleccionado:");
+		lblNewLabel_4.setBounds(313, 359, 128, 14);
 		frmAsignacionDeInformes.getContentPane().add(lblNewLabel_4);
 		
 
 		btnAsignacionAutomatica = new JButton("Asignacion Automática");
-		btnAsignacionAutomatica.setBounds(200, 429, 157, 23);
+		btnAsignacionAutomatica.setBounds(20, 429, 165, 23);
 		frmAsignacionDeInformes.getContentPane().add(btnAsignacionAutomatica);
 		
 		 lblMensaje = new JLabel("");
-		lblMensaje.setBounds(124, 404, 267, 14);
+		lblMensaje.setBounds(138, 384, 267, 34);
 		frmAsignacionDeInformes.getContentPane().add(lblMensaje);
 
 	}

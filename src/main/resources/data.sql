@@ -1,13 +1,13 @@
 BEGIN TRANSACTION;
-INSERT INTO "Colegiado" ("idColegiado","nombre","apellidos","direccion","poblacion","telefono","datosBancarios","fechaSolicitudColegiado","titulacion","centro","anioTitulo","dni") VALUES (1,'Alvaro','fonseca','gijon','gijoon','89652345','536468536','2021-02-02','informatica','uniovi',2000,'235689'),
- (2,'Miguel','Rodriguez','llangreu','langreo','2556454','523835684','2021-02-02','informatica','uniovi',2000,'5235423'),
- (3,'Maria','Berni','el molinon','xixon','12345','12345','2021-02-02','informatica','uniovi',2000,'666'),
- (4,'Nerea','Granda','Aviles','Ailes','53543','345345345','2021-02-02','informatica','uniovi',2000,'23232'),
- (5,'Frank','Pichon','colloto','colloto','2432342','523824335684','2021-02-02','informatica','uniovi',2000,'42342'),
- (6,'Alvaro','Rodriguez','Xixon','Xixon','75738','7833567','2021-02-02','informatica','uniovi',2001,'56356724'),
- (7,'Paula','Granda','Aviles','Ailes','35345','34533','2021-02-02','quimica','uniovi',2002,'57548638'),
- (8,'Laura','Junqueras','Pola de Siero','Siero','534534','435345','2021-02-02','informatica','uniovi',2000,'678343'),
- (9,'Adan','Valles','Sotrondio','SMR','3463','3453453','2021-02-02','informatica','uniovi',2000,'534523');
+INSERT INTO "Colegiado" ("idColegiado","nombre","apellidos","direccion","poblacion","telefono","datosBancarios","fechaSolicitudColegiado","titulacion","centro","anioTitulo","dni") VALUES (1,'Alvaro','fonseca','gijon','gijoon','89652345','536468536','2021-02-02','informatica','uniovi',2000,'72746653E'),
+ (2,'Miguel','Rodriguez','llangreu','langreo','2556454','523835684','2021-02-02','informatica','uniovi',2000,'63178588A'),
+ (3,'Maria','Berni','el molinon','xixon','12345','12345','2021-02-02','informatica','uniovi',2000,'62810739Q'),
+ (4,'Nerea','Granda','Aviles','Ailes','53543','345345345','2021-02-02','informatica','uniovi',2000,'77600235Y'),
+ (5,'Frank','Pichon','colloto','colloto','2432342','523824335684','2021-02-02','informatica','uniovi',2000,'32404476Y'),
+ (6,'Alvaro','Rodriguez','Xixon','Xixon','75738','7833567','2021-02-02','informatica','uniovi',2001,'01039207K'),
+ (7,'Paula','Granda','Aviles','Ailes','35345','34533','2021-02-02','quimica','uniovi',2002,'65151727H'),
+ (8,'Laura','Junqueras','Pola de Siero','Siero','534534','435345','2021-02-02','informatica','uniovi',2000,'05891104E'),
+ (9,'Adan','Valles','Sotrondio','SMR','3463','3453453','2021-02-02','informatica','uniovi',2000,'74028086X');
 INSERT INTO "SolicitudColegio" ("idSolicitud","estado","idColegiado","fecha") VALUES (1,'pendiente',1,'2021-02-02'),
 (2,'pendiente',8,'2021-02-02'),
 (3,'pendiente',9,'2021-02-02');
@@ -34,6 +34,6 @@ INSERT INTO "Curso" ("idCurso","nombre","precio","plazasTotales","fechaInicio","
  (4,'eclipse',34.0,32,'2021-04-02','2021-06-04','2021-02-02','2021-03-04','finalizado',20,10,5,2),
  (5,'ethereum',45.0,47,'2021-04-02','2021-06-04','2021-02-02','2021-03-04','abierto',20,10,5,2),
  (6,'bitcoin',32.0,43,'2021-04-02','2021-06-04','2021-02-02','2021-03-04','abierto',20,10,5,2);
-INSERT INTO "Colectivo" ("idColectivo","nombre","apellidos","dni","direccion","poblacion","telefono","tipoColectivo") VALUES (1,'Samuel','rguez','3','la felguera','langreo','5345345','estudiante');
-INSERT INTO "Precolegiado" ("id","nombre","apellidos","dni","direccion","datosCuenta","fechaSolicitudPrecolegiado","titulacion","poblacion","telefono","centro") VALUES (1,'Sergio','hndz',2,'rafael','453454','2021-04-06','ingenieria','la felguera',NULL,NULL);
+INSERT INTO "Colectivo" ("idColectivo","nombre","apellidos","dni","direccion","poblacion","telefono","tipoColectivo") VALUES (1,'Samuel','rguez','3','la felguera','langreo','12466061S','estudiante');
+INSERT INTO "Precolegiado" ("id","nombre","apellidos","dni","direccion","datosCuenta","fechaSolicitudPrecolegiado","titulacion","poblacion","telefono","centro") VALUES (1,'Sergio','hndz','23578734P','rafael','453454','2021-04-06','ingenieria','la felguera',NULL,NULL);
 COMMIT;

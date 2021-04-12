@@ -41,11 +41,10 @@ public class AsignacionInformesController {
 	public void initController() {
 		rellenarColaPeritos();
 
-		vista.getBtnGuardarCambiosManual()
-				.addActionListener(e -> SwingUtil.exceptionWrapper(() -> guardarAsignacionInformesManual()));
+		vista.getBtnGuardarCambiosManual().addActionListener(e -> SwingUtil.exceptionWrapper(() -> guardarAsignacionInformesManual()));
 		vista.getBtnCancelarCambios().addActionListener(e -> SwingUtil.exceptionWrapper(() -> cancelarCambios()));
-		vista.getBtnAsignacionautomatica()
-				.addActionListener(e -> SwingUtil.exceptionWrapper(() -> guardarAsignacionInformesAutomatica()));
+		
+		vista.getBtnAsignacionautomatica().addActionListener(e -> SwingUtil.exceptionWrapper(() -> guardarAsignacionInformesAutomatica()));
 
 		vista.getTablaInformes().addMouseListener(new MouseAdapter() {
 			@Override
@@ -64,15 +63,10 @@ public class AsignacionInformesController {
 
 	private void rellenarColaPeritos() {
 		int totalPeritos = modelo.getNumeroPerito();
-		if (totalPeritos == 0)
-			throw new NullPointerException("eL TOTAL DE PERITOS YE 0");
+		
 		int tmp = 0, turno = 1;
 		for (int i = 0; i < totalPeritos; i++) {
 			tmp = modelo.getPerito(turno);
-			
-			if (tmp == 0)
-				throw new NullPointerException("el id de perito YE 0");
-			
 			cola.rellenarDatos(tmp);
 			turno++;
 		}
@@ -98,11 +92,14 @@ public class AsignacionInformesController {
 
 	private void guardarAsignacionInformesManual() {
 		vista.getMensaje().setText("");
-		vista.getMensaje().setText("Informe N.º: " + keyInforme + " asignado al Perito: " + modelo.getNombrePerito(keyPerito) + " (" + keyPerito + ")");
+		
 		if (keyPerito == 0 || keyInforme == 0) {
 			validateCondition(false, "Falta seleccionar datos");
 		} else {
 			modelo.asignarInformeManual(keyInforme, keyPerito);
+			if(keyInforme > 0 && keyPerito > 0) {
+				vista.getMensaje().setText("Informe N.º: " + keyInforme + " asignado al Perito: " + modelo.getNombrePerito(keyPerito) + " (" + keyPerito + ")");
+			}
 			keyPerito = 0;
 			keyInforme = 0;
 			vista.getIDInforme().setText("");
@@ -119,7 +116,9 @@ public class AsignacionInformesController {
 			keyPerito = cola.getNuevoturno();
 			modelo.asignarInformeManual(keyInforme, keyPerito);
 			System.out.println("Informe "+keyInforme +" -> Perito: " +keyPerito);
-			vista.getMensaje().setText("Informe N.º: " + keyInforme + " asignado al Perito: " + modelo.getNombrePerito(keyPerito) + " (" + keyPerito + ")");
+			if(keyInforme > 0) {
+				vista.getMensaje().setText("Informe N.º: " + keyInforme + " asignado al Perito: " + modelo.getNombrePerito(keyPerito) + " (" + keyPerito + ")");
+			}
 			keyPerito = 0;
 			keyInforme = 0;
 			vista.getIDInforme().setText("");
@@ -141,7 +140,6 @@ public class AsignacionInformesController {
 			modelo.cambiarTAP(perito, turnoNuevo);
 		}
 		//System.out.println(cola.toString());
-
 	}
 
 	private void cancelarCambios() {
