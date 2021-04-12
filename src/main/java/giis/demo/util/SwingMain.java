@@ -40,6 +40,9 @@ import giis.demo.solicitud.SolicitudColModel;
 import giis.demo.solicitud.SolicitudColView;
 import giis.demo.solicitud.SolicitudPreView;
 import giis.demo.solicitud.Solicitudes;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 
 /**
@@ -84,23 +87,27 @@ public class SwingMain {
 		frame.setTitle("Main");
 
 
-		frame.setBounds(0, 0, 314, 364);
+		frame.setBounds(0, 0, 600, 350);
 
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
-		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
 		JButton btnInicializarBaseDeDatos = new JButton("Inicializar Base de Datos en Blanco");
+		btnInicializarBaseDeDatos.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnInicializarBaseDeDatos.setBounds(10, 90, 264, 20);
 		btnInicializarBaseDeDatos.addActionListener(new ActionListener() { // NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				Database db = new Database();
 				db.createDatabase(false);
 			}
 		});
+		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(btnInicializarBaseDeDatos);
 
 		JButton btnCargarDatosIniciales = new JButton("Cargar Datos Iniciales para Pruebas");
+		btnCargarDatosIniciales.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnCargarDatosIniciales.setBounds(10, 120, 264, 20);
 		btnCargarDatosIniciales.addActionListener(new ActionListener() { // NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				Database db = new Database();
@@ -110,7 +117,9 @@ public class SwingMain {
 		});
 		frame.getContentPane().add(btnCargarDatosIniciales);
 		
-		JButton btnNewButton = new JButton("Realizar Solicitud Fonseca 1 y 3");
+		JButton btnNewButton = new JButton("Solicitud para pre/colegiarse");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNewButton.setBounds(310, 90, 264, 20);
 		btnNewButton.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				
@@ -123,7 +132,9 @@ public class SwingMain {
 		
 		frame.getContentPane().add(btnNewButton);
 
-		JButton btnInscripcionesCursos = new JButton("Inscripciones Cursos Maria 1 y 3");
+		JButton btnInscripcionesCursos = new JButton("Inscripción a Cursos");
+		btnInscripcionesCursos.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnInscripcionesCursos.setBounds(310, 150, 264, 20);
 		frame.getContentPane().add(btnInscripcionesCursos);
 
 		
@@ -136,7 +147,9 @@ public class SwingMain {
 		});
 	
 
-		JButton btnEjecutarCambiosCursos = new JButton("Modificar Cursos Miguel 1");
+		JButton btnEjecutarCambiosCursos = new JButton("Modificar Cursos");
+		btnEjecutarCambiosCursos.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnEjecutarCambiosCursos.setBounds(10, 210, 264, 20);
 		btnEjecutarCambiosCursos.addActionListener(new ActionListener() { // NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				CursoController controller1 = new CursoController(new CursoModel(), new CursoView());
@@ -147,7 +160,9 @@ public class SwingMain {
 		});
 		frame.getContentPane().add(btnEjecutarCambiosCursos);
 		
-		JButton btnCursosAnio = new JButton("Listado Curso Año Maria 2");
+		JButton btnCursosAnio = new JButton("Lista de Curso este Año");
+		btnCursosAnio.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnCursosAnio.setBounds(10, 240, 264, 20);
 		btnCursosAnio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ListaCursosAnioController controllerC= new ListaCursosAnioController(new ListaCursosAnioModel()
@@ -158,7 +173,9 @@ public class SwingMain {
 		frame.getContentPane().add(btnCursosAnio);
 		
 		
-		JButton btnConsultaInscritos = new JButton("Consultar Inscritos Fonseca 2");
+		JButton btnConsultaInscritos = new JButton("Consultar Inscritos a Cursos");
+		btnConsultaInscritos.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnConsultaInscritos.setBounds(10, 270, 264, 20);
 		btnConsultaInscritos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ConsultaInscritosController controllerinscritos= new ConsultaInscritosController(new ConsultaInscritosModel()
@@ -169,7 +186,9 @@ public class SwingMain {
 		
 		frame.getContentPane().add(btnConsultaInscritos);
 		
-		JButton btnAsignarInformesPeritos = new JButton("Asignar Informes Peritos Miguel 2 y 4");
+		JButton btnAsignarInformesPeritos = new JButton("Asignar Informes a Peritos");
+		btnAsignarInformesPeritos.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnAsignarInformesPeritos.setBounds(310, 240, 264, 20);
 		btnAsignarInformesPeritos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AsignacionInformesController aico = new AsignacionInformesController(new AsignacionInformesModel(),new AsignacionInformesView());
@@ -179,7 +198,9 @@ public class SwingMain {
 		
 		frame.getContentPane().add(btnAsignarInformesPeritos);
 		
-		JButton btnNuevosCursos = new JButton("Nuevos Cursos Miguel 3");
+		JButton btnNuevosCursos = new JButton("Planificar Nuevos Cursos");
+		btnNuevosCursos.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNuevosCursos.setBounds(10, 180, 264, 20);
 		btnNuevosCursos.addActionListener(new ActionListener() {
 			
 			@Override
@@ -191,7 +212,9 @@ public class SwingMain {
 		frame.getContentPane().add(btnNuevosCursos);
 		
 
-		JButton bEnviarCol = new JButton("Enviar Lote Colegiados Fonseca 4");
+		JButton bEnviarCol = new JButton("Enviar Lote de Colegiados ");
+		bEnviarCol.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		bEnviarCol.setBounds(310, 270, 264, 20);
 		bEnviarCol.addActionListener(new ActionListener() {
 			
 			@Override
@@ -202,7 +225,9 @@ public class SwingMain {
 		});
 		frame.getContentPane().add(bEnviarCol);
 
-		JButton btnInscripcionesListaPeritos = new JButton("Inscripciones Lista Peritos Maria 3");
+		JButton btnInscripcionesListaPeritos = new JButton("Inscripción a la Lista de Peritos");
+		btnInscripcionesListaPeritos.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnInscripcionesListaPeritos.setBounds(310, 120, 264, 20);
 		btnInscripcionesListaPeritos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -212,6 +237,36 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnInscripcionesListaPeritos);
+		
+		JLabel lblNewLabel = new JLabel("COOIPA");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblNewLabel.setBounds(10, 11, 564, 24);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Cursos");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_1.setBounds(10, 150, 264, 20);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Base de datos");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_2.setBounds(10, 60, 264, 20);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Informes");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_3.setBounds(310, 210, 250, 20);
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_5 = new JLabel("Solicitudes/Inscripciones");
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_5.setBounds(310, 60, 264, 20);
+		frame.getContentPane().add(lblNewLabel_5);
 
 		
 
@@ -220,6 +275,5 @@ public class SwingMain {
 	public JFrame getFrame() {
 		return this.frame;
 	}
-
 }
 

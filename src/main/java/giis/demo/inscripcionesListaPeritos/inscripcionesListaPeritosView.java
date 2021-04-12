@@ -43,7 +43,7 @@ public class inscripcionesListaPeritosView {
 		frame.setBounds(0,0,550,369);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
-		frame.setTitle("Lista de inscritos a cursos");
+		frame.setTitle("Inscripción a la Lista de Peritos");
 		
 		JLabel lblNewLabel = new JLabel("Inscripción en las listas de peritos privados del COIIPA");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
