@@ -68,7 +68,7 @@ public class InscripcionesController {
 		int idColectivo=-1;
 		String tipo="";
 		try {
-			dni=Integer.parseInt(vista.getTFdniColectivo().getText()); //cogemos el dni del colectivo
+			dni=Integer.parseInt(vista.getTFdniColectivo().getText());
 		}catch(NumberFormatException e) {
 			throw new ApplicationException("Error en el formato del número de dni del colectivo: "+vista.getTFdniColectivo().getText()+" no válido");
 		}catch(NullPointerException e1) {
@@ -78,9 +78,10 @@ public class InscripcionesController {
 		if(idCurso==0) 
 			validateCondition(false, "Falta seleccionar un curso.");
 		if(idColectivo!=-1) { 
-			System.out.println("Prueba");
-			if(modelo.existeInscripcionColectivo(idColectivo, idCurso)==true) throw new ApplicationException("Error, hay un colectivo con dni="+dni+" inscrito en el idCurso="+idCurso);
-			else crearInscripcionColectivo();
+			if(modelo.existeInscripcionColectivo(idColectivo, idCurso)==true) {
+				vista.getTFdniColectivo().setText("");
+				throw new ApplicationException("Error, hay un colectivo con dni="+dni+" inscrito en el idCurso="+idCurso);
+			}else crearInscripcionColectivo();
 		}else { //no existe en nuestra BD colectivo
 			if(hayCamposVacios()) 
 				validateCondition(false, "Rellena los datos del nuevo colectivo.");
@@ -107,9 +108,10 @@ public class InscripcionesController {
 		int x=modelo.getColegiadoNombre(idColegiado)==null?-1:idColegiado;
 		
 		if(x!=-1) {
-			if(modelo.existeInscripcion(idColegiado, idCurso)==true)
+			if(modelo.existeInscripcion(idColegiado, idCurso)==true) {
+				vista.getTFdniColegiado().setText("");
 				throw new ApplicationException("Error en la inscripción, el idColegiado="+idColegiado+" ya está inscrito en el idCurso="+idCurso);
-			else crearInscripcionColegiado();
+			}else crearInscripcionColegiado();
 		}else throw new ApplicationException("No existe en nuestra base de datos ese idColegiado.");
 	}
 	
@@ -125,9 +127,10 @@ public class InscripcionesController {
 		int x=modelo.getPrecolegiadoNombre(idPrecolegiado)==null?-1:idPrecolegiado;
 		
 		if(x!=-1) {
-			if(modelo.existeInscripcionPrecolegiado(idPrecolegiado, idCurso)==true) 
+			if(modelo.existeInscripcionPrecolegiado(idPrecolegiado, idCurso)==true) {
+				vista.getTFidPre().setText("");
 				throw new ApplicationException("Error en la inscripción, el idPrecolegiado="+idPrecolegiado+" ya está inscrito en el idCurso="+idCurso);
-			else crearInscripcionPrecolegiado();
+			}else crearInscripcionPrecolegiado();
 		}else throw new ApplicationException("No existe en nuestra Base de Datos de Precolegiados ese idPrecolegiado");
 	}
 	

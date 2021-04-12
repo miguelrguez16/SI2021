@@ -263,7 +263,7 @@ public class InscripcionesModel {
 	}
 	
 	public boolean existeInscripcionColectivo(int idColectivo, int idCurso) {
-		String sql="SELECT id from InscripcionColectivo where idColectivo="+idColectivo+" and idCurso="+idCurso;
+		String sql="SELECT idInscripcionColectivo from InscripcionColectivo where idColectivo="+idColectivo+" and idCurso="+idCurso;
 		List<InscripcionesEntity> inscripcionSelect=db.executeQueryPojo(InscripcionesEntity.class, sql);
 		if(inscripcionSelect.isEmpty())
 			return false;
