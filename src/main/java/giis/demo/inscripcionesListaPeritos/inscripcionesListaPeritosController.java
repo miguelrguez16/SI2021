@@ -41,7 +41,6 @@ public class inscripcionesListaPeritosController {
 		} finally {
 			aux = modelo.getColegiadoNombre(idColegiado) == null ? "" : modelo.getColegiadoNombre(idColegiado);
 			if (!aux.equals("")) {
-				System.out.println("Id colegiado elegido: " +idColegiado);
 				vista.getLid().setText(vista.getTFidColegiado().getText());
 				vista.getTFnombre().setText(modelo.getColegiadoNombre(idColegiado));
 				vista.getTFapellidos().setText(modelo.getColegiadoApellidos(idColegiado));
@@ -77,7 +76,6 @@ public class inscripcionesListaPeritosController {
 	}
 
 	private void generarInscripcionPerito() {
-
 		int idColegiado = Integer.parseInt(vista.getTFidColegiado().getText());
 		if (modelo.existePerito(idColegiado)) {
 			throw new ApplicationException("Ya hay un perito con ese idColegiado.");
