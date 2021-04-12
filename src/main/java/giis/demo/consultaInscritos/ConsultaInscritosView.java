@@ -46,7 +46,6 @@ public class ConsultaInscritosView extends JFrame {
 		frmConsultaInscritos.setTitle("Consulta Inscritos");
 		frmConsultaInscritos.setName("Consulta Inscritos");
 		frmConsultaInscritos.setBounds(0, 0, 424, 492);
-		frmConsultaInscritos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmConsultaInscritos.getContentPane().setLayout(null);
 		frmConsultaInscritos.setLocationRelativeTo(null);
 
