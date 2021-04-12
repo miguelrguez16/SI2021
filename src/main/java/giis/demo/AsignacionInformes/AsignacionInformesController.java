@@ -97,6 +97,8 @@ public class AsignacionInformesController {
 	}
 
 	private void guardarAsignacionInformesManual() {
+		vista.getMensaje().setText("");
+		vista.getMensaje().setText("Informe N.º: " + keyInforme + " asignado al Perito: " + modelo.getNombrePerito(keyPerito) + " (" + keyPerito + ")");
 		if (keyPerito == 0 || keyInforme == 0) {
 			validateCondition(false, "Falta seleccionar datos");
 		} else {
@@ -110,12 +112,14 @@ public class AsignacionInformesController {
 	}
 
 	private void guardarAsignacionInformesAutomatica() {
+		vista.getMensaje().setText("");
 		if (keyInforme == 0) {
 			validateCondition(false, "Falta seleccionar informe");
 		} else {
 			keyPerito = cola.getNuevoturno();
 			modelo.asignarInformeManual(keyInforme, keyPerito);
 			System.out.println("Informe "+keyInforme +" -> Perito: " +keyPerito);
+			vista.getMensaje().setText("Informe N.º: " + keyInforme + " asignado al Perito: " + modelo.getNombrePerito(keyPerito) + " (" + keyPerito + ")");
 			keyPerito = 0;
 			keyInforme = 0;
 			vista.getIDInforme().setText("");
