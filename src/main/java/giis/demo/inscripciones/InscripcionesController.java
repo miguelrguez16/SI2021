@@ -180,6 +180,9 @@ public class InscripcionesController {
 			justificante.getLCantidad().setText(modelo.getCursoPrecioEstudiante(idCurso));
 		if(tipo=="empresa")
 			justificante.getLCantidad().setText(modelo.getCursoPrecioEmpresa(idCurso));
+		if(tipo=="")
+            justificante.getLCantidad().setText(modelo.getCursoPrecioEstudiante(idCurso));
+		
 		justificante.getLblNewLabel_3().setText("IdColectivo : ");
 		justificante.getLNombre().setText(modelo.getColectivoNombre(idColectivo));
 		justificante.getLApellidos().setText(modelo.getColectivoApellidos(idColectivo));
