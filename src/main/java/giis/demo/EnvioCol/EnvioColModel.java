@@ -49,8 +49,10 @@ public void updateEstado() {
 	
 	public List<EnvioColDisplayDTO> getListaCursosModelo() {
 		String sql=
-				"SELECT co.apellidos, co.nombre, co.dni, co.titulacion, so.estado FROM Colegiado as co "
-				+ "INNER JOIN SolicitudColegio AS so ON co.idColegiado=so.idColegiado ORDER BY so.estado, co.apellidos";
+				"SELECT co.apellidos, co.nombre, co.dni, co.titulacion, so.estado "
+				+ "FROM Colegiado as co "
+				+ "INNER JOIN SolicitudColegio AS so ON co.idColegiado=so.idColegiado "
+				+ "ORDER BY so.estado, co.apellidos";
 		
 		return db.executeQueryPojo(EnvioColDisplayDTO.class, sql);
 	}
