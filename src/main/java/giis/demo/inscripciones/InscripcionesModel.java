@@ -230,6 +230,21 @@ public class InscripcionesModel {
 	    return nombre;
 	}
 	
+	public String getColectivoTipo(int idColectivo) {
+	    try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT tipoColectivo FROM Colectivo WHERE idColectivo"+idColectivo;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
+	}
+	
 	public void setNuevaInscripcion(int idColegiado, int idCurso) {
 		String sql="INSERT INTO Inscripcion (IdColegiado, IdCurso, fecha) VALUES ("+idColegiado+","+idCurso+",'"+this.getFecha()+"')";
 		db.executeUpdate(sql);
