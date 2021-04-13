@@ -18,6 +18,7 @@ public class EnvioColModel {
 	private Database db=new Database();
 	private int idcurso;
 	private double recaudacion;
+	
 	//private String nombreCurso = ConsultaInscritosView.getNombreCurso();
 	
 	
@@ -41,6 +42,27 @@ public class EnvioColModel {
 
 	}
 	
+	public String compruebaPendientes() {
+		
+			String aux=null;
+			try {
+				Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+				java.sql.Statement s = conn.createStatement();
+				String sql = "SELECT co.dni FROM Colegiado as co INNER JOIN SolicitudColegio AS so ON co.idColegiado=so.idColegiado WHERE estado='pendiente'";
+				ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+				while (rs.next()) {
+					aux=rs.getString(1);
+				}
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			return aux;
+
+		}
+	
 
 public void updateEstado() {
 	String query = "UPDATE SolicitudColegio SET estado='En trámite' WHERE estado='pendiente'";
@@ -49,9 +71,10 @@ public void updateEstado() {
 	
 	public List<EnvioColDisplayDTO> getListaCursosModelo() {
 		String sql=
-				"SELECT co.apellidos, co.nombre, co.dni, co.titulacion, so.estado "
+				"SELECT co.apellidos, co.nombre, co.dni, co.titulacion, co.fechaSolicitudColegiado, so.estado "
 				+ "FROM Colegiado as co "
 				+ "INNER JOIN SolicitudColegio AS so ON co.idColegiado=so.idColegiado "
+				//+ "WHERE estado='pendiente' "
 				+ "ORDER BY so.estado, co.apellidos";
 		
 		return db.executeQueryPojo(EnvioColDisplayDTO.class, sql);

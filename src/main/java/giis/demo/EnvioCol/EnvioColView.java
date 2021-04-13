@@ -43,7 +43,7 @@ public class EnvioColView extends JFrame {
 	private void initialize() {
 		frmConsultaInscritos = new JFrame();
 		frmConsultaInscritos.setMinimumSize(new Dimension(612, 410));
-		frmConsultaInscritos.setTitle("Consulta Inscritos");
+		frmConsultaInscritos.setTitle("Colegiados");
 		frmConsultaInscritos.setName("Consulta Inscritos");
 		frmConsultaInscritos.setBounds(0, 0, 612, 410);
 		frmConsultaInscritos.getContentPane().setLayout(null);
@@ -52,7 +52,7 @@ public class EnvioColView extends JFrame {
 		
 		lblLbltable = new JLabel("Lista de Colegiados");
 		lblLbltable.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblLbltable.setBounds(237, 11, 204, 22);
+		lblLbltable.setBounds(230, 11, 204, 22);
 		frmConsultaInscritos.getContentPane().add(lblLbltable);
 		
 		//Incluyo la tabla en un JScrollPane y anado este en vez de la tabla para poder ver los headers de la tabla

@@ -1,7 +1,7 @@
 package giis.demo.EnvioCol;
 
 public class EnvioColDisplayDTO {
-	private String apellidos, nombre, dni, titulacion, estado;
+	private String apellidos, nombre, dni, titulacion, fechaSolicitudColegiado, estado;
 
 	public String getApellidos() {
 		return apellidos;
@@ -33,6 +33,16 @@ public class EnvioColDisplayDTO {
 
 	public void setTitulacion(String titulacion) {
 		this.titulacion = titulacion;
+	}
+	
+	
+
+	public String getFechaSolicitudColegiado() {
+		return fechaSolicitudColegiado;
+	}
+
+	public void setFechaSolicitudColegiado(String fechaSolicitudColegiado) {
+		this.fechaSolicitudColegiado = fechaSolicitudColegiado;
 	}
 
 	public String getEstado() {
