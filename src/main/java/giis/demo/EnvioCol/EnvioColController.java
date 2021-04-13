@@ -57,14 +57,12 @@ public class EnvioColController {
 							
 							List<EnvioColDisplayDTO> envio = modelo.getListaCursosModelo();
 							for(int i=0;i<envio.size();i++) {
-								//System.out.println(envio.get(i).getEstado());
 								String aux=envio.get(i).getEstado();
 								if (aux.contentEquals("pendiente")) {
 									
 									bw.write("DNI: "+envio.get(i).getDni()+" Titulacion :"+envio.get(i).getTitulacion()+"\n\n");
 								}
 								
-								//bw.write("Titulacion: "+envio.get(i).getTitulacion()+"\n");
 							}
 							
 							bw.close();
