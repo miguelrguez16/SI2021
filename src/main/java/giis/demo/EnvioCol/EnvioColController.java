@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
 import giis.demo.cursos.CursoDisplayDTO;
@@ -45,6 +46,8 @@ public class EnvioColController {
 				vista.getBtnEnviar().addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						//C:\\Users\\Alvaro\\Desktop
+						
+						if (modelo.compruebaPendientes()!=null) { 
 						File fichero = new File (".","EnvioCol.txt");
 						
 						try {
@@ -54,8 +57,12 @@ public class EnvioColController {
 							
 							List<EnvioColDisplayDTO> envio = modelo.getListaCursosModelo();
 							for(int i=0;i<envio.size();i++) {
-								bw.write("DNI: "+envio.get(i).getDni()+" Titulacion :"+envio.get(i).getTitulacion()+"\n\n");
-								//bw.write("Titulacion: "+envio.get(i).getTitulacion()+"\n");
+								String aux=envio.get(i).getEstado();
+								if (aux.contentEquals("pendiente")) {
+									
+									bw.write("DNI: "+envio.get(i).getDni()+" Titulacion :"+envio.get(i).getTitulacion()+"\n\n");
+								}
+								
 							}
 							
 							bw.close();
@@ -65,6 +72,10 @@ public class EnvioColController {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
+					}
+					
+						else JOptionPane.showMessageDialog(null, "No hay ninguna solicitud pendiente");
+					
 					}
 				});
 			
@@ -86,7 +97,7 @@ public class EnvioColController {
 	private static void setListaCursosController() {
 		List<EnvioColDisplayDTO> cursos = modelo.getListaCursosModelo();
 		TableModel tmodel = SwingUtil.getTableModelFromPojos(cursos,
-				new String[] { "apellidos", "nombre", "dni", "titulacion", "estado" });
+				new String[] { "apellidos", "nombre", "dni", "titulacion", "fechaSolicitudColegiado", "estado" });
 		vista.getTablaCursos().setModel(tmodel);
 		SwingUtil.autoAdjustColumns(vista.getTablaCursos());
 	}
