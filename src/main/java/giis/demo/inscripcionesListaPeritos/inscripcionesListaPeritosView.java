@@ -133,12 +133,14 @@ public class inscripcionesListaPeritosView {
 		frame.getContentPane().add(btnInscripcionPerito);
 		
 		TFnombre = new JTextField();
+		TFnombre.setEditable(false);
 		TFnombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		TFnombre.setBounds(120, 140, 120, 20);
 		frame.getContentPane().add(TFnombre);
 		TFnombre.setColumns(10);
 		
 		TFapellidos = new JTextField();
+		TFapellidos.setEditable(false);
 		TFapellidos.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		TFapellidos.setBounds(120, 170, 120, 20);
 		frame.getContentPane().add(TFapellidos);
@@ -169,30 +171,35 @@ public class inscripcionesListaPeritosView {
 		frame.getContentPane().add(TFdatos);
 		
 		TFfecha = new JTextField();
+		TFfecha.setEditable(false);
 		TFfecha.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		TFfecha.setColumns(10);
 		TFfecha.setBounds(408, 140, 116, 20);
 		frame.getContentPane().add(TFfecha);
 		
 		TFtitulacion = new JTextField();
+		TFtitulacion.setEditable(false);
 		TFtitulacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		TFtitulacion.setColumns(10);
 		TFtitulacion.setBounds(374, 170, 150, 20);
 		frame.getContentPane().add(TFtitulacion);
 		
 		TFcentro = new JTextField();
+		TFcentro.setEditable(false);
 		TFcentro.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		TFcentro.setColumns(10);
 		TFcentro.setBounds(374, 200, 150, 20);
 		frame.getContentPane().add(TFcentro);
 		
 		TFanio = new JTextField();
+		TFanio.setEditable(false);
 		TFanio.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		TFanio.setColumns(10);
 		TFanio.setBounds(374, 230, 150, 20);
 		frame.getContentPane().add(TFanio);
 		
 		TFdni = new JTextField();
+		TFdni.setEditable(false);
 		TFdni.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		TFdni.setColumns(10);
 		TFdni.setBounds(374, 260, 150, 20);
