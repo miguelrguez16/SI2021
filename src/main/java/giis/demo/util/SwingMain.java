@@ -238,7 +238,7 @@ public class SwingMain {
 		});
 		frmCoiipa.getContentPane().add(btnInscripcionesListaPeritos);
 		
-		JLabel lblNewLabel = new JLabel("COOIPA");
+		JLabel lblNewLabel = new JLabel("COIIPA");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
 		lblNewLabel.setBounds(10, 11, 564, 24);

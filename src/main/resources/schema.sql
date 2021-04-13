@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS "InscripcionPrecolegiado" (
 	"id"	INTEGER NOT NULL UNIQUE,
 	"idPrecolegiado"	INTEGER,
 	"idCurso"	INTEGER,
-	"estado"	TEXT,
+	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'inscrito')),
 	"fecha"	TEXT,
 	FOREIGN KEY("idPrecolegiado") REFERENCES "Precolegiado"("id"),
 	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso"),
