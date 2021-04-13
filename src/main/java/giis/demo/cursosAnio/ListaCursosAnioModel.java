@@ -10,9 +10,10 @@ public class ListaCursosAnioModel {
 	public List<ListaCursosAnioDisplayDTO> getListaCursosAnioModelo() {
 		String sql="Select c.idCurso, c.nombre,c.fechaInicio, c.estado,c.plazasTotales, c.plazasTotales-count(i.idInscripcion) as plazasLibres from Curso as c "
 				+"left join Inscripcion as i on i.idCurso=c.idCurso "
-				+"where c.estado='abierto' or c.estado='planificado' "
-				+"group by c.idCurso "
-				+"order by c.fechaInicio";
+				+"where c.estado='abierto' group by c.idCurso order by c.fechaInicio";
 		return db.executeQueryPojo(ListaCursosAnioDisplayDTO.class, sql);
 	}
+	
+	
+	
 }
