@@ -1,6 +1,8 @@
 package giis.demo.AsignacionInformes;
 
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class ColaAsignacionInformes {
 
@@ -22,6 +24,23 @@ public class ColaAsignacionInformes {
 		//System.out.println("perito asignado a insertar "+ perito);
 		data.addFirst(perito);
 		return perito;
+	}
+	
+	public void asignadoManual(int idPerito) {
+		int pos = 0;
+		int tmp = 0;
+		int i = 0;
+		Iterator<Integer> itr = data.iterator();
+		while(itr.hasNext() && pos==0) {
+			tmp = itr.next();
+			if(tmp==idPerito) 
+				pos=i;
+			else 
+				i++;
+			
+		}
+		data.remove(pos);
+		data.addFirst(idPerito);
 	}
 
 	public int turnoAsignado(int idPerito) {

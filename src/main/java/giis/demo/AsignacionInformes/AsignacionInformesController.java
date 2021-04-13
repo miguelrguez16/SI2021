@@ -97,6 +97,7 @@ public class AsignacionInformesController {
 			validateCondition(false, "Falta seleccionar datos");
 		} else {
 			modelo.asignarInformeManual(keyInforme, keyPerito);
+			cola.asignadoManual(keyPerito);
 			if(keyInforme > 0 && keyPerito > 0) {
 				vista.getMensaje().setText("Informe N.º: " + keyInforme + " asignado al Perito: " + modelo.getNombrePerito(keyPerito) + " (" + keyPerito + ")");
 			}
@@ -104,7 +105,10 @@ public class AsignacionInformesController {
 			keyInforme = 0;
 			vista.getIDInforme().setText("");
 			vista.getIDPerito().setText("");
+			modificarTurnosBaseDatos();
 			showPeritosInformes();
+			System.out.println(cola.toString());
+
 		}
 	}
 
@@ -124,8 +128,9 @@ public class AsignacionInformesController {
 			vista.getIDInforme().setText("");
 			vista.getIDPerito().setText("");
 			modificarTurnosBaseDatos();
-			
 			showPeritosInformes();
+			System.out.println(cola.toString());
+
 		}
 
 	}
@@ -139,7 +144,7 @@ public class AsignacionInformesController {
 			turnoNuevo = total - cola.turnoAsignado(perito);
 			modelo.cambiarTAP(perito, turnoNuevo);
 		}
-		//System.out.println(cola.toString());
+		System.out.println(cola.toString());
 	}
 
 	private void cancelarCambios() {

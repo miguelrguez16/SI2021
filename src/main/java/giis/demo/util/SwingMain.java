@@ -147,7 +147,7 @@ public class SwingMain {
 		});
 	
 
-		JButton btnEjecutarCambiosCursos = new JButton("Modificar Cursos");
+		JButton btnEjecutarCambiosCursos = new JButton("Apertura Cursos");
 		btnEjecutarCambiosCursos.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnEjecutarCambiosCursos.setBounds(10, 210, 264, 20);
 		btnEjecutarCambiosCursos.addActionListener(new ActionListener() { // NOSONAR codigo autogenerado
