@@ -33,27 +33,9 @@ CREATE TABLE IF NOT EXISTS "InformesPerito" (
 	PRIMARY KEY("idInformePerito" AUTOINCREMENT)
 );
 DROP TABLE IF EXISTS "Inscripcion";
-CREATE TABLE IF NOT EXISTS "Inscripcion" (
-	"idInscripcion"	INTEGER NOT NULL UNIQUE,
-	"idColegiado"	INTEGER,
-	"idCurso"	INTEGER,
-	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'inscrito')),
-	"fecha"	TEXT,
-	PRIMARY KEY("idInscripcion" AUTOINCREMENT),
-	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso"),
-	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado")
-);
+
 DROP TABLE IF EXISTS "InscripcionColectivo";
-CREATE TABLE IF NOT EXISTS "InscripcionColectivo" (
-	"idInscripcionColectivo"	INTEGER NOT NULL UNIQUE,
-	"idColectivo"	INTEGER,
-	"idCurso"	INTEGER,
-	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'inscrito')),
-	"fecha"	TEXT,
-	PRIMARY KEY("idInscripcionColectivo" AUTOINCREMENT),
-	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso"),
-	FOREIGN KEY("idColectivo") REFERENCES "Colectivo"("idColectivo")
-);
+
 DROP TABLE IF EXISTS "Perito";
 CREATE TABLE IF NOT EXISTS "Perito" (
 	"idPerito"	INTEGER NOT NULL UNIQUE,
@@ -94,16 +76,6 @@ CREATE TABLE IF NOT EXISTS "Colectivo" (
 	PRIMARY KEY("idColectivo" AUTOINCREMENT)
 );
 DROP TABLE IF EXISTS "InscripcionPrecolegiado";
-CREATE TABLE IF NOT EXISTS "InscripcionPrecolegiado" (
-	"id"	INTEGER NOT NULL UNIQUE,
-	"idPrecolegiado"	INTEGER,
-	"idCurso"	INTEGER,
-	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'inscrito')),
-	"fecha"	TEXT,
-	PRIMARY KEY("id" AUTOINCREMENT),
-	FOREIGN KEY("idPrecolegiado") REFERENCES "Precolegiado"("id"),
-	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso")
-);
 DROP TABLE IF EXISTS "Precolegiado";
 CREATE TABLE IF NOT EXISTS "Precolegiado" (
 	"id"	INTEGER NOT NULL UNIQUE,

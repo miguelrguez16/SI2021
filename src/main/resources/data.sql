@@ -21,14 +21,6 @@ INSERT INTO "InformesPerito" ("idInformePerito","idPerito","estado","fecha") VAL
  (2,0,'pendiente',NULL),
  (3,0,'pendiente',NULL),
  (4,0,'pendiente',NULL);
-INSERT INTO "Inscripcion" ("idInscripcion","idColegiado","idCurso","estado","fecha") VALUES (1,1,4,'preinscrito','2021-05-04'),
- (2,2,5,'preinscrito','2021-05-04'),
- (3,1,3,'preinscrito','2021-05-04'),
- (4,3,4,'preinscrito','2021-05-04'),
- (5,3,6,'preinscrito','2021-05-04'),
- (6,2,6,'preinscrito','2021-05-04'),
- (7,3,5,'preinscrito','2021-04-03'),
- (8,1,5,'preinscrito','2021-04-06');
 INSERT INTO "InscripcionCurso" ("idInscripcionCurso","id","idCurso","tipo","estado","fecha") VALUES (1,1,4,'colegiado','preinscrito','2021-05-04'),
 (2,2,5,'colegiado','preinscrito','2021-05-04'),
 (3,1,3,'colegiado','preinscrito','2021-05-04'),
