@@ -21,8 +21,8 @@ CREATE TABLE IF NOT EXISTS "SolicitudColegio" (
 	"estado"	TEXT NOT NULL DEFAULT 'pendiente' CHECK("estado" = 'pendiente' OR "estado" = 'aprobado' OR "estado" = 'En trámite'),
 	"idColegiado"	INTEGER,
 	"fecha"	TEXT,
-	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado"),
-	PRIMARY KEY("idSolicitud" AUTOINCREMENT)
+	PRIMARY KEY("idSolicitud" AUTOINCREMENT),
+	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado")
 );
 DROP TABLE IF EXISTS "InformesPerito";
 CREATE TABLE IF NOT EXISTS "InformesPerito" (
@@ -39,9 +39,9 @@ CREATE TABLE IF NOT EXISTS "Inscripcion" (
 	"idCurso"	INTEGER,
 	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'inscrito')),
 	"fecha"	TEXT,
+	PRIMARY KEY("idInscripcion" AUTOINCREMENT),
 	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso"),
-	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado"),
-	PRIMARY KEY("idInscripcion" AUTOINCREMENT)
+	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado")
 );
 DROP TABLE IF EXISTS "InscripcionColectivo";
 CREATE TABLE IF NOT EXISTS "InscripcionColectivo" (
@@ -50,9 +50,9 @@ CREATE TABLE IF NOT EXISTS "InscripcionColectivo" (
 	"idCurso"	INTEGER,
 	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'inscrito')),
 	"fecha"	TEXT,
-	FOREIGN KEY("idColectivo") REFERENCES "Colectivo"("idColectivo"),
+	PRIMARY KEY("idInscripcionColectivo" AUTOINCREMENT),
 	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso"),
-	PRIMARY KEY("idInscripcionColectivo" AUTOINCREMENT)
+	FOREIGN KEY("idColectivo") REFERENCES "Colectivo"("idColectivo")
 );
 DROP TABLE IF EXISTS "Perito";
 CREATE TABLE IF NOT EXISTS "Perito" (
@@ -61,8 +61,8 @@ CREATE TABLE IF NOT EXISTS "Perito" (
 	"fecha"	TEXT,
 	"turno"	INTEGER,
 	"estado"	TEXT DEFAULT 'pendiente' CHECK(("estado" = 'pendiente' OR "estado" = 'aprobado')),
-	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado"),
-	PRIMARY KEY("idPerito")
+	PRIMARY KEY("idPerito"),
+	FOREIGN KEY("idColegiado") REFERENCES "Colegiado"("idColegiado")
 );
 DROP TABLE IF EXISTS "Curso";
 CREATE TABLE IF NOT EXISTS "Curso" (
@@ -100,9 +100,9 @@ CREATE TABLE IF NOT EXISTS "InscripcionPrecolegiado" (
 	"idCurso"	INTEGER,
 	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'inscrito')),
 	"fecha"	TEXT,
+	PRIMARY KEY("id" AUTOINCREMENT),
 	FOREIGN KEY("idPrecolegiado") REFERENCES "Precolegiado"("id"),
-	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso"),
-	PRIMARY KEY("id" AUTOINCREMENT)
+	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso")
 );
 DROP TABLE IF EXISTS "Precolegiado";
 CREATE TABLE IF NOT EXISTS "Precolegiado" (
@@ -125,7 +125,18 @@ CREATE TABLE IF NOT EXISTS "SolicitudPrecolegiado" (
 	"idPrecolegiado"	INTEGER,
 	"fecha"	TEXT,
 	"estado"	TEXT DEFAULT 'aprobado',
-	FOREIGN KEY("idPrecolegiado") REFERENCES "Precolegiado"("id"),
-	PRIMARY KEY("id" AUTOINCREMENT)
+	PRIMARY KEY("id" AUTOINCREMENT),
+	FOREIGN KEY("idPrecolegiado") REFERENCES "Precolegiado"("id")
+);
+DROP TABLE IF EXISTS "InscripcionCurso";
+CREATE TABLE IF NOT EXISTS "InscripcionCurso" (
+	"idInscripcionCurso"	INTEGER NOT NULL UNIQUE,
+	"id"	INTEGER,
+	"idCurso"	INTEGER,
+	"tipo"	TEXT DEFAULT 'colegiado' CHECK("tipo" = 'colegiado' OR "tipo" = 'precolegiado' OR "tipo" = 'estudiante' OR "tipo" = 'empresa'OR "tipo" = 'externo'),
+	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'inscrito')),
+	"fecha"	TEXT,
+	PRIMARY KEY("idInscripcionCurso" AUTOINCREMENT),
+	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso")
 );
 COMMIT;

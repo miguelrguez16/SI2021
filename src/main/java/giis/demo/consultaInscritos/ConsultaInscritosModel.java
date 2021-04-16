@@ -69,6 +69,34 @@ public class ConsultaInscritosModel {
 		return db.executeQueryPojo(ConsultaInscritoDisplayDTO.class, sql);
 	}
 	
+	public List<ConsultaInscritoDisplayDTO> getListaCursos(int idCurso){
+		String sql ="SELECT co.apellidos as apellidos,co.nombre as nombre , i.estado as estado, i.fecha as fecha,i.tipo as tipo, c.precio as precio "
+				+ "From InscripcionCurso AS i "
+				+ "INNER JOIN Colegiado AS co ON (co.idColegiado=i.id and i.tipo='colegiado') "
+				+ "INNER JOIN Curso as c on c.idCurso=i.idCurso "
+				+ "where i.idCurso=? "
+				+ "UNION "
+				+ "SELECT p.apellidos as apellidos,p.nombre as nombre, i.estado as estado, i.fecha as fecha, i.tipo as tipo, c.precioPrecolegiado as precio "
+				+ "FROM InscripcionCurso AS i "
+				+ "INNER JOIN Precolegiado AS p ON (p.id=i.id and i.tipo='precolegiado') "
+				+ "INNER JOIN Curso as c on c.idCurso=i.idCurso "
+				+ "where i.idCurso=? "
+				+ "UNION "
+				+ "SELECT cole.apellidos as apellidos,cole.nombre as nombre, i.estado as estado, i.fecha as fecha, i.tipo as tipo, "
+				+ "case when i.tipo ='externo' THEN c.precioExterno "
+				+ "when i.tipo ='estudiante' THEN c.precioEstudiante "
+				+ "when i.tipo ='empresa' THEN c.precioEmpresa "
+				+ "END AS precio "
+				+ "FROM InscripcionCurso AS i "
+				+ "INNER JOIN Colectivo AS cole ON (cole.idColectivo=i.id and (i.tipo='externo' or i.tipo='estudiante' or i.tipo='empresa' )) "
+				+ "INNER JOIN Curso as c on c.idCurso=i.idCurso "
+				+ "where i.idCurso=? "
+				+ "order by Apellidos";
+		return db.executeQueryPojo(ConsultaInscritoDisplayDTO.class, sql,idCurso, idCurso,idCurso);
+
+	}
+	
+	
 
 	
 	
