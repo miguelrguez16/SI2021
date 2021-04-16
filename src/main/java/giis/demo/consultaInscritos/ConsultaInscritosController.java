@@ -19,11 +19,13 @@ public class ConsultaInscritosController {
 	private static ConsultaInscritosModel modelo;
 	private static ConsultaInscritosView vista;
 	private String lastSelectedKey = "";
+	private static double recaudacion;
 
 	public ConsultaInscritosController(ConsultaInscritosModel modelo, ConsultaInscritosView vista) {
 		super();
 		this.modelo = modelo;
 		this.vista = vista;
+		recaudacion = 0.0;
 	}
 
 	public static void initview() {
@@ -39,7 +41,7 @@ public class ConsultaInscritosController {
 
 			public void actionPerformed(ActionEvent e) {
 				setListaCursosController();
-				vista.getLRecaudacion().setText(String.valueOf(modelo.getRecaudacion(modelo.getIDCurso(ConsultaInscritosView.getNombreCurso()))));
+				vista.getLRecaudacion().setText(String.valueOf(recaudacion));
 		
 			}});
 			 
@@ -52,11 +54,22 @@ public class ConsultaInscritosController {
 		}
 	
 	private static void setListaCursosController() {
-		List<ConsultaInscritoDisplayDTO> cursos = modelo.getListaCursosModelo();
+		//List<ConsultaInscritoDisplayDTO> cursos = modelo.getListaCursosModelo();
+		List<ConsultaInscritoDisplayDTO> cursos = modelo.getListaCursos(modelo.getIDCurso(vista.getNombreCurso()));
 		TableModel tmodel = SwingUtil.getTableModelFromPojos(cursos,
-				new String[] { "apellidos", "nombre", "fecha", "estado", "precio" });
+				new String[] { "apellidos", "nombre", "estado", "fecha","tipo", "precio" });
 		vista.getTablaCursos().setModel(tmodel);
 		SwingUtil.autoAdjustColumns(vista.getTablaCursos());
+		recaudacion = totalRecaudacion(cursos);
+		
+	}
+	
+	private static double totalRecaudacion(List<ConsultaInscritoDisplayDTO> data) {
+		double tmp = 0.0;
+		for (int i = 0; i < data.size(); i++) {
+			tmp=tmp+ Double.parseDouble(data.get(i).getPrecio());
+		}
+		return tmp;
 	}
 	
 }

@@ -78,7 +78,7 @@ public class InscripcionesController {
 		if(idCurso==0) 
 			validateCondition(false, "Falta seleccionar un curso.");
 		if(idColectivo!=-1) { 
-			if(modelo.existeInscripcionColectivo(idColectivo, idCurso)==true) {
+			if(modelo.existeInscripcion(idColectivo, idCurso,"colectivo")==true) {
 				vista.getTFdniColectivo().setText("");
 				throw new ApplicationException("Error, hay un colectivo con dni="+dni+" inscrito en el idCurso="+idCurso);
 			}else crearInscripcionColectivo();
@@ -108,7 +108,7 @@ public class InscripcionesController {
 		int x=modelo.getColegiadoNombre(idColegiado)==null?-1:idColegiado;
 		
 		if(x!=-1) {
-			if(modelo.existeInscripcion(idColegiado, idCurso)==true) {
+			if(modelo.existeInscripcion(idColegiado, idCurso,"colegiado")==true) {
 				vista.getTFdniColegiado().setText("");
 				throw new ApplicationException("Error en la inscripción, el idColegiado="+idColegiado+" ya está inscrito en el idCurso="+idCurso);
 			}else crearInscripcionColegiado();
@@ -127,7 +127,7 @@ public class InscripcionesController {
 		int x=modelo.getPrecolegiadoNombre(idPrecolegiado)==null?-1:idPrecolegiado;
 		
 		if(x!=-1) {
-			if(modelo.existeInscripcionPrecolegiado(idPrecolegiado, idCurso)==true) {
+			if(modelo.existeInscripcion(idPrecolegiado, idCurso, "precolegiado")==true) {
 				vista.getTFidPre().setText("");
 				throw new ApplicationException("Error en la inscripción, el idPrecolegiado="+idPrecolegiado+" ya está inscrito en el idCurso="+idCurso);
 			}else crearInscripcionPrecolegiado();
@@ -138,7 +138,7 @@ public class InscripcionesController {
 		int idColegiado=Integer.parseInt(vista.getTFdniColegiado().getText());
 		vista.getFrame().setVisible(false);
 		justificante.getFrame().setVisible(true);
-		modelo.setNuevaInscripcion(idColegiado, idCurso);
+		modelo.setNuevaInscripcion(idColegiado, idCurso,"colegiado");
 		System.out.println("Nueva inscripción: idColegiado="+idColegiado+", idCurso="+idCurso);
 		
 		justificante.getLblNewLabel_3().setText("IdColegiado : ");
@@ -154,7 +154,7 @@ public class InscripcionesController {
 		int idPrecolegiado=Integer.parseInt(vista.getTFidPre().getText());
 		vista.getFrame().setVisible(false);
 		justificante.getFrame().setVisible(true);
-		modelo.setNuevaInscripcionPrecolegiado(idPrecolegiado, idCurso);
+		modelo.setNuevaInscripcion(idPrecolegiado, idCurso,"precolegiado");
 		System.out.println("Nueva inscripción: idPrecolegiado="+idPrecolegiado+", idCurso="+idCurso);
 		
 		justificante.getLblNewLabel_3().setText("IdPrecolegiado : ");
@@ -171,17 +171,20 @@ public class InscripcionesController {
 		int idColectivo= Integer.valueOf(modelo.getIdColectivo(dni));
 		vista.getFrame().setVisible(false);
 		justificante.getFrame().setVisible(true);
-		modelo.setNuevaInscripcionColectivo(idColectivo, idCurso);
-		System.out.println("Nueva inscripción: idColectivo="+idColectivo+", idCurso="+idCurso);
+		
 		tipo=getTipo();
+		modelo.setNuevaInscripcion(idColectivo, idCurso,tipo);
+		System.out.println("Nueva inscripción: idColectivo="+idColectivo+", idCurso="+idCurso);
 		if(tipo=="externo")
 			justificante.getLCantidad().setText(modelo.getCursoPrecioExterno(idCurso));
 		if(tipo=="estudiante")
 			justificante.getLCantidad().setText(modelo.getCursoPrecioEstudiante(idCurso));
 		if(tipo=="empresa")
 			justificante.getLCantidad().setText(modelo.getCursoPrecioEmpresa(idCurso));
+		/*
 		if(tipo=="")
             justificante.getLCantidad().setText(modelo.getCursoPrecioEstudiante(idCurso));
+		*/
 		
 		justificante.getLblNewLabel_3().setText("IdColectivo : ");
 		justificante.getLNombre().setText(modelo.getColectivoNombre(idColectivo));
