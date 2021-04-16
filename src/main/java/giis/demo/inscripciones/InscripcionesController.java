@@ -20,6 +20,8 @@ public class InscripcionesController {
 	private String lastCursoSelected="";
 	private int idCurso;
 	private String tipo;
+	private boolean existeColectivo;
+	
 	
 	public InscripcionesController(InscripcionesModel m, InscripcionesView v, JustificanteView j) {
 		this.modelo = m;
@@ -27,6 +29,8 @@ public class InscripcionesController {
 		this.justificante=j;
 		this.initView();
 		this.tipo="";
+		this.existeColectivo=false;
+		
 	}
 	
 	private void initView() {
@@ -63,84 +67,108 @@ public class InscripcionesController {
 		idCurso=Integer.parseInt(this.lastCursoSelected);
 	}
 	
-	private void inscripcionColectivo() {
-		int dni=-1;
-		int idColectivo=-1;
-		String tipo="";
-		try {
-			dni=Integer.parseInt(vista.getTFdniColectivo().getText());
-		}catch(NumberFormatException e) {
-			throw new ApplicationException("Error en el formato del número de dni del colectivo: "+vista.getTFdniColectivo().getText()+" no válido");
-		}catch(NullPointerException e1) {
-			throw new ApplicationException("Hay que introducir un idColectivo");
-		}
-		idColectivo= modelo.getIdColectivo(dni)==null?-1:Integer.valueOf(modelo.getIdColectivo(dni));
-		if(idCurso==0) 
-			validateCondition(false, "Falta seleccionar un curso.");
-		if(idColectivo!=-1) { 
-			if(modelo.existeInscripcion(idColectivo, idCurso,"colectivo")==true) {
-				vista.getTFdniColectivo().setText("");
-				throw new ApplicationException("Error, hay un colectivo con dni="+dni+" inscrito en el idCurso="+idCurso);
-			}else crearInscripcionColectivo();
-		}else { //no existe en nuestra BD colectivo
-			if(hayCamposVacios()) 
-				validateCondition(false, "Rellena los datos del nuevo colectivo.");
-			
-			tipo=getTipo();
-			if(tipo=="") 
-				throw new ApplicationException("Error, hay que seleccionar un tipo de colectivo");
-			modelo.setNuevoColectivo(tipo);
-			System.out.println("Añadido nuevo colectivo con idColectivo="+idColectivo);
-			idColectivo=Integer.valueOf(modelo.getIdColectivo(dni));
-			crearInscripcionColectivo();
-		}
-	}
-	
 	private void inscripcionColegiado() {
 		int idColegiado=-1;
-		try {
-			idColegiado=Integer.parseInt(vista.getTFdniColegiado().getText()); 
-		}catch(NumberFormatException e) {
-			throw new ApplicationException("Error en el formato del número del idColegiado: "+vista.getTFdniColectivo().getText()+" no válido");
+		if(idCurso==0) { //NO SELECCIONO CURSO
+			validateCondition(false, "Hay que seleccionar un curso.");
+		}else { //SELECCIONO CURSO
+			try {
+				idColegiado=Integer.parseInt(vista.getTFdniColegiado().getText()); 
+			}catch(NumberFormatException e) {
+				throw new ApplicationException("Error en el formato del número del idColegiado.");
+			}
+			if(modelo.existeColegiado(idColegiado)==true) { //EXISTE COLEGIADO
+				if(modelo.existeInscripcion(idColegiado, idCurso, "colegiado")==true) { //EXISTE INSCRIPCION
+					vista.getTFdniColegiado().setText("");
+					throw new ApplicationException("Error en la inscripción, el idColegiado="+idColegiado+" ya está inscrito en el idCurso="+idCurso);
+				}else { //NO EXISTE INSCRIPCION
+					if(hayPlazasLibres()) { //SI HAY PLAZAS
+						crearInscripcionColegiado();
+					}else //SI NO HAY PLAZAS
+						throw new ApplicationException("No hay plazas libres en este idCurso="+idCurso);
+				}
+			}else //NO EXISTE COLEGIADO
+				throw new ApplicationException("No existe en nuestra base de datos de Colegiados ese idColegiado.");
 		}
-		if(idCurso==0) 
-			validateCondition(false, "Falta seleccionar un curso.");
-		int x=modelo.getColegiadoNombre(idColegiado)==null?-1:idColegiado;
-		
-		if(x!=-1) {
-			if(modelo.existeInscripcion(idColegiado, idCurso,"colegiado")==true) {
-				vista.getTFdniColegiado().setText("");
-				throw new ApplicationException("Error en la inscripción, el idColegiado="+idColegiado+" ya está inscrito en el idCurso="+idCurso);
-			}else crearInscripcionColegiado();
-		}else throw new ApplicationException("No existe en nuestra base de datos ese idColegiado.");
 	}
 	
 	private void inscripcionPrecolegiado() {
 		int idPrecolegiado=-1;
-		try{
-			idPrecolegiado=Integer.parseInt(vista.getTFidPre().getText());
-		}catch(NumberFormatException e) {
-			throw new ApplicationException("Error en el formato del número del idPrecolegiado: "+vista.getTFdniColectivo().getText()+" no válido");
+		if(idCurso==0) //NO SELECCION CURSO
+			validateCondition(false, "Hay que seleccionar un curso.");
+		else { //SELECCION DE CURSO
+			try{
+				idPrecolegiado=Integer.parseInt(vista.getTFidPre().getText());
+			}catch(NumberFormatException e) {
+				throw new ApplicationException("Error en el formato del número del idPrecolegiado.");
+			}
+			if(modelo.existePrecolegiado(idPrecolegiado)==true) { //EXISTE PRECOLEGIADO
+				if(modelo.existeInscripcion(idPrecolegiado, idCurso, "precolegiado")==true) { //EXISTE INSCRIPCION
+					vista.getTFidPre().setText("");
+					throw new ApplicationException("Error en la inscripción, el idPrecolegiado="+idPrecolegiado+" ya está inscrito en el idCurso="+idCurso);
+				}else //NO EXISTE INSCRIPCION
+					 if(hayPlazasLibres()) //SI HAY PLAZAS
+						 crearInscripcionPrecolegiado();
+					 else //SI NO HAY PLAZAS
+						 throw new ApplicationException("No hay plazas libres en este idCurso="+idCurso);
+			}else //NO EXISTE PRECOLEGIADO
+				throw new ApplicationException("No existe en nuestra base de datos de Precolegiados ese idPrecolegiado.");
 		}
-		if(idCurso==0)
+	}
+	
+	private void inscripcionColectivo() {
+		int idColectivo=-1;
+		int dni=-1;
+		existeColectivo=false;
+		if(idCurso==0) 
 			validateCondition(false, "Falta seleccionar un curso.");
-		int x=modelo.getPrecolegiadoNombre(idPrecolegiado)==null?-1:idPrecolegiado;
-		
-		if(x!=-1) {
-			if(modelo.existeInscripcion(idPrecolegiado, idCurso, "precolegiado")==true) {
-				vista.getTFidPre().setText("");
-				throw new ApplicationException("Error en la inscripción, el idPrecolegiado="+idPrecolegiado+" ya está inscrito en el idCurso="+idCurso);
-			}else crearInscripcionPrecolegiado();
-		}else throw new ApplicationException("No existe en nuestra Base de Datos de Precolegiados ese idPrecolegiado");
+		else {
+			try {
+				dni=Integer.parseInt(vista.getTFdniColectivo().getText());
+			}catch(NumberFormatException e) {
+				throw new ApplicationException("Error en el formato del número de dni del colectivo: "+vista.getTFdniColectivo().getText()+" no válido");
+			}
+			if(modelo.existeColectivo(dni)==true) { //EXISTE COLECTIVO
+				idColectivo=Integer.parseInt(modelo.getIdColectivo(dni));
+				tipo=modelo.getColectivoTipo(idColectivo);
+				existeColectivo=true;
+				if(modelo.existeInscripcion(idColectivo, idCurso, tipo)==true) { //EXISTE INSCRIPCION
+					vista.getTFdniColectivo().setText("");
+					throw new ApplicationException("Error, hay un colectivo de tipo="+tipo+" con dni="+dni+" inscrito en el idCurso="+idCurso);
+				}else { //NO EXISTE INSCRIPCION
+					if(hayPlazasLibres()) //SI HAY PLAZAS
+						crearInscripcionColectivo();
+					else //SI NO HAY PLAZAS
+						throw new ApplicationException("No hay plazas libres en este idCurso="+idCurso);
+				}
+			}else { //NO EXISTE COLECTIVO
+				if(hayCamposVacios()) 
+					validateCondition(false, "Rellena los datos del nuevo colectivo.");
+				else {
+					tipo=getTipo();
+					if(tipo=="") //no se selecciona un tipo de colectivo
+						throw new ApplicationException("Error, hay que seleccionar un tipo de colectivo");
+					else { //se selecciona un tipo de colectivo
+						modelo.setNuevoColectivo(tipo);
+						System.out.println("Añadido colectivo con idColectivo="+idColectivo+" ,tipo="+tipo);
+						if(hayPlazasLibres()) //SI HAY PLAZAS
+							crearInscripcionColectivo();
+						else //SI NO HAY PLAZAS
+							throw new ApplicationException("No hay plazas libres en este idCurso="+idCurso);
+					}
+				}
+			}
+		}
 	}
 	
 	private void crearInscripcionColegiado() {
 		int idColegiado=Integer.parseInt(vista.getTFdniColegiado().getText());
 		vista.getFrame().setVisible(false);
 		justificante.getFrame().setVisible(true);
+		
 		modelo.setNuevaInscripcion(idColegiado, idCurso,"colegiado");
 		System.out.println("Nueva inscripción: idColegiado="+idColegiado+", idCurso="+idCurso);
-		
+			
 		justificante.getLblNewLabel_3().setText("IdColegiado : ");
 		justificante.getLNombre().setText(modelo.getColegiadoNombre(idColegiado));
 		justificante.getLApellidos().setText(modelo.getColegiadoApellidos(idColegiado));
@@ -154,6 +182,7 @@ public class InscripcionesController {
 		int idPrecolegiado=Integer.parseInt(vista.getTFidPre().getText());
 		vista.getFrame().setVisible(false);
 		justificante.getFrame().setVisible(true);
+		
 		modelo.setNuevaInscripcion(idPrecolegiado, idCurso,"precolegiado");
 		System.out.println("Nueva inscripción: idPrecolegiado="+idPrecolegiado+", idCurso="+idCurso);
 		
@@ -169,22 +198,12 @@ public class InscripcionesController {
 	private void crearInscripcionColectivo() {
 		int dni=Integer.parseInt(vista.getTFdniColectivo().getText());
 		int idColectivo= Integer.valueOf(modelo.getIdColectivo(dni));
+		
 		vista.getFrame().setVisible(false);
 		justificante.getFrame().setVisible(true);
 		
-		tipo=getTipo();
 		modelo.setNuevaInscripcion(idColectivo, idCurso,tipo);
-		System.out.println("Nueva inscripción: idColectivo="+idColectivo+", idCurso="+idCurso);
-		if(tipo=="externo")
-			justificante.getLCantidad().setText(modelo.getCursoPrecioExterno(idCurso));
-		if(tipo=="estudiante")
-			justificante.getLCantidad().setText(modelo.getCursoPrecioEstudiante(idCurso));
-		if(tipo=="empresa")
-			justificante.getLCantidad().setText(modelo.getCursoPrecioEmpresa(idCurso));
-		/*
-		if(tipo=="")
-            justificante.getLCantidad().setText(modelo.getCursoPrecioEstudiante(idCurso));
-		*/
+		System.out.println("Nueva inscripción: idColectivo="+idColectivo+", idCurso="+idCurso+ ", tipo="+tipo);
 		
 		justificante.getLblNewLabel_3().setText("IdColectivo : ");
 		justificante.getLNombre().setText(modelo.getColectivoNombre(idColectivo));
@@ -192,6 +211,20 @@ public class InscripcionesController {
 		justificante.getLNColegiado().setText(String.valueOf(idColectivo));
 		justificante.getLNCuenta().setText("1234567890");
 		justificante.getLFecha().setText(modelo.getFecha());
+		
+		if(existeColectivo==false) {
+			if(tipo=="externo")
+				justificante.getLCantidad().setText(modelo.getCursoPrecioExterno(idCurso));
+			if(tipo=="estudiante")
+				justificante.getLCantidad().setText(modelo.getCursoPrecioEstudiante(idCurso));
+			if(tipo=="empresa")
+				justificante.getLCantidad().setText(modelo.getCursoPrecioEmpresa(idCurso));
+		}else {
+			tipo=modelo.getColectivoTipo(idColectivo);
+			if(tipo=="externo") justificante.getLCantidad().setText(modelo.getCursoPrecioExterno(idCurso));
+			if(tipo=="estudiante") justificante.getLCantidad().setText(modelo.getCursoPrecioEstudiante(idCurso));
+			if(tipo=="empresa") justificante.getLCantidad().setText(modelo.getCursoPrecioEmpresa(idCurso));
+		}
 	}
 	
 	private boolean hayCamposVacios() {
@@ -208,6 +241,16 @@ public class InscripcionesController {
 		if(vista.getRBexterno().isSelected())
 			return "externo";
 		else return "";
+	}
+	
+	private boolean hayPlazasLibres() {
+		String plazasTotales=modelo.getCursoPlazasTotales(idCurso);
+		String plazasOcupadas=modelo.getCursoPlazasOcupadas(idCurso);
+		int tot=Integer.valueOf(plazasTotales);
+		int ocu=Integer.valueOf(plazasOcupadas);
+		if(ocu<tot)
+			return true;
+		else return false;
 	}
 	
 	private void validateCondition(boolean condition, String message) {
