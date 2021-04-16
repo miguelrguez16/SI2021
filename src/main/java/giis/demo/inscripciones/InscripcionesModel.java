@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.List;
 
+import giis.demo.colegiados.ColegiadoEntity;
 import giis.demo.cursos.CursoDisplayDTO;
 import giis.demo.cursos.CursoEntity;
 import giis.demo.util.ApplicationException;
@@ -24,18 +25,12 @@ public class InscripcionesModel {
 		StringBuilder fecha = new StringBuilder();
 		String tmp;
 		tmp = Integer.toString(c1.get(Calendar.YEAR));
-
 		fecha.append(tmp + "-");
-
 		tmp = "";
 		tmp = (c1.get(Calendar.MONTH) + 1 < 10) ? (String) ("0" + Integer.toString(c1.get(Calendar.MONTH) + 1)) : (String) (Integer.toString(c1.get(Calendar.MONTH) + 1));
 		fecha.append(tmp + "-");
-
 		tmp = (c1.get(Calendar.DATE) < 10) ? (String) ("0" + Integer.toString(c1.get(Calendar.DATE))) : (String) (Integer.toString(c1.get(Calendar.DATE)));
 		fecha.append(tmp);
-
-		//System.out.println(fecha.toString());
-
 		return fecha.toString();
 	}
 	
@@ -209,6 +204,21 @@ public class InscripcionesModel {
 	    return nombre;
 	}
 	
+	public String getColectivoTipo(int idColectivo) {
+	    try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT tipoColectivo FROM Colectivo WHERE idColectivo="+idColectivo;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
+	}
+	
 	public String getCursoPrecioEmpresa(int idCurso) {
 	    try {
 	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
@@ -223,67 +233,75 @@ public class InscripcionesModel {
 	    }
 	    return nombre;
 	}
-	/*
-	public void setNuevaInscripcion(int idColegiado, int idCurso) {
-		String sql="INSERT INTO Inscripcion (IdColegiado, IdCurso, fecha) VALUES ("+idColegiado+","+idCurso+",'"+this.getFecha()+"')";
-		db.executeUpdate(sql);
+	
+	public String getCursoPlazasTotales(int idCurso) {
+	    try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT plazasTotales FROM Curso WHERE idCurso="+idCurso;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
 	}
 	
-	public void setNuevaInscripcionCurso(int idColegiado, int idCurso) {
-		String sql="INSERT INTO InscripcionCurso (id, idCurso,tipo,estado, fecha) VALUES ("+idColegiado+","+idCurso+","+"'colegiado'"+","+"'preinscrito'"+",'"+this.getFecha()+"')";
-		db.executeUpdate(sql);
+	public String getCursoPlazasOcupadas(int idCurso) {
+	    try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT count(idInscripcionCurso) from InscripcionCurso where idCurso="+idCurso;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
 	}
-	
-	public void setNuevaInscripcionPrecolegiado(int idPrecolegiado, int idCurso) {
-		String sql="INSERT INTO InscripcionPrecolegiado (IdPrecolegiado, IdCurso, fecha) VALUES ("+idPrecolegiado+","+idCurso+",'"+this.getFecha()+"')";
-		db.executeUpdate(sql);
-	}*/
-	/*
-	 * id Colegiado ,Precolegiado ...
-	 * 
-	 */
+
 	public void setNuevaInscripcion(int id, int idCurso, String tipo) {
-		String sql="INSERT INTO InscripcionCurso (id, idCurso,tipo,estado, fecha) VALUES (?,?,?,?,?)";
-		db.executeUpdate(sql,id,idCurso,tipo,"preinscrito",this.getFecha());
+		String sql="INSERT INTO InscripcionCurso (id, idCurso, tipo, estado, fecha) VALUES (?,?,?,?,?)";
+		db.executeUpdate(sql, id, idCurso, tipo, "preinscrito", this.getFecha());
 	}
 	
-	/*
-	public void setNuevaInscripcionColectivo(int idColectivo, int idCurso) {
-		String sql="INSERT INTO InscripcionColectivo (IdColectivo, IdCurso, fecha) VALUES ("+idColectivo+","+idCurso+",'"+this.getFecha()+"')";
-		db.executeUpdate(sql);
-	}*/
 	public boolean existeInscripcion(int id, int idCurso, String tipo) {
 		String sql="SELECT idInscripcionCurso from InscripcionCurso where (id=? and idCurso=? and tipo=?)";
-		List<InscripcionCursoEntity> inscripcionSelect=db.executeQueryPojo(InscripcionCursoEntity.class, sql,id,idCurso,tipo);
-		if(inscripcionSelect.isEmpty())
-			return false;
-		else return true;
-	}
-	/*
-	public boolean existeInscripcion(int idColegiado, int idCurso) {
-		String sql="SELECT idInscripcion from Inscripcion where idColegiado="+idColegiado+" and idCurso="+idCurso;
-		List<InscripcionesEntity> inscripcionSelect=db.executeQueryPojo(InscripcionesEntity.class, sql);
+		List<InscripcionCursoEntity> inscripcionSelect=db.executeQueryPojo(InscripcionCursoEntity.class, sql, id, idCurso, tipo);
 		if(inscripcionSelect.isEmpty())
 			return false;
 		else return true;
 	}
 	
-	public boolean existeInscripcionPrecolegiado(int idPrecolegiado, int idCurso) {
-		String sql="SELECT id from InscripcionPrecolegiado where idPrecolegiado="+idPrecolegiado+" and idCurso="+idCurso;
-		List<InscripcionesEntity> inscripcionSelect=db.executeQueryPojo(InscripcionesEntity.class, sql);
-		if(inscripcionSelect.isEmpty())
+	
+	public boolean existeColegiado(int idColegiado) {
+		String sql="SELECT nombre from Colegiado where idColegiado=?";
+		List<ColegiadoEntity> colegiadoSelect=db.executeQueryPojo(ColegiadoEntity.class, sql, idColegiado);
+		if(colegiadoSelect.isEmpty())
 			return false;
 		else return true;
 	}
 	
-	public boolean existeInscripcionColectivo(int idColectivo, int idCurso) {
-		String sql="SELECT idInscripcionColectivo from InscripcionColectivo where idColectivo="+idColectivo+" and idCurso="+idCurso;
-		List<InscripcionesEntity> inscripcionSelect=db.executeQueryPojo(InscripcionesEntity.class, sql);
-		if(inscripcionSelect.isEmpty())
+	public boolean existePrecolegiado(int idPrecolegiado) {
+		String sql="SELECT nombre from Precolegiado where id=?";
+		List<PrecolegiadoEntity> precolegiadoSelect=db.executeQueryPojo(PrecolegiadoEntity.class, sql, idPrecolegiado);
+		if(precolegiadoSelect.isEmpty())
 			return false;
 		else return true;
 	}
-	*/
+	
+	public boolean existeColectivo(int dni) {
+		String sql="SELECT idColectivo from Colectivo where dni=?";
+		List<ColectivoEntity> colectivoSelect=db.executeQueryPojo(ColectivoEntity.class, sql, dni);
+		if(colectivoSelect.isEmpty())
+			return false;
+		else return true;
+	}
+	
 	public void setNuevoColectivo(String tipo) {
 		String sql="INSERT INTO Colectivo (nombre, apellidos, dni, direccion, poblacion, telefono, tipoColectivo) "
 				+ "VALUES ('"+InscripcionesView.getNombre()+"','"+InscripcionesView.getApellidos()+"','"+InscripcionesView.getDni()+"','"+
