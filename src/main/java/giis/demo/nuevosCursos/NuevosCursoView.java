@@ -7,18 +7,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
-//<<<<<<< HEAD
+
 import java.awt.FlowLayout;
 import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.JToggleButton;
-<<<<<<< HEAD
 
-=======
 import java.awt.Font;
 import javax.swing.JComboBox;
 
->>>>>>> branch 'master' of https://github.com/miguelrguez16/SI2021.git
+
 
 
 
@@ -39,9 +37,6 @@ public class NuevosCursoView extends JFrame {
 	private JTextField nombreCurso;
 	private JTextField precioColegiado;
 	private JButton btnVaciar;
-<<<<<<< HEAD
-
-=======
 	private JTextField precioPrecolegiado;
 	private JTextField textoInstalacion;
 	private JComboBox comboBoxProfesores;
@@ -53,7 +48,7 @@ public class NuevosCursoView extends JFrame {
 	private JTextField precioExterno;
 	private JLabel lblNewLabel_9;
 
->>>>>>> branch 'master' of https://github.com/miguelrguez16/SI2021.git
+
 
 	/**
 	 * Create the application.
@@ -70,30 +65,22 @@ public class NuevosCursoView extends JFrame {
 		frmNuevosCursos = new JFrame();
 		frmNuevosCursos.setTitle("Planificar Cursos");
 		frmNuevosCursos.setName("Nuevos Cursos");
-<<<<<<< HEAD
 
-		frmNuevosCursos.setBounds(0, 0, 486, 678);
-
-=======
 
 		frmNuevosCursos.setBounds(0, 0, 906, 678);
 
->>>>>>> branch 'master' of https://github.com/miguelrguez16/SI2021.git
+
 		frmNuevosCursos.getContentPane().setLayout(null);
 		frmNuevosCursos.setLocationRelativeTo(null);
 
 		
 		lblLbltable = new JLabel("Lista de cursos planificados para este año");
-<<<<<<< HEAD
 
-		lblLbltable.setBounds(106, 36, 272, 14);
-
-=======
 		lblLbltable.setFont(new Font("Tahoma", Font.BOLD, 14));
 
 		lblLbltable.setBounds(50, 36, 359, 14);
 
->>>>>>> branch 'master' of https://github.com/miguelrguez16/SI2021.git
+
 		frmNuevosCursos.getContentPane().add(lblLbltable);
 		
 		//Incluyo la tabla en un JScrollPane y anado este en vez de la tabla para poder ver los headers de la tabla
@@ -102,15 +89,10 @@ public class NuevosCursoView extends JFrame {
 		tabCurso.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tabCurso.setDefaultEditor(Object.class, null); //readonly
 		JScrollPane tablePanel = new JScrollPane(tabCurso);
-<<<<<<< HEAD
 
-		tablePanel.setBounds(50, 61, 359, 291);
-
-=======
 
 		tablePanel.setBounds(37, 61, 844, 291);
 
->>>>>>> branch 'master' of https://github.com/miguelrguez16/SI2021.git
 		frmNuevosCursos.getContentPane().add(tablePanel);
 	
 		btnGuardarCambios = new JButton("Planificar Cursos");
@@ -166,9 +148,6 @@ public class NuevosCursoView extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Fecha Inicio:");
 		lblNewLabel_1.setBounds(37, 430, 124, 14);
 		frmNuevosCursos.getContentPane().add(lblNewLabel_1);
-<<<<<<< HEAD
-
-=======
 		
 		JLabel lblNewLabel_3 = new JLabel("Precio Precolegiado:");
 		lblNewLabel_3.setBounds(285, 430, 124, 14);
@@ -224,7 +203,7 @@ public class NuevosCursoView extends JFrame {
 		lblNewLabel_9.setBounds(569, 431, 124, 14);
 		frmNuevosCursos.getContentPane().add(lblNewLabel_9);
 
->>>>>>> branch 'master' of https://github.com/miguelrguez16/SI2021.git
+
 	}
 
 	//Getters y Setters anadidos para acceso desde el controlador (representacion compacta)
