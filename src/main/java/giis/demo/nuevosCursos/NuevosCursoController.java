@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Date;
+import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
@@ -27,7 +28,20 @@ public class NuevosCursoController {
 
 	public void initview() {
 		vista.getFrame().setVisible(true);
+		iniciarComboBoxProfesores();
 		actualizarNuevosCursos();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void iniciarComboBoxProfesores() {
+		List<nombreProfesoresDTO> nombreProfesores = modelo.getListaProfesores();
+		Iterator<nombreProfesoresDTO> itr = nombreProfesores.iterator();
+		vista.getProfesoresCombo().addItem(" ---- seleccionar  ---- ");
+		while(itr.hasNext()) {
+			nombreProfesoresDTO tmp = itr.next();
+			String aux = tmp.getNombre()+ " " + tmp.getApellidos();
+			vista.getProfesoresCombo().addItem(aux);
+		}
 	}
 
 	// Iniciar los controladore de la vista
@@ -44,7 +58,12 @@ public class NuevosCursoController {
 				vista.getPrecioColegiado().setText("20");
 				vista.getFechaInicio().setText("2021-05-04");
 				vista.getFechaFin().setText("2021-05-10");
-
+				vista.getprecioEmpresa().setText("20");
+				vista.getprecioPrecolegiado().setText("10");
+				vista.getprecioEstudiante().setText("12");
+				vista.getprecioExterno().setText("22");
+				vista.getProfesoresCombo().setSelectedItem("Nela Lois");
+				vista.getInstalacion().setText("Aulario Norte");
 			}
 		});
 		
@@ -64,18 +83,20 @@ public class NuevosCursoController {
 	private void actualizarNuevosCursos() {
 		List<NuevosCursoDisplayDTO> cursosNuevos = modelo.getListaCursosModelo();
 		TableModel tmodel = SwingUtil.getTableModelFromPojos(cursosNuevos,
-				new String[] { "idCurso", "nombre", "precio", "fechaInicio", "fechaFin"});
+				new String[] {"idCurso","nombre","precio","fechaInicio","fechaFin","precioPrecolegiado","precioEstudiante","precioEmpresa","precioExterno","profesor","instalacion"});
 		vista.getTablaCursos().setModel(tmodel);
 		SwingUtil.autoAdjustColumns(vista.getTablaCursos());
 
 	}
 
 	private void guardarCambios() {
-		String nombre;
-
-		double precio = -1.2;
+		String nombre,instalacion;
 		nombre = vista.getNombreCurso().getText();
-		comprobarDatosTexto(nombre);
+		instalacion = vista.getInstalacion().getText();
+		comprobarDatosTexto(nombre,instalacion);		
+		double precio = -1.2,precioPrecolegiado = -1.2, precioEstudiante= -1.2,precioExterno= -1.2,precioEmpresa= -1.2;
+
+		int profesor = vista.getProfesoresCombo().getSelectedIndex();
 
 		Date fechaInicio = Util.isoStringToDate(vista.getFechaInicio().getText());
 		Date fechaFin = Util.isoStringToDate(vista.getFechaFin().getText());
@@ -83,22 +104,33 @@ public class NuevosCursoController {
 
 		try {
 			precio = Double.parseDouble(vista.getPrecioColegiado().getText());
+			precioPrecolegiado= Double.parseDouble(vista.getprecioPrecolegiado().getText());
+			precioEstudiante= Double.parseDouble(vista.getprecioEstudiante().getText());
+			precioExterno= Double.parseDouble(vista.getprecioExterno().getText());
+			precioEmpresa= Double.parseDouble(vista.getprecioEmpresa().getText());
 		} catch (NumberFormatException e) {
-			throw new ApplicationException("Error en el numero de sesiones o en los precios.");
+			throw new ApplicationException("Error en el valor de los precios los precios.");
 		} finally {
 			validateCondition(precio > 0, "Error en el precio de colegiados.\nDebe ser un N.ª decimal positivo Ej: '20.13'");
-			modelo.setCursoNuevos(nombre, precio, fechaInicio, fechaFin);
+			validateCondition(precioPrecolegiado > 0, "Error en el precio de precolegiados.\nDebe ser un N.ª decimal positivo Ej: '20.13'");
+			validateCondition(precioEstudiante > 0, "Error en el precio de estudiantes.\nDebe ser un N.ª decimal positivo Ej: '20.13'");
+			validateCondition(precioExterno > 0, "Error en el precio de externos.\nDebe ser un N.ª decimal positivo Ej: '20.13'");
+			validateCondition(precioEmpresa > 0, "Error en el precio de empresa.\nDebe ser un N.ª decimal positivo Ej: '20.13'");
+			validateCondition(profesor !=-1, "Error al seleccionar profesor.\nDebe seleccionar uno en el Combo Box");
+
+			modelo.setCursoNuevos(nombre, precio, fechaInicio, fechaFin, precioPrecolegiado,precioEstudiante, precioExterno, precioEmpresa,profesor,instalacion);
 			actualizarNuevosCursos();
 		}
 
 	}
 
-	private void comprobarDatosTexto(String nombre) {
+	private void comprobarDatosTexto(String nombre, String instalacion) {
 		if (nombre == null || nombre.isEmpty()) {
 			throw new ApplicationException("Error al introducir el nombre,\n No puede estar vacío");
 		} else  if (modelo.existeCurso(nombre)) {
 			JOptionPane.showMessageDialog(null, "El Nombre del curso ya existe, se procederá a la planificacion");
-		} else {
+		} else if (instalacion == null || instalacion.isEmpty()){
+			throw new ApplicationException("Error al introducir la instalacion,\n No puede estar vacío");
 		}
 
 	}
