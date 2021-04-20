@@ -61,7 +61,11 @@ CREATE TABLE IF NOT EXISTS "Curso" (
 	"precioEstudiante"	REAL,
 	"precioEmpresa"	REAL,
 	"precioExterno"	REAL,
-	PRIMARY KEY("idCurso" AUTOINCREMENT)
+	"idProfesor"	INTEGER,
+	"instalacion"	TEXT,
+	PRIMARY KEY("idCurso" AUTOINCREMENT),
+	FOREIGN KEY("idProfesor") REFERENCES "Profesor"("id")
+
 );
 DROP TABLE IF EXISTS "Colectivo";
 CREATE TABLE IF NOT EXISTS "Colectivo" (
@@ -110,5 +114,13 @@ CREATE TABLE IF NOT EXISTS "InscripcionCurso" (
 	"fecha"	TEXT,
 	PRIMARY KEY("idInscripcionCurso" AUTOINCREMENT),
 	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso")
+);
+DROP TABLE IF EXISTS "Profesor";
+CREATE TABLE IF NOT EXISTS "Profesor" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"nombre"	TEXT,
+	"apellidos" TEXT,
+	"estado"	TEXT NOT NULL DEFAULT 'activo' CHECK("estado" = 'activo' OR "estado" = 'desactivo'),
+	PRIMARY KEY("id" AUTOINCREMENT)
 );
 COMMIT;
