@@ -1,7 +1,5 @@
 package giis.demo.cursos;
 
-//<<<<<<< HEAD
-//=======
 import java.util.Date;
 //>>>>>>> refs/heads/master
 import java.util.List;
