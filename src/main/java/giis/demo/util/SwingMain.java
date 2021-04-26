@@ -22,9 +22,11 @@ import giis.demo.cursos.CursoView;
 import giis.demo.cursosAnio.ListaCursosAnioController;
 import giis.demo.cursosAnio.ListaCursosAnioModel;
 import giis.demo.cursosAnio.ListaCursosAnioView;
+import giis.demo.inscripciones.ComoPagarView;
 import giis.demo.inscripciones.InscripcionesController;
 import giis.demo.inscripciones.InscripcionesModel;
 import giis.demo.inscripciones.InscripcionesView;
+import giis.demo.inscripciones.JustificanteTarjetaView;
 import giis.demo.inscripciones.JustificanteView;
 import giis.demo.inscripcionesListaPeritos.inscripcionesListaPeritosController;
 import giis.demo.inscripcionesListaPeritos.inscripcionesListaPeritosModel;
@@ -140,8 +142,8 @@ public class SwingMain {
 		
 		btnInscripcionesCursos.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
-				InscripcionesController controller2= new InscripcionesController(new InscripcionesModel()
-						, new InscripcionesView(), new JustificanteView());
+				InscripcionesController controller2= new InscripcionesController(new InscripcionesModel(), new InscripcionesView(),
+						new JustificanteView(), new ComoPagarView(), new JustificanteTarjetaView());
 				controller2.initController();			
 			}
 		});
