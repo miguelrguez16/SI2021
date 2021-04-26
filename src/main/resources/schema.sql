@@ -13,8 +13,10 @@ CREATE TABLE IF NOT EXISTS "Colegiado" (
 	"centro"	TEXT NOT NULL DEFAULT 'uniovi',
 	"anioTitulo"	INTEGER NOT NULL DEFAULT 2000,
 	"dni"	TEXT NOT NULL DEFAULT 'ZZ',
-	"estadoCobro"  TEXT NOT NULL,
+	"estadoCobro"  TEXT ,
+	"fechaEmision" TEXT ,
 	"fechaCobro"	TEXT,
+	"fechaReclamacion"	TEXT,
 	PRIMARY KEY("idColegiado" AUTOINCREMENT)
 );
 DROP TABLE IF EXISTS "SolicitudColegio";
@@ -95,8 +97,10 @@ CREATE TABLE IF NOT EXISTS "Precolegiado" (
 	"poblacion"	TEXT,
 	"telefono"	TEXT,
 	"centro"	TEXT,
-	"estadoCobro"  TEXT NOT NULL,
+	"estadoCobro"  TEXT ,
+	"fechaEmision" TEXT ,
 	"fechaCobro"	TEXT,
+	"fechaReclamacion"	TEXT,
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
 DROP TABLE IF EXISTS "SolicitudPrecolegiado";
