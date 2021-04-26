@@ -308,4 +308,10 @@ public class InscripcionesModel {
 				InscripcionesView.getDireccion()+"','"+InscripcionesView.getPoblacion()+"','"+InscripcionesView.getTelefono()+"','"+tipo+"')";
 		db.executeUpdate(sql);
 	}
+	
+	public void setInscripcionPagada(int id, int idCurso) {
+		String sql="UPDATE InscripcionCurso SET estado=? where id=? and idCurso=?";
+		db.executeUpdate(sql,"inscrito", id, idCurso);
+	}
+
 }

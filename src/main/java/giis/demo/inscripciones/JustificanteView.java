@@ -20,12 +20,6 @@ public class JustificanteView {
 
 	private static final long serialVersionUID = 1476210718996663912L;
 	private JFrame frame;
-	private JLabel lblNewLabel_1;
-	private JLabel lblNewLabel_2;
-	private JLabel lblNewLabel_3;
-	private JLabel lblNewLabel_4;
-	private JLabel lblNewLabel_5;
-	private JLabel lblNewLabel_6;
 	private JTable table;
 	private JLabel LNombre;
 	private JLabel LApellidos;
@@ -40,77 +34,48 @@ public class JustificanteView {
 
 	private void initialize() {
 		frame=new JFrame();
-		frame.setBounds(0,0,450,342);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(0,0,600,342);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
 		frame.setTitle("Justificante curso");
 		frame.setName("Justificante curso");
 
 		
-		JLabel lblNewLabel = new JLabel("Justificante de inscripción");
+		JLabel lblNewLabel = new JLabel("Justificante de inscripción para la transferencia");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(10, 11, 414, 26);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		lblNewLabel.setBounds(20, 15, 540, 26);
 		frame.getContentPane().add(lblNewLabel);
 		
-		lblNewLabel_1 = new JLabel("Nombre : ");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(20, 61, 140, 27);
-		frame.getContentPane().add(lblNewLabel_1);
-		
-		lblNewLabel_2 = new JLabel("Apellidos : ");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_2.setBounds(20, 101, 140, 27);
-		frame.getContentPane().add(lblNewLabel_2);
-		
-		lblNewLabel_3 = new JLabel("Nº Colegiado / Precolegiado:");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_3.setBounds(20, 141, 140, 27);
-		frame.getContentPane().add(lblNewLabel_3);
-		
-		lblNewLabel_4 = new JLabel("Fecha de solicitud : ");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_4.setBounds(20, 181, 150, 27);
-		frame.getContentPane().add(lblNewLabel_4);
-		
-		lblNewLabel_5 = new JLabel("Cantidad a abonar : ");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_5.setBounds(20, 221, 150, 27);
-		frame.getContentPane().add(lblNewLabel_5);
-		
-		lblNewLabel_6 = new JLabel("Número de cuenta : ");
-		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_6.setBounds(20, 261, 150, 27);
-		frame.getContentPane().add(lblNewLabel_6);
-		
-		LNombre = new JLabel("");
+		LNombre = new JLabel("Nombre :");
 		LNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		LNombre.setBounds(170, 61, 250, 26);
+		LNombre.setBounds(20, 60, 260, 25);
 		frame.getContentPane().add(LNombre);
 		
-		LApellidos = new JLabel("");
+		LApellidos = new JLabel("Apellidos :");
 		LApellidos.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		LApellidos.setBounds(170, 101, 250, 26);
+		LApellidos.setBounds(300, 60, 260, 25);
 		frame.getContentPane().add(LApellidos);
 		
-		LNColegiado = new JLabel("");
+		LNColegiado = new JLabel("Nº colegiado :");
 		LNColegiado.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		LNColegiado.setBounds(170, 141, 250, 26);
+		LNColegiado.setBounds(20, 101, 540, 25);
 		frame.getContentPane().add(LNColegiado);
 		
-		LFecha = new JLabel("");
+		LFecha = new JLabel("Fecha de la inscripción :");
 		LFecha.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		LFecha.setBounds(170, 181, 250, 26);
+		LFecha.setBounds(20, 140, 540, 25);
 		frame.getContentPane().add(LFecha);
 		
-		LCantidad = new JLabel("");
+		LCantidad = new JLabel("Cantidad a abonar :");
 		LCantidad.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		LCantidad.setBounds(170, 221, 250, 26);
+		LCantidad.setBounds(20, 180, 540, 25);
 		frame.getContentPane().add(LCantidad);
 		
-		LNCuenta = new JLabel("");
+		LNCuenta = new JLabel("Número de la cuenta :");
 		LNCuenta.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		LNCuenta.setBounds(170, 261, 250, 26);
+		LNCuenta.setBounds(20, 220, 540, 25);
 		frame.getContentPane().add(LNCuenta);
 	}
 	
@@ -163,14 +128,6 @@ public class JustificanteView {
 
 	public void setLNCuenta(JLabel lNCuenta) {
 		LNCuenta = lNCuenta;
-	}
-
-	public JLabel getLblNewLabel_3() {
-		return lblNewLabel_3;
-	}
-
-	public void setLblNewLabel_3(JLabel lblNewLabel_3) {
-		this.lblNewLabel_3 = lblNewLabel_3;
 	}
 	
 	
