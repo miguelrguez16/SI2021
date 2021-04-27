@@ -48,30 +48,30 @@ public class EnvioColController {
 						//C:\\Users\\Alvaro\\Desktop
 						
 						if (modelo.compruebaPendientes()!=null) { 
-						File fichero = new File (".","EnvioCol.txt");
-						
-						try {
-							fichero.createNewFile();
-							FileWriter fw = new FileWriter(fichero);
-							BufferedWriter bw = new BufferedWriter(fw);
+							File fichero = new File (".","EnvioCol.txt");
 							
-							List<EnvioColDisplayDTO> envio = modelo.getListaCursosModelo();
-							for(int i=0;i<envio.size();i++) {
-								String aux=envio.get(i).getEstado();
-								if (aux.contentEquals("pendiente")) {
+							try {
+								fichero.createNewFile();
+								FileWriter fw = new FileWriter(fichero);
+								BufferedWriter bw = new BufferedWriter(fw);
+								
+								List<EnvioColDisplayDTO> envio = modelo.getListaCursosModelo();
+								for(int i=0;i<envio.size();i++) {
+									String aux=envio.get(i).getEstado();
+									if (aux.contentEquals("pendiente")) {
+										
+										bw.write("DNI: "+envio.get(i).getDni()+" Titulacion :"+envio.get(i).getTitulacion()+"\n\n");
+									}
 									
-									bw.write("DNI: "+envio.get(i).getDni()+" Titulacion :"+envio.get(i).getTitulacion()+"\n\n");
 								}
 								
+								bw.close();
+								modelo.updateEstado();
+								setListaCursosController();
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
 							}
-							
-							bw.close();
-							modelo.updateEstado();
-							setListaCursosController();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
 					}
 					
 						else JOptionPane.showMessageDialog(null, "No hay ninguna solicitud pendiente");

@@ -1,5 +1,5 @@
 BEGIN TRANSACTION;
-INSERT INTO "Colegiado" ("idColegiado","nombre","apellidos","direccion","poblacion","telefono","datosBancarios","fechaSolicitudColegiado","titulacion","centro","anioTitulo","dni","estadoCobro","fechaEmision","fechaCobro","fechaReclamacion") VALUES (1,'Alvaro','Fonseca','gijon','gijoon','89652345','536468536','2020-02-02','informatica','uniovi',2000,'72746653E',"cobrado","","",""),
+INSERT INTO "Colegiado" ("idColegiado","nombre","apellidos","direccion","poblacion","telefono","datosBancarios","fechaSolicitudColegiado","titulacion","centro","anioTitulo","dni","estadoCobro","fechaEmision","fechaCobro","fechaReclamacion") VALUES (1,'Alvaro','Fonseca','gijon','gijoon','89652345','536468536','2020-02-02','informatica','uniovi',2000,'72746653E',"cobrado","2020-04-02","",""),
  (2,'Miguel','Rodriguez','llangreu','langreo','2556454','523835684','2020-02-02','informatica','uniovi',2000,'63178588A',"cobrado","2020-04-02","",""),
  (3,'Maria','Berni','el molinon','xixon','12345','12345','2020-02-02','informatica','uniovi',2000,'62810739Q',"cobrado","2020-04-02","",""),
  (4,'Nerea','Granda','Aviles','Ailes','53543','345345345','2020-02-02','informatica','uniovi',2000,'77600235Y',"cobrado","2020-04-02","",""),
