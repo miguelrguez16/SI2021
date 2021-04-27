@@ -24,27 +24,28 @@ public class EmisionRecepcionModel {
 				+ "case when true THEN 'Colegiado' "
 				+ "END AS tipo "
 				+ "from Colegiado as c "
-				+ "where c.estadoCobro=? and fechaEmision<? " + "order by apellidos";
+				+ "where c.estadoCobro=? and fechaEmision<? " 
+				+ "order by apellidos";
 		return db.executeQueryPojo(EmisionRecepcionDTO.class, sql, "cobrado", fechaPrimerDía, "cobrado",
 				fechaPrimerDía);
 	}
 
-	public List<EmisionRecepcionDTO> getRecibosNoCobrados(String fechaIni, String fechaFin) {
+	public List<EmisionRecepcionDTO> getRecibosNoCobradosOCobrados(String fechaIni, String fechaFin) {
 		String sql = "Select p.id as numero, p.dni as dni, p.datosCuenta as numeroCuenta, "
 				+ "p.nombre as nombre,p.apellidos as apellidos,p.estadoCobro as estadoRecibos,p.fechaEmision as fechaEmision,p.fechaCobro as fechaCobro,p.fechaReclamacion as fechaReclamacion,"
 				+ "case when true THEN 'Precolegiado' " 
 				+ "END AS tipo  " 
 				+ "from Precolegiado as p "
-				+ "where estadoCobro='No cobrado' and fechaCobro>? and fechaCobro<?" 
+				+ "where (p.estadoCobro='No cobrado' or p.estadoCobro='cobrado') and fechaEmision>? "
 				+ "union all  "
 				+ "Select c.idColegiado as identificador, c.dni as dni,c.datosBancarios as numeroCuenta, "
 				+ "c.nombre as nombre, c.apellidos as apellidos, c.estadoCobro as estadoRecibos, c.fechaEmision as fechaEmision, c.fechaCobro as fechaCobro, c.fechaReclamacion as fechaReclamacion, "
 				+ "case when true THEN 'Colegiado' " 
 				+ "END AS tipo  " 
 				+ "from Colegiado as c "
-				+ "where estadoCobro='No cobrado' and fechaCobro>? and fechaCobro<? "
+				+ "where (c.estadoCobro='No cobrado' or c.estadoCobro='cobrado') and fechaEmision>? "
 				+ "order by apellidos";
-		return db.executeQueryPojo(EmisionRecepcionDTO.class, sql, fechaIni, fechaFin, fechaIni, fechaFin);
+		return db.executeQueryPojo(EmisionRecepcionDTO.class, sql, fechaIni, fechaIni);
 	}
 
 	public List<EmisionRecepcionDTO> getListaCompleta() {

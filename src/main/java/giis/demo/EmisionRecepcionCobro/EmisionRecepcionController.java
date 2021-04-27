@@ -80,51 +80,14 @@ public class EmisionRecepcionController {
 
 	private void RecibirCobro() {
 		List<EmisionRecepcionDTO> lista = model.getListaEmisionCobro1(this.getFechaPrimerDiaAnio());
-		List<EmisionRecepcionDTO> noRecibidos = model.getRecibosNoCobrados(getFechaPrimerDiaAnio(),
-				getFechaPrimerFinAnio());
 		List<EmisionRecepcionDTO> variosSinRecibir = model.getQuedanSinCobrar();
 
 		if (!lista.isEmpty()) {
 			throw new ApplicationException("Aún quedan recibos por emitir");
 
-		} else if (noRecibidos.isEmpty()) {
-			JFileChooser chooser = new JFileChooser();
-
-			int returnVal = chooser.showOpenDialog(vista);
-			if (!(returnVal == JFileChooser.APPROVE_OPTION)) {
-				throw new ApplicationException("Error en la seleccion del fichero de Recepcion");
-			} else {
-				BufferedReader br = null;
-				try {
-					br = new BufferedReader(new FileReader(chooser.getSelectedFile().getAbsoluteFile()));
-					String line = br.readLine();
-					while (null != line) {
-						String[] fields = line.split(" ");
-						String dni, estado;
-						dni = fields[0];
-						estado = comprobarEstado(fields[1]);
-						if(!estado.equals("error")) {
-							actualizarRecibo(dni, estado);
-						}
-						line = br.readLine();
-					}
-				} catch (IOException e) {
-					throw new ApplicationException("Error apertura fichero lectura");
-				} finally {
-					if (null != br) {
-						try {
-							br.close();
-							setlistaColegiadosPrecolegiados();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-			}
-
 		} else if (!variosSinRecibir.isEmpty()) {
 			JFileChooser chooser = new JFileChooser();
-
+			
 			int returnVal = chooser.showOpenDialog(vista);
 			if (!(returnVal == JFileChooser.APPROVE_OPTION)) {
 				throw new ApplicationException("Error en la seleccion del fichero de Recepcion");
@@ -156,7 +119,7 @@ public class EmisionRecepcionController {
 					}
 				}
 			}
-		} else {
+		}else {
 			throw new ApplicationException("Ya se han obtenido los recibos de cobro para este año\nPrueba en Reclamacion de recibos");
 		}
 

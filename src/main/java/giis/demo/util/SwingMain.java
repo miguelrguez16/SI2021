@@ -10,6 +10,9 @@ import java.awt.event.ActionEvent;
 import giis.demo.AsignacionInformes.AsignacionInformesController;
 import giis.demo.AsignacionInformes.AsignacionInformesModel;
 import giis.demo.AsignacionInformes.AsignacionInformesView;
+import giis.demo.EmisionRecepcionCobro.EmisionRecepcionController;
+import giis.demo.EmisionRecepcionCobro.EmisionRecepcionModel;
+import giis.demo.EmisionRecepcionCobro.EmisionRecepcionView;
 import giis.demo.EnvioCol.EnvioColController;
 import giis.demo.EnvioCol.EnvioColModel;
 import giis.demo.EnvioCol.EnvioColView;
@@ -89,7 +92,7 @@ public class SwingMain {
 		frmCoiipa.setTitle("COIIPA - Ventana Principal");
 
 
-		frmCoiipa.setBounds(0, 0, 600, 350);
+		frmCoiipa.setBounds(0, 0, 600, 369);
 
 
 		frmCoiipa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -261,7 +264,7 @@ public class SwingMain {
 		JLabel lblNewLabel_3 = new JLabel("Informes");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel_3.setBounds(310, 210, 250, 20);
+		lblNewLabel_3.setBounds(310, 208, 250, 20);
 		frmCoiipa.getContentPane().add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_5 = new JLabel("Solicitudes/Inscripciones");
@@ -269,6 +272,18 @@ public class SwingMain {
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_5.setBounds(310, 60, 264, 20);
 		frmCoiipa.getContentPane().add(lblNewLabel_5);
+		
+		JButton btnEmitirRecibirCobros = new JButton("Emision y Recepcion de Cobros");
+		btnEmitirRecibirCobros.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnEmitirRecibirCobros.setBounds(310, 300, 264, 20);
+		btnEmitirRecibirCobros.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EmisionRecepcionController erc = new EmisionRecepcionController(new EmisionRecepcionModel(), new EmisionRecepcionView());
+				erc.initController();
+			}
+		});
+		frmCoiipa.getContentPane().add(btnEmitirRecibirCobros);
 
 		
 
