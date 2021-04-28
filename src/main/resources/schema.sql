@@ -13,14 +13,16 @@ CREATE TABLE IF NOT EXISTS "Colegiado" (
 	"centro"	TEXT NOT NULL DEFAULT 'uniovi',
 	"anioTitulo"	INTEGER NOT NULL DEFAULT 2000,
 	"dni"	TEXT NOT NULL DEFAULT 'ZZ',
-	"estadoCobro"  TEXT NOT NULL,
+	"estadoCobro"  TEXT ,
+	"fechaEmision" TEXT ,
 	"fechaCobro"	TEXT,
+	"fechaReclamacion"	TEXT,
 	PRIMARY KEY("idColegiado" AUTOINCREMENT)
 );
 DROP TABLE IF EXISTS "SolicitudColegio";
 CREATE TABLE IF NOT EXISTS "SolicitudColegio" (
 	"idSolicitud"	INTEGER UNIQUE,
-	"estado"	TEXT NOT NULL DEFAULT 'pendiente' CHECK("estado" = 'pendiente' OR "estado" = 'aprobado' OR "estado" = 'En trámite'),
+	"estado"	TEXT NOT NULL DEFAULT 'pendiente' CHECK("estado" = 'pendiente' OR "estado" = 'aprobado' OR "estado" = 'En trámite' OR "estado" = 'Desestimada'),
 	"idColegiado"	INTEGER,
 	"fecha"	TEXT,
 	PRIMARY KEY("idSolicitud" AUTOINCREMENT),
@@ -34,9 +36,6 @@ CREATE TABLE IF NOT EXISTS "InformesPerito" (
 	"fecha"	TEXT,
 	PRIMARY KEY("idInformePerito" AUTOINCREMENT)
 );
-DROP TABLE IF EXISTS "Inscripcion";
-
-DROP TABLE IF EXISTS "InscripcionColectivo";
 
 DROP TABLE IF EXISTS "Perito";
 CREATE TABLE IF NOT EXISTS "Perito" (
@@ -95,8 +94,10 @@ CREATE TABLE IF NOT EXISTS "Precolegiado" (
 	"poblacion"	TEXT,
 	"telefono"	TEXT,
 	"centro"	TEXT,
-	"estadoCobro"  TEXT NOT NULL,
+	"estadoCobro"  TEXT ,
+	"fechaEmision" TEXT ,
 	"fechaCobro"	TEXT,
+	"fechaReclamacion"	TEXT,
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
 DROP TABLE IF EXISTS "SolicitudPrecolegiado";

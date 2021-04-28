@@ -29,6 +29,7 @@ public class EnvioColView extends JFrame {
 	private JButton bCerrar;
 	private JButton btnEnviar;
 	private JButton bActualizar;
+	private JButton bRecibir;
 
 	/**
 	 * Create the application.
@@ -65,7 +66,7 @@ public class EnvioColView extends JFrame {
 		frmConsultaInscritos.getContentPane().add(tablaInscritos);
 		
 		bCerrar = new JButton("Cerrar");
-		bCerrar.setBounds(353, 324, 98, 23);
+		bCerrar.setBounds(252, 324, 98, 23);
 		frmConsultaInscritos.getContentPane().add(bCerrar);
 		
 		btnEnviar = new JButton("Enviar Lote");
@@ -75,6 +76,10 @@ public class EnvioColView extends JFrame {
 		bActualizar = new JButton("Actualizar Lista");
 		bActualizar.setBounds(10, 324, 149, 23);
 		frmConsultaInscritos.getContentPane().add(bActualizar);
+		
+		bRecibir = new JButton("Recibir Lote");
+		bRecibir.setBounds(360, 324, 108, 23);
+		frmConsultaInscritos.getContentPane().add(bRecibir);
 	}
 
 	//Getters y Setters anadidos para acceso desde el controlador (representacion compacta)
@@ -83,5 +88,6 @@ public class EnvioColView extends JFrame {
 	public JButton getBtnCerrar() {return this.bCerrar;}
 	public JButton getBtnEnviar() {return this.btnEnviar;}
 	public JButton getBtnActualizar() {return this.bActualizar;}
+	public JButton getBtnRecibir() {return this.bRecibir;}
 }
 
