@@ -50,46 +50,32 @@ public class EnvioColController {
 				vista.getBtnEnviar().addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						//C:\\Users\\Alvaro\\Desktop
-						if (modelo.compruebaPendientes()!=null) { 
-						
-						
+						if (modelo.compruebaPendientes()!=null) { 						
 						    JFileChooser chooser = new JFileChooser();
 						    chooser.setCurrentDirectory(new File("/home/me/Documents"));
 						    int retrival = chooser.showSaveDialog(null);
 						    if (retrival == JFileChooser.APPROVE_OPTION) {
 						        try {
 						            FileWriter fw = new FileWriter(chooser.getSelectedFile()+".txt");
-					/*	
-						JFileChooser filechooser = new JFileChooser();
-					      // FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto", "txt", "gcode");
-					      // filechooser.setFileFilter(filter);
-					       filechooser.showSaveDialog(filechooser);
-					       File guarda = filechooser.getSelectedFile();*/
-						
-						//File fichero = new File (".","EnvioCol.txt");
-						
-						//try {
-							//fichero.createNewFile();
-							//FileWriter fw = new FileWriter(fichero);
-							BufferedWriter bw = new BufferedWriter(fw);
-							
-							List<EnvioColDisplayDTO> envio = modelo.getListaCursosModelo();
-							for(int i=0;i<envio.size();i++) {
-								String aux=envio.get(i).getEstado();
-								if (aux.contentEquals("pendiente")) {
-									
+					
+								BufferedWriter bw = new BufferedWriter(fw);
+								
+								List<EnvioColDisplayDTO> envio = modelo.getListaCursosModelo();
+								for(int i=0;i<envio.size();i++) {
+									String aux=envio.get(i).getEstado();
+									if (aux.contentEquals("pendiente")) {									
+
 									bw.write(envio.get(i).getDni()+";"+envio.get(i).getTitulacion()+"\n");
+
 								}
 								
+								bw.close();
+								modelo.updateEstado();
+								setListaCursosController();
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
 							}
-							
-							bw.close();
-							modelo.updateEstado();
-							setListaCursosController();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
 					}
 					
 						

@@ -1,0 +1,12 @@
+Nombre completo: Maria Berni	DNI: 62810739Q	Cantidad: 130€ 	Cuenta Cargo: 12345	Número Recibo: 0	Fecha: 2021-04-28
+Nombre completo: Alvaro Fonseca	DNI: 72746653E	Cantidad: 130€ 	Cuenta Cargo: 536468536	Número Recibo: 1	Fecha: 2021-04-28
+Nombre completo: Nerea Granda	DNI: 77600235Y	Cantidad: 130€ 	Cuenta Cargo: 345345345	Número Recibo: 2	Fecha: 2021-04-28
+Nombre completo: Paula Granda	DNI: 65151727H	Cantidad: 130€ 	Cuenta Cargo: 34533	Número Recibo: 3	Fecha: 2021-04-28
+Nombre completo: Laura Junqueras	DNI: 05891104E	Cantidad: 130€ 	Cuenta Cargo: 435345	Número Recibo: 4	Fecha: 2021-04-28
+Nombre completo: Frank Pichon	DNI: 32404476Y	Cantidad: 130€ 	Cuenta Cargo: 523824335684	Número Recibo: 5	Fecha: 2021-04-28
+Nombre completo: Miguel Rodriguez	DNI: 63178588A	Cantidad: 130€ 	Cuenta Cargo: 523835684	Número Recibo: 6	Fecha: 2021-04-28
+Nombre completo: Alvaro Rodriguez	DNI: 01039207K	Cantidad: 130€ 	Cuenta Cargo: 7833567	Número Recibo: 7	Fecha: 2021-04-28
+Nombre completo: Adan Valles	DNI: 74028086X	Cantidad: 130€ 	Cuenta Cargo: 3453453	Número Recibo: 8	Fecha: 2021-04-28
+Nombre completo: Elias fndz	DNI: 07000172Z	Cantidad: 130€ 	Cuenta Cargo: 453454	Número Recibo: 9	Fecha: 2021-04-28
+Nombre completo: Sergio hndz	DNI: 23578734P	Cantidad: 130€ 	Cuenta Cargo: 453454	Número Recibo: 10	Fecha: 2021-04-28
+Nombre completo: Juan hndz	DNI: 99578444Z	Cantidad: 130€ 	Cuenta Cargo: 453454	Número Recibo: 11	Fecha: 2021-04-28
