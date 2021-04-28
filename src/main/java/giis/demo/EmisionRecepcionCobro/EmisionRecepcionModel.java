@@ -135,13 +135,13 @@ public class EmisionRecepcionModel {
 	public boolean getEstadoColegiado(String estado,String dni) {
 		String sql = "SELECT estadoCobro as estado from Colegiado where dni=?";
 		List<PersonaDTO> lista = db.executeQueryPojo(PersonaDTO.class, sql, dni);
-		return !(lista.get(0).getEstado().equals("No cobrado") && lista.get(0).getEstado().equals("cobrado"));
+		return !(lista.get(0).getEstado().equals("No cobrado") || lista.get(0).getEstado().equals("cobrado"));
 	}
 	
 	public boolean getEstadoPrecolegiado(String estado,String dni) {
 		String sql = "SELECT estadoCobro as estado from Precolegiado where dni=?";
 		List<PersonaDTO> lista = db.executeQueryPojo(PersonaDTO.class, sql, dni);
-		return !(lista.get(0).getEstado().equals("No cobrado") && lista.get(0).getEstado().equals("cobrado"));
+		return !(lista.get(0).getEstado().equals("No cobrado") || lista.get(0).getEstado().equals("cobrado"));
 	}
 
 }

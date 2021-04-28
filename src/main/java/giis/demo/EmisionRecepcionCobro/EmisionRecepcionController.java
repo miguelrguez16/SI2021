@@ -87,7 +87,7 @@ public class EmisionRecepcionController {
 
 		} else if (!variosSinRecibir.isEmpty()) {
 			JFileChooser chooser = new JFileChooser();
-			
+
 			int returnVal = chooser.showOpenDialog(vista);
 			if (!(returnVal == JFileChooser.APPROVE_OPTION)) {
 				throw new ApplicationException("Error en la seleccion del fichero de Recepcion");
@@ -101,7 +101,7 @@ public class EmisionRecepcionController {
 						String dni, estado;
 						dni = fields[0];
 						estado = comprobarEstado(fields[1]);
-						if(!estado.equals("error")) {
+						if (!estado.equals("error")) {
 							actualizarRecibo(dni, estado);
 						}
 						line = br.readLine();
@@ -119,43 +119,43 @@ public class EmisionRecepcionController {
 					}
 				}
 			}
-		}else {
-			throw new ApplicationException("Ya se han obtenido los recibos de cobro para este año\nPrueba en Reclamacion de recibos");
+		} else {
+			throw new ApplicationException(
+					"Ya se han obtenido los recibos de cobro para este año\nPrueba en Reclamacion de recibos");
 		}
 
 	}
 
 	private String comprobarEstado(String estado) {
-		if(estado.equals("No")) {
+		if (estado.equals("No")) {
 			return "No cobrado";
-		}else if(estado.equals("cobrado")) {
+		} else if (estado.equals("cobrado")) {
 			return "cobrado";
-		}else {
+		} else {
 			return "error";
 		}
-		
+
 	}
 
 	private void actualizarRecibo(String dni, String estado) {
 		if (model.esColegiado(dni)) {
-			if(model.getEstadoColegiado(estado,dni)) {
+			if (model.getEstadoColegiado(estado, dni)) {
 				model.actualizarReciboColegiado1(dni, estado, getFecha());
-			}else {System.out.println("Existe " + dni + " estado: " + estado);}
+			} // else {System.out.println("Existe " + dni + " estado: " + estado);}
 		} else if (model.esPrecolegiado(dni)) {
-			if(model.getEstadoPrecolegiado(estado,dni)) {
+			if (model.getEstadoPrecolegiado(estado, dni)) {
 				model.actualizarReciboPrecolegiado1(dni, estado, getFecha());
-			}else {System.out.println("Existe " + dni + " estado: " + estado);}
+			} // else {System.out.println("Existe " + dni + " estado: " + estado);}
 		} else {
 			JOptionPane.showMessageDialog(null, "El dni: " + dni + " no existe en la base de datos");
 		}
-
 	}
 
 	private void setlistaColegiadosPrecolegiados() {// model.getListaColegiadosPrecolegiados();
 		List<EmisionRecepcionDTO> colegiadosPrecolegiados = model.getListaCompleta();
-		TableModel tmodel = SwingUtil.getTableModelFromPojos(colegiadosPrecolegiados, new String[] { "numero",
-				"tipo", "nombre", "apellidos", "estadoRecibos", "fechaEmision", "fechaCobro", "fechaReclamacion" }); // ,"dni","numeroCuenta"
-																														// });
+		TableModel tmodel = SwingUtil.getTableModelFromPojos(colegiadosPrecolegiados, new String[] { "numero", "tipo",
+				"nombre", "apellidos", "estadoRecibos", "fechaEmision", "fechaCobro", "fechaReclamacion" }); // ,"dni","numeroCuenta"
+																												// });
 		vista.gettabColegiadosPrecolegiados().setModel(tmodel);
 		SwingUtil.autoAdjustColumns(vista.gettabColegiadosPrecolegiados());
 
