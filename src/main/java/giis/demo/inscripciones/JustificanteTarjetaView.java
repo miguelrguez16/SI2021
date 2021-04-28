@@ -29,7 +29,7 @@ public class JustificanteTarjetaView {
 
 	private void initialize() {
 		frmJustificanteFormaDe=new JFrame();
-		frmJustificanteFormaDe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmJustificanteFormaDe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmJustificanteFormaDe.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 11));
 		frmJustificanteFormaDe.setBounds(0,0,500,150);
 		frmJustificanteFormaDe.getContentPane().setLayout(null);

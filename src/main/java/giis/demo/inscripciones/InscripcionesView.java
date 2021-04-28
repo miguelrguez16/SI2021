@@ -51,6 +51,7 @@ public class InscripcionesView {
 
 	private void initialize() {
 		frame=new JFrame();
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setBounds(0,0,660,603);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);

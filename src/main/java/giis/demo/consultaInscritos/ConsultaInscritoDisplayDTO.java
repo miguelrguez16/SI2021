@@ -1,7 +1,15 @@
 package giis.demo.consultaInscritos;
 
 public class ConsultaInscritoDisplayDTO {
-	private String apellidos, nombre, fecha, estado, precio,tipo;
+	private String apellidos, nombre, fecha, estado, precio,tipo, cantidadDevolver;
+	
+	public String getCantidadDevolver() {
+		return cantidadDevolver;
+	}
+
+	public void setCantidadDevolver(String cantidadDevolver) {
+		this.cantidadDevolver = cantidadDevolver;
+	}
 
 	public String getApellidos() {
 		return apellidos;

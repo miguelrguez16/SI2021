@@ -25,17 +25,16 @@ INSERT INTO "Profesor" ("id","nombre","apellidos","estado") VALUES (1,"Nela","Lo
 (2,"Pelayo","Iglesias","activo"),
 (3,"Irene","Alonso","activo"),
 (4,"Celia","Corte ","activo");
-INSERT INTO "InscripcionCurso" ("idInscripcionCurso","id","idCurso","tipo","estado","fecha") VALUES (1,1,4,'colegiado','preinscrito','2021-05-04'),
-(2,2,5,'colegiado','preinscrito','2021-05-04'),
-(3,1,3,'colegiado','preinscrito','2021-05-04'),
-(4,3,4,'colegiado','preinscrito','2021-05-04'),
-(5,3,6,'colegiado','preinscrito','2021-05-04'),
-(6,2,6,'colegiado','preinscrito','2021-04-03'),
-(7,3,5,'colegiado','preinscrito','2021-04-03'),
-(8,1,5,'colegiado','preinscrito','2021-04-06'),
-(9,1,5,'precolegiado','preinscrito','2021-04-06'),
-(10,1,5,'estudiante','preinscrito','2021-04-06');
-
+INSERT INTO "InscripcionCurso" ("idInscripcionCurso","id","idCurso","tipo","estado","fecha","cantidadDevolver") VALUES (1,1,4,'colegiado','preinscrito','2021-05-04',0.0),
+(2,2,5,'colegiado','preinscrito','2021-05-04',0.0),
+(3,1,3,'colegiado','preinscrito','2021-05-04',0.0),
+(4,3,4,'colegiado','preinscrito','2021-05-04',0.0),
+(5,3,6,'colegiado','preinscrito','2021-05-04',0.0),
+(6,2,6,'colegiado','preinscrito','2021-04-03',0.0),
+(7,3,5,'colegiado','preinscrito','2021-04-03',0.0),
+(8,1,5,'colegiado','preinscrito','2021-04-06',0.0),
+(9,1,5,'precolegiado','preinscrito','2021-04-06',0.0),
+(10,1,5,'estudiante','preinscrito','2021-04-06',0.0);
 INSERT INTO "Perito" ("idPerito","idColegiado","fecha","turno","estado") VALUES (1,1,'2021-02-02',1,'aprobado'),
  (2,3,'2021-02-02',2,'aprobado'),
  (3,2,'2021-02-02',5,'aprobado'),

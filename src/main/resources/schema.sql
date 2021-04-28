@@ -114,8 +114,9 @@ CREATE TABLE IF NOT EXISTS "InscripcionCurso" (
 	"id"	INTEGER,
 	"idCurso"	INTEGER,
 	"tipo"	TEXT DEFAULT 'colegiado' CHECK("tipo" = 'colegiado' OR "tipo" = 'precolegiado' OR "tipo" = 'estudiante' OR "tipo" = 'empresa'OR "tipo" = 'externo'),
-	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'inscrito')),
+	"estado"	TEXT NOT NULL DEFAULT 'preinscrito' CHECK(("estado" = 'preinscrito' OR "estado" = 'inscrito' OR "estado" = 'anulada')),
 	"fecha"	TEXT,
+	"cantidadDevolver" REAL,
 	PRIMARY KEY("idInscripcionCurso" AUTOINCREMENT),
 	FOREIGN KEY("idCurso") REFERENCES "Curso"("idCurso")
 );
