@@ -2,7 +2,15 @@ package giis.demo.cursos;
 
 public class CursoDisplayDTO {
 	private String idCurso, nombre, fechaInicio;
-	private String precio, precioPrecolegiado, precioEstudiante, precioEmpresa, precioExterno;
+	private String precio, precioPrecolegiado, precioEstudiante, precioEmpresa, precioExterno, cantidadDevolver;
+
+	public String getCantidadDevolver() {
+		return cantidadDevolver;
+	}
+
+	public void setCantidadDevolver(String cantidadDevolver) {
+		this.cantidadDevolver = cantidadDevolver;
+	}
 
 	public String getIdCurso() {
 		return idCurso;

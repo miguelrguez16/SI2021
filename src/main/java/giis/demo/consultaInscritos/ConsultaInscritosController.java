@@ -61,7 +61,6 @@ public class ConsultaInscritosController {
 		vista.getTablaCursos().setModel(tmodel);
 		SwingUtil.autoAdjustColumns(vista.getTablaCursos());
 		recaudacion = totalRecaudacion(cursos);
-		
 	}
 	
 	private static double totalRecaudacion(List<ConsultaInscritoDisplayDTO> data) {

@@ -35,7 +35,6 @@ INSERT INTO "InscripcionCurso" ("idInscripcionCurso","id","idCurso","tipo","esta
 (8,1,5,'colegiado','preinscrito','2021-04-06',0.0),
 (9,1,5,'precolegiado','preinscrito','2021-04-06',0.0),
 (10,1,5,'estudiante','preinscrito','2021-04-06',0.0);
-
 INSERT INTO "Perito" ("idPerito","idColegiado","fecha","turno","estado") VALUES (1,1,'2021-02-02',1,'aprobado'),
  (2,3,'2021-02-02',2,'aprobado'),
  (3,2,'2021-02-02',5,'aprobado'),

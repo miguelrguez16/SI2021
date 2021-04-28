@@ -41,7 +41,7 @@ public class ComoPagarView {
 
 	private void initialize() {
 		frame=new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 11));
 		frame.setBounds(0,0,500,400);
 		frame.getContentPane().setLayout(null);
