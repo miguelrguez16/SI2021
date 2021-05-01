@@ -83,6 +83,25 @@ public class EnvioColModel {
 		return idcurso;
 
 	}
+	
+	public int getNumColegiado(String dni) {
+		try {
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+			java.sql.Statement s = conn.createStatement();
+			String sql = "SELECT idColegiado FROM Colegiado WHERE nombre=\'"+dni+"\'";
+			ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+			while (rs.next()) {
+				idcurso=rs.getInt(1);
+			}
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return idcurso;
+
+	}
 
 	public String compruebaPendientes() {
 

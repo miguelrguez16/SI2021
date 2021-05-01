@@ -1,0 +1,20 @@
+Lista Solicitudes de colegiación denegadas 2021-04-29
+
+DNI: 05891104E
+Nombre: Laura
+Apellidos: Junqueras
+Fecha: 2021-04-29
+Num. Colegiado: 8
+---------------------------------------------------
+DNI: 12345678L
+Nombre: Lionel Andres
+Apellidos: Messi Cuccitini
+Fecha: 2021-04-29
+Num. Colegiado: 10
+---------------------------------------------------
+DNI: 74028086X
+Nombre: Adan
+Apellidos: Valles
+Fecha: 2021-04-29
+Num. Colegiado: 9
+---------------------------------------------------
