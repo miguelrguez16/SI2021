@@ -62,7 +62,7 @@ public class EmisionRecepcionController {
 
 					} else if (lista.get(i).getTipo().equals("Precolegiado")) {
 						bw.write("Nombre completo: " + lista.get(i).getNombre() + " " + lista.get(i).getApellidos()
-								+ "\tDNI: " + lista.get(i).getDni() + "\tCantidad: 130€ " + "\tCuenta Cargo: "
+								+ "\tDNI: " + lista.get(i).getDni() + "\tCantidad: 100€ " + "\tCuenta Cargo: "
 								+ lista.get(i).getNumeroCuenta() + "\tNúmero Recibo: " + i + "\tFecha: " + getFecha()
 								+ "\n");
 						model.actualizarPrimeraEmisionPrecolegiado(lista.get(i).getDni(), getFecha());
@@ -121,7 +121,7 @@ public class EmisionRecepcionController {
 			}
 		} else {
 			throw new ApplicationException(
-					"Ya se han obtenido los recibos de cobro para este año\nPrueba en Reclamacion de recibos");
+					"Ya se han obtenido los recibos de cobro para este año\n");
 		}
 
 	}
@@ -147,7 +147,8 @@ public class EmisionRecepcionController {
 				model.actualizarReciboPrecolegiado1(dni, estado, getFecha());
 			} // else {System.out.println("Existe " + dni + " estado: " + estado);}
 		} else {
-			JOptionPane.showMessageDialog(null, "El dni: " + dni + " no existe en la base de datos");
+			System.out.println("El dni: "+ dni + "nun existe");
+			//JOptionPane.showMessageDialog(null, "El dni: " + dni + " no existe en la base de datos");
 		}
 	}
 

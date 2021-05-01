@@ -17,14 +17,15 @@ public class EmisionRecepcionModel {
 				+ "case when true THEN 'Precolegiado' "
 				+ "END AS tipo "
 				+ "from Precolegiado as p "
-				+ "where p.estadoCobro=? and fechaEmision<? "
+				+ "where (p.estadoCobro=? and p.fechaEmision<?) OR (p.estadoCobro is null and p.fechaEmision is null) "
 				+ "union all "
 				+ "Select c.idColegiado as numero, c.dni as dni,c.datosBancarios as numeroCuenta, "
 				+ "c.nombre as nombre, c.apellidos as apellidos, c.estadoCobro as estadoRecibos, c.fechaEmision as fechaEmision, c.fechaCobro as fechaCobro, c.fechaReclamacion as fechaReclamacion, "
 				+ "case when true THEN 'Colegiado' "
 				+ "END AS tipo "
 				+ "from Colegiado as c "
-				+ "where c.estadoCobro=? and fechaEmision<? " 
+				+ "inner join SolicitudColegio as sc on sc.idSolicitud=c.idColegiado "
+				+ "where ((c.estadoCobro=? and fechaEmision<?) or (c.estadoCobro is null and fechaEmision is null)) and sc.estado='aprobado' " 
 				+ "order by apellidos";
 		return db.executeQueryPojo(EmisionRecepcionDTO.class, sql, "cobrado", fechaPrimerDía, "cobrado",
 				fechaPrimerDía);
@@ -43,7 +44,8 @@ public class EmisionRecepcionModel {
 				+ "case when true THEN 'Colegiado' " 
 				+ "END AS tipo  " 
 				+ "from Colegiado as c "
-				+ "where (c.estadoCobro='No cobrado' or c.estadoCobro='cobrado') and fechaEmision>? "
+				+ "inner join SolicitudColegio as sc on sc.idSolicitud=c.idColegiado "
+				+ "where (c.estadoCobro='No cobrado' or c.estadoCobro='cobrado') and fechaEmision>? and sc.estado='aprobado' "
 				+ "order by apellidos";
 		return db.executeQueryPojo(EmisionRecepcionDTO.class, sql, fechaIni, fechaIni);
 	}
@@ -67,7 +69,9 @@ public class EmisionRecepcionModel {
 				+ "c.fechaCobro as fechaCobro, "
 				+ "c.fechaReclamacion as fechaReclamacion," 
 				+ "case when true THEN 'Colegiado' " + "END AS tipo "
-				+ "from Colegiado as c " 
+				+ "from Colegiado as c "
+				+ "inner join SolicitudColegio as sc on sc.idSolicitud=c.idColegiado "
+				+ "where sc.estado='aprobado'"
 				+ "order by apellidos";
 		return db.executeQueryPojo(EmisionRecepcionDTO.class, sql);
 	}
@@ -127,7 +131,8 @@ public class EmisionRecepcionModel {
 				+ "case when true THEN 'Colegiado' " 
 				+ "END AS tipo "
 				+ "from Colegiado as c "
-				+ "where c.estadoCobro='emitido' "
+				+ "inner join SolicitudColegio as sc on sc.idSolicitud=c.idColegiado "
+				+ "where c.estadoCobro='emitido' and sc.estado='aprobado' "
 				+ "order by apellidos";
 		return db.executeQueryPojo(EmisionRecepcionDTO.class,sql);
 	}
