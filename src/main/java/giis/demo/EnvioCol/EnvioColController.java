@@ -57,18 +57,6 @@ public class EnvioColController {
 					if (retrival == JFileChooser.APPROVE_OPTION) {
 						try {
 							FileWriter fw = new FileWriter(chooser.getSelectedFile() + ".txt");
-							/*
-							 * JFileChooser filechooser = new JFileChooser(); // FileNameExtensionFilter
-							 * filter = new FileNameExtensionFilter("Archivos de texto", "txt", "gcode"); //
-							 * filechooser.setFileFilter(filter); filechooser.showSaveDialog(filechooser);
-							 * File guarda = filechooser.getSelectedFile();
-							 */
-
-							// File fichero = new File (".","EnvioCol.txt");
-
-							// try {
-							// fichero.createNewFile();
-							// FileWriter fw = new FileWriter(fichero);
 							BufferedWriter bw = new BufferedWriter(fw);
 
 							List<EnvioColDisplayDTO> envio = modelo.getListaCursosModelo();
@@ -132,8 +120,8 @@ public class EnvioColController {
 								// System.out.println(dni);
 								titulo = fields[1];
 								// System.out.println(titulo);
-								if (titulo.equals("Ing. Informática") || titulo == "Master Ing. Informática"
-										|| titulo == "Lic. Informática") {
+								if (titulo.contentEquals("Ing. Informática") || titulo.contentEquals("Master Ing. Informática")
+										|| titulo.contentEquals("Lic. Informática")) {
 									modelo.updateEstadoAprobado(modelo.getIDColegiado(dni), modelo.getFechaHoy());
 									setListaCursosController();
 								}
@@ -152,6 +140,8 @@ public class EnvioColController {
 							if (null != br) {
 								try {
 									br.close();
+									justificanteAceptados();
+									justificanteNoAceptados();
 									// setlistaColegiadosPrecolegiados();
 								} catch (IOException e1) {
 									// TODO Auto-generated catch block
@@ -176,4 +166,66 @@ public class EnvioColController {
 		SwingUtil.autoAdjustColumns(vista.getTablaCursos());
 	}
 
+	public void justificanteAceptados() {
+		File file = new File (".","Aceptados "+modelo.getFechaHoy()+".txt");
+
+		try {
+			BufferedWriter bw;
+			bw = new BufferedWriter (new FileWriter(file));
+			List<EnvioColDisplayDTO> envio = modelo.getListaCursosModelo();
+			bw.write("Lista Solicitudes de colegiación denegadas "+modelo.getFechaHoy()+"\n\n");
+			for (int i = 0; i < envio.size(); i++) {
+				String aux = envio.get(i).getEstado();
+
+				if (aux.contentEquals("aprobado") && modelo.getFechaHoy().equals(envio.get(i).getFechaSolicitudColegiado())) {
+
+
+					bw.write("DNI: " + envio.get(i).getDni() + "\nNombre: " + envio.get(i).getNombre() + "\nApellidos: " + envio.get(i).getApellidos() + 
+							"\nFecha: " + envio.get(i).getFechaSolicitudColegiado()+"\n"+"Num. Colegiado: "+modelo.getIDColegiado(envio.get(i).getDni())+"\n");
+					bw.write("---------------------------------------------------\n");
+				}
+
+			}
+
+			bw.close();
+			//modelo.updateEstado();
+			//setListaCursosController();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+
+	public void justificanteNoAceptados() {
+		File file = new File (".","Denegados "+modelo.getFechaHoy()+".txt");
+
+		try {
+			BufferedWriter bw;
+			bw = new BufferedWriter (new FileWriter(file));
+			List<EnvioColDisplayDTO> envio = modelo.getListaCursosModelo();
+			bw.write("Lista Solicitudes de colegiación admitidas "+modelo.getFechaHoy()+"\n\n");
+			for (int i = 0; i < envio.size(); i++) {
+				String aux = envio.get(i).getEstado();
+
+				if (aux.contentEquals("Desestimada") && modelo.getFechaHoy().equals(envio.get(i).getFechaSolicitudColegiado())) {
+
+
+					bw.write("DNI: " + envio.get(i).getDni() + "\nNombre: " + envio.get(i).getNombre() + "\nApellidos: " + envio.get(i).getApellidos() + 
+							"\nFecha: " + envio.get(i).getFechaSolicitudColegiado()+"\n");
+				
+					bw.write("---------------------------------------------------\n");
+				}
+
+			}
+
+			bw.close();
+			//modelo.updateEstado();
+			//setListaCursosController();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
 }
+
+

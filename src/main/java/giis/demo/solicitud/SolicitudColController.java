@@ -151,7 +151,7 @@ public class SolicitudColController {
 				vistacol.getTfDireccion().setText("Calle Ave del Paraiso");
 				vistacol.getTfPoblacion().setText("Gijon");
 				vistacol.getTfTelefono().setText("643211664");
-				vistacol.getTfTitulacion().setText("Ingenieria Informatica");
+				vistacol.getTfTitulacion().setText("Ing. Informática");
 				vistacol.getTfCentro().setText("Escuela Politecnica de Ingenieria");
 				vistacol.getTfYear().setText("2020");
 				vistacol.getTfCuenta().setText("ES21123456781234");
@@ -168,7 +168,7 @@ public class SolicitudColController {
 				vistapre.getTfDireccion().setText("Hobbiton");
 				vistapre.getTfPoblacion().setText("La Comarca");
 				vistapre.getTfTelefono().setText("323568794");
-				vistapre.getTfTitulacion().setText("Ingenieria Informatica");
+				vistapre.getTfTitulacion().setText("Ing. Informática");
 				vistapre.getTfCentro().setText("Escuela Politecnica de Ingenieria");
 				vistapre.getTfCuenta().setText("ES21123456784567");
 			}
