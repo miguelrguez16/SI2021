@@ -69,7 +69,8 @@ public class ListaCursosAnioController {
 	public void updateDetail() {
 		this.lastCursoSelected=SwingUtil.getSelectedKey(vista.getTablaCursos());
 		idCurso=Integer.parseInt(this.lastCursoSelected);
-		vista.getLInscritos().setText("Lista provisional de inscritos al idCurso="+idCurso);
+		String nombre=modelo.getNombreCurso(idCurso);
+		vista.getLInscritos().setText("Lista provisional de inscritos al curso "+nombre);
 		this.setListaInscritosCursoController();
 	}
 	

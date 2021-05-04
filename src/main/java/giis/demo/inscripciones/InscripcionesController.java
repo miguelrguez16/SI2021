@@ -321,7 +321,12 @@ public class InscripcionesController {
 		boolean aux;
 		try {
 			int ano=Integer.parseInt(pago.getTFano().getText());
-			if(ano<21) aux=true;
+			int mes=Integer.parseInt(pago.getTFmes().getText());
+			int mesHoy=05;
+			if(ano<21) 
+				aux=true;
+			else if(ano==21 && mes<=mesHoy)
+				aux=true;
 			else aux=false;
 		}catch(NumberFormatException e) {
 			throw new ApplicationException("El año debe tener sólo números.");
