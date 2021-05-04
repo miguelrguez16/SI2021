@@ -59,9 +59,9 @@ public class ListaCursosAnioView {
 		table_1=new JTable();
 		tablePanel_1.setViewportView(table_1);
 		
-		btnCargar = new JButton("Subir archivo");
+		btnCargar = new JButton("Subir archivo de pago por transferencia");
 		btnCargar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnCargar.setBounds(10, 164, 169, 22);
+		btnCargar.setBounds(10, 164, 300, 22);
 		frame.getContentPane().add(btnCargar);
 	}
 
