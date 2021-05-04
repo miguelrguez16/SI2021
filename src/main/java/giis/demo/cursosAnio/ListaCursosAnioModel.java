@@ -127,6 +127,22 @@ public class ListaCursosAnioModel {
 	    return id;
 	}
 	
+	public String getNombreCurso(int idCurso) {
+		String nombre = "";
+		try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT nombre FROM Curso WHERE idCurso="+idCurso;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
+	}
+	
 	public String getColectivoTipo(int id) {
 		String tipo = "";
 		try {
