@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 
 import giis.demo.colegiados.ColegiadoDisplayDTO;
@@ -25,15 +26,13 @@ public class ListaCursosAnioModel {
 	}
 	
 	public List<ConsultaInscritoDisplayDTO> getListaInscritos(int idCurso){
-		String sql ="SELECT co.apellidos as apellidos,co.nombre as nombre , i.estado as estado, i.fecha as fecha,i.tipo as tipo, c.precio as precio, i.cantidadDevolver as cantidadDevolver From InscripcionCurso AS i "
+		String sql ="SELECT co.apellidos as apellidos,co.nombre as nombre ,i.tipo as tipo, i.fecha as fecha, c.precio as precio, i.estado as estado, i.cantidadDevolver as cantidadDevolver From InscripcionCurso AS i "
 				+ "INNER JOIN Colegiado AS co ON (co.idColegiado=i.id and i.tipo='colegiado') INNER JOIN Curso as c on c.idCurso=i.idCurso where i.idCurso=? "
 				+ "UNION "
-				+ "SELECT p.apellidos as apellidos,p.nombre as nombre, i.estado as estado, i.fecha as fecha, i.tipo as tipo, c.precioPrecolegiado as precio, i.cantidadDevolver as cantidadDevolver FROM InscripcionCurso AS i "
+				+ "SELECT p.apellidos as apellidos,p.nombre as nombre, i.tipo as tipo,  i.fecha as fecha,  c.precioPrecolegiado as precio, i.estado as estado, i.cantidadDevolver as cantidadDevolver FROM InscripcionCurso AS i "
 				+ "INNER JOIN Precolegiado AS p ON (p.id=i.id and i.tipo='precolegiado') INNER JOIN Curso as c on c.idCurso=i.idCurso where i.idCurso=? "
 				+ "UNION "
-				+ "SELECT cole.apellidos as apellidos,cole.nombre as nombre, i.estado as estado, i.fecha as fecha, i.tipo as tipo, "
-				+ "case when i.tipo ='externo' THEN c.precioExterno when i.tipo ='estudiante' THEN c.precioEstudiante when i.tipo ='empresa' THEN c.precioEmpresa "
-				+ "END AS precio, i.cantidadDevolver as cantidadDevolver FROM InscripcionCurso AS i "
+				+ "SELECT cole.apellidos as apellidos,cole.nombre as nombre,i.tipo as tipo, i.fecha as fecha, case when i.tipo ='externo' THEN c.precioExterno when i.tipo ='estudiante' THEN c.precioEstudiante when i.tipo ='empresa' THEN c.precioEmpresa END AS precio,  i.estado as estado, i.cantidadDevolver as cantidadDevolver FROM InscripcionCurso AS i "
 				+ "INNER JOIN Colectivo AS cole ON (cole.idColectivo=i.id and (i.tipo='externo' or i.tipo='estudiante' or i.tipo='empresa' )) "
 				+ "INNER JOIN Curso as c on c.idCurso=i.idCurso where i.idCurso=? "
 				+ "order by Apellidos";
@@ -160,6 +159,22 @@ public class ListaCursosAnioModel {
 	    return nombre;
 	}
 	
+	public String getEstado(int id, int idCurso, String tipo) {
+		String nombre="";
+		try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT estado FROM InscripcionCurso WHERE id="+id+" and idCurso="+idCurso+" and tipo='"+tipo+"'";
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            nombre=rs.getString(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return nombre;
+	}
+	
 	public double getPrecioColegiado(int idCurso) {
 		double precio=0;
 		try {
@@ -238,6 +253,52 @@ public class ListaCursosAnioModel {
 	        e.printStackTrace();
 	    }
 	    return precio;
+	}
+	
+	public String getFecha() {
+		Calendar c1 = Calendar.getInstance();
+		StringBuilder fecha = new StringBuilder();
+		String tmp;
+		tmp = Integer.toString(c1.get(Calendar.YEAR));
+		fecha.append(tmp + "-");
+		tmp = "";
+		tmp = (c1.get(Calendar.MONTH) + 1 < 10) ? (String) ("0" + Integer.toString(c1.get(Calendar.MONTH) + 1)) : (String) (Integer.toString(c1.get(Calendar.MONTH) + 1));
+		fecha.append(tmp + "-");
+		tmp = (c1.get(Calendar.DATE) < 10) ? (String) ("0" + Integer.toString(c1.get(Calendar.DATE))) : (String) (Integer.toString(c1.get(Calendar.DATE)));
+		fecha.append(tmp);
+		return fecha.toString();
+	}
+	
+	public double getPrecioDevolver(int idInscripcionCurso) {
+		double precio=0;
+		try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT cantidadDevolver FROM InscripcionCurso WHERE idInscripcionCurso="+idInscripcionCurso;
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            precio=rs.getInt(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return precio;
+	}
+	
+	public int getIdInscripcionCurso(int id, int idCurso, String tipo) {
+		int idInscripcion=0;
+		try {
+	        Connection conn = DriverManager.getConnection("jdbc:sqlite:IS2021.db");
+	        java.sql.Statement s = conn.createStatement();
+	        String sql = "SELECT idInscripcionCurso FROM InscripcionCurso WHERE id="+id+" and idCurso="+idCurso+" and tipo='"+tipo+"'";
+	        ResultSet rs =((java.sql.Statement) s).executeQuery(sql);
+	        while (rs.next()) {
+	            idInscripcion=rs.getInt(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return idInscripcion;
 	}
 	
 	public boolean existeInscripcion(int id, int idCurso, String tipo) {

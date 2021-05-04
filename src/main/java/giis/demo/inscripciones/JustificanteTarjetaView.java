@@ -34,7 +34,7 @@ public class JustificanteTarjetaView {
 		frmJustificanteFormaDe.setBounds(0,0,500,150);
 		frmJustificanteFormaDe.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Justificante: pago con tarjeta");
+		JLabel lblNewLabel = new JLabel("Justificante pago con tarjeta");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel.setBounds(10, 11, 464, 20);

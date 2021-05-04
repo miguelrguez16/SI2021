@@ -61,7 +61,7 @@ public class ListaCursosAnioController {
 	private void setListaInscritosCursoController() {
 		List<ConsultaInscritoDisplayDTO> inscritos= modelo.getListaInscritos(idCurso);
 		TableModel tmodel = SwingUtil.getTableModelFromPojos(inscritos,
-				new String[] { "apellidos", "nombre", "estado", "fecha","tipo", "precio", "cantidadDevolver" });
+				new String[] { "apellidos", "nombre", "tipo", "fecha", "precio", "estado", "cantidadDevolver" });
 		vista.getTablaInscritos().setModel(tmodel);
 		SwingUtil.autoAdjustColumns(vista.getTablaInscritos());
 	}
@@ -113,37 +113,60 @@ public class ListaCursosAnioController {
 	}
 	
 	private void actualizarInscripcion(String dni, String fecha, String cantidad) {
+		
+		double x=Double.parseDouble(cantidad);
+		if(x<=0)
+			validateCondition(false, "Cantidad de pago negativa en DNI="+dni);
+		
 		if(modelo.esColegiado(dni)) { //SI ES COLEGIADO
 			int idColegiado=modelo.getIdColegiado(dni);
+			
 			if(modelo.existeInscripcion(idColegiado, idCurso, "colegiado")) { //SI EXISTE INSCRIPCION
-				esColegiado(dni, fecha, cantidad);
+				String tipo="colegiado";
+				String estado=modelo.getEstado(idColegiado, idCurso, tipo);
+				if(!estado.equals("preinscrito")) 
+					System.out.println("DNI="+dni+". Esta inscripción ya está pagada o ha sido anulada la inscripción.\n");
+				else 
+					esColegiado(dni, fecha, cantidad);
 			}else 
 				validateCondition(false, "No existe inscripción del idColegiado="+idColegiado+" en el idCurso="+idCurso);
 		}
 		
 		else if(modelo.esPrecolegiado(dni)) {
 			int idPrecolegiado=modelo.getIdPrecolegiado(dni);
+			
 			if(modelo.existeInscripcion(idPrecolegiado, idCurso, "precolegiado")) {
-				esPrecolegiado(dni, fecha, cantidad);
+				String tipo="precolegiado";
+				String estado=modelo.getEstado(idPrecolegiado, idCurso, tipo);
+				if(!estado.equals("preinscrito"))
+					System.out.println("DNI="+dni+". Esta inscripción ya está pagada o ha sido anulada la inscripción.\n");
+				else
+					esPrecolegiado(dni, fecha, cantidad);
 			}else
-				validateCondition(false, "No existe inscripcion del idPrecolegiado="+idPrecolegiado+" en el idCurso="+idCurso);
+					validateCondition(false, "No existe inscripcion del idPrecolegiado="+idPrecolegiado+" en el idCurso="+idCurso);
 		}
 		
 		else if(modelo.esColectivo(dni)) {
 			int idColectivo=modelo.getIdColectivo(dni);
 			String tipo=modelo.getColectivoTipo(idColectivo);
+			
 			if(modelo.existeInscripcion(idColectivo, idCurso, tipo)) {
-				esColectivo(dni, fecha, cantidad);
+				String estado=modelo.getEstado(idColectivo, idCurso, tipo);
+				if(!estado.equals("preinscrito"))
+					System.out.println("DNI="+dni+". Esta inscripción ya está pagada o ha sido anulada la inscripción.\n");
+				else
+					esColectivo(dni, fecha, cantidad);
 			}else
 				validateCondition(false, "No existe inscripción del idColectivo="+idColectivo+" en el idCurso="+idCurso);
 		}
-		
 		else throw new ApplicationException("No existe el dni="+dni+" en nuestra base de datos.");
 	}
 	
 	private void esColegiado(String dni, String fecha, String cantidad) {
 		System.out.println("Es colegiado. DNI="+dni);
 		int idColegiado=modelo.getIdColegiado(dni);
+		int idInscripcionCurso=modelo.getIdInscripcionCurso(idColegiado, idCurso, "colegiado");
+		double precioYaPagado=modelo.getPrecioDevolver(idInscripcionCurso);
 		String fechaInscripcion=modelo.getFechaInscripcion(idColegiado, idCurso);
 		
 		double cantidadPagada=Double.parseDouble(cantidad);
@@ -162,20 +185,31 @@ public class ListaCursosAnioController {
 			}
 			
 			else if(dias>3) { //FECHA INVALIDA
-				modelo.setInscripcionAnulada(idColegiado, idCurso,"colegiado", cantidadPagada);
-				System.out.println("Fecha pago incorrecta. Inscripción anulada: idColegiado="+idColegiado+", idCurso="+idCurso+", cantidadDevolver="+cantidadPagada+"\n");
+				double cantidadTotal=cantidadPagada+precioYaPagado;
+				modelo.setInscripcionAnulada(idColegiado, idCurso,"colegiado", cantidadTotal);
+				System.out.println("Fecha pago incorrecta. Inscripción anulada: idColegiado="+idColegiado+", idCurso="+idCurso+", cantidadDevolver="+cantidadTotal+"\n");
 				this.setListaCursosAnioController();
 			}
 			
 			else if(dias<=3 && cantidadPagada > precioCurso ) { //FECHA VALIDA y CANTIDAD MAYOR
-				double cantidadDevolver=cantidadPagada-precioCurso;
+				double cantidadDevolver=precioYaPagado+cantidadPagada-precioCurso;
 				modelo.setInscripcionInscritaDevolver(idColegiado, idCurso,"colegiado", cantidadDevolver);
 				System.out.println("Cantidad mayor. Inscripción inscrita: idColegiado="+idColegiado+", idCurso="+idCurso+", cantidadDevolver="+cantidadDevolver+"\n");
 			}
 			
 			else if(dias<=3 && cantidadPagada < precioCurso){ //FECHA VALIDA y CANTIDAD MENOR
-				modelo.setInscripcionPreinscritaDevolver(idColegiado, idCurso, "colegiado", cantidadPagada);
-				System.out.println("Cantidad menor. Inscripción queda preinscrita: idColegiado="+idColegiado+", idCurso="+idCurso+", cantidadDevolver="+cantidadPagada+"\n");
+				double cantidadTotal=cantidadPagada+precioYaPagado;
+				if(cantidadTotal==precioCurso) {
+					modelo.setInscripcionInscrita(idColegiado, idCurso, "colegiado");
+					System.out.println("Pago aceptado. Cantidad correcta. Inscripción inscrita: idColegiado="+idColegiado+", idCurso="+idCurso+"\n");
+				}else if(cantidadTotal>precioCurso) {
+					double aux=cantidadTotal-precioCurso;
+					modelo.setInscripcionInscritaDevolver(idColegiado, idCurso, "colegiado", aux);
+					System.out.println("Cantidad mayor. Inscripción inscrita: idColegiado="+idColegiado+", idCurso="+idCurso+", cantidadDevolver="+aux+"\n");
+				}else {
+					modelo.setInscripcionPreinscritaDevolver(idColegiado, idCurso, "colegiado", cantidadTotal);
+					System.out.println("Cantidad menor. Inscripción queda preinscrita: idColegiado="+idColegiado+", idCurso="+idCurso+", cantidadDevolver="+cantidadTotal+"\n");
+				}
 			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
